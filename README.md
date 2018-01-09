@@ -31,6 +31,22 @@ sudo switch-screen internal
 sudo switch-screen dual
 ```
 
+### Known issues
+
+switch-screen may fail to switch to the external screen due to Nvidia GPU initialization failing.  
+The kernel log will contain something like:
+
+```
+Nov 24 22:40:32 hostname kernel: [351621.701163] NVRM: failed to copy vbios to system memory.
+Nov 24 22:40:32 hostname kernel: [351621.701637] NVRM: RmInitAdapter failed! (0x30:0xffff:660)
+Nov 24 22:40:32 hostname kernel: [351621.701735] NVRM: rm_init_adapter failed for device bearing minor number 0
+```
+
+This is **triggered by high CPU and/or I/O load** - so you can easily avoid it by ensuring the system is idle before you try to switch the screen.  
+It should be fixed by newer kernels so consider upgrading your distribution.  
+Meanwhile retrying when the system is idle again may work, otherwise a reboot will fix the issue.
+
+
 ### License
 
 Do whatever you want to do with this. Relicense as you please. No warranty.
