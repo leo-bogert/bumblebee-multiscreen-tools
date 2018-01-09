@@ -1,0 +1,91 @@
+#!/bin/bash
+# Generic bash options which I always use for safety. Not all may be needed for this particular script.
+set -o nounset
+set -o pipefail
+set -o errexit
+set -o errtrace
+trap 'echo "Error at line $LINENO, exit code is $?" >&2' ERR
+shopt -s nullglob
+shopt -s failglob
+
+# SET THIS TO THE HOMEDIR OF YOUR USER ACCOUNT!
+# FIXME: Make independent of user.
+HOME='/home/leo'
+
+print_usage() {
+	echo "Usage: $0 [external|dual|internal]"
+}
+
+if [ $# -ne 1 ]; then
+	print_usage
+	exit 1
+fi
+
+# FIXME: Deal with concurrency
+
+# On certain systems switching the GPU sometimes (very rarely) causes the SATA hard disk to be disconnected.
+# To avoid data loss flush the file system buffers.
+sync
+
+# FIXME: https://phihag.de/2012/thinkpad-docking.html says we can use xhost
+export DISPLAY=':0'
+export HOME
+
+modprobe bbswitch
+
+# FIXME: Set niceness of Xorg
+
+case "$1" in
+	'external')
+		# External screen only
+			echo ON > /proc/acpi/bbswitch
+			optirun true
+			# (Won't start a second one if already running)
+			intel-virtual-output
+			# Set "--mode" to the resolution of your external display.
+			# You can lookup the mode's of your external display by: "xrandr --display :8 --query"
+			# TODO: Using "--mode" is a workaround for "--auto" not working as of 2017-10-27. Try --auto instead of mode in some years.
+			#
+			# TODO: Remove --primary if it doesn't help with vsync
+			xrandr --output LVDS1 --off ; xrandr --output VIRTUAL8 --mode VIRTUAL8.742-1920x1200 --primary
+		;;
+	'dual')
+		# Docked mode with dualscreen - laptop screen left to DisplayPort #2 screen. Rendered by Intel card, can use NVidia card on demand with optirun/primusrun:
+			echo ON > /proc/acpi/bbswitch
+			optirun true
+			intel-virtual-output
+			# Change "--left-of" / "--right-of" / "--primary" according to your preferences
+			# Set "--mode" like above.
+			xrandr --output LVDS1 --left-of VIRTUAL8 --primary --auto ; xrandr --output VIRTUAL8 --right-of LVDS1 --mode VIRTUAL8.742-1920x1200
+		;;
+	'internal')
+		# Mobile mode - only the laptop's internal screen. Rendered by Intel card, NVidia card is off to reduce power usage
+			xrandr --output VIRTUAL8 --off ; xrandr --output LVDS1 --auto
+			killall intel-virtual-output || true
+			# FIXME: This might also kill the fgrep because its command line parameter cause it to match itself form the output of ps. Adding "fgrep -v fgrep" to the pipe probably will fix it.
+			kill $(ps ax | fgrep Xorg | fgrep ':8' | awk '{print $1}') || true
+			# FIXME: Once the above is fixed enable these instead of sleeping for a constant amount:
+			# while [ "$(ps ax | fgrep intel-virtual-output | awk '{print $1}')" != "" ] ; do sleep 0.5s ; done
+			# while [ "$(ps ax | fgrep Xorg | fgrep ':8' | awk '{print $1}')" != "" ] ; do sleep 0.5s ; done
+			sleep 5s
+			# FIXME: Make it ignore "rmmod: ERROR: Module nvidia_drm is not currently loaded" and remove the "|| true" to avoid also ignoring the fact that it cannot be unloaded because something is using it.
+			rmmod nvidia_drm || true
+			rmmod nvidia_modeset || true
+			rmmod nvidia_uvm || true
+			rmmod nvidia || true
+
+			echo OFF > /proc/acpi/bbswitch
+			# This is likely a working workaround for the below "NOTICE:"
+			echo ON > /proc/acpi/bbswitch
+			echo OFF > /proc/acpi/bbswitch
+			# NOTICE: Check kernel log for "Refused to change power state, currently in D0", if that happened then disabling the GPU failed.
+			# It will probably work if you re-enable it (= docked mode) and try to disable it again.
+			# The idle power consumption as displayed by "upower --dump" should go down from 25 to 11 watts if the card is off.
+		;;
+	# FIXME: Add mode for allowing use of the internal screen with bumblebee. Or put into a separate script, e.g. "nvidia-power [on|off]"
+	*)
+			print_usage
+			exit 1
+		;;
+esac
+exit 0
