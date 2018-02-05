@@ -14,6 +14,10 @@ This is work in progress! Read the scripts before running them!
 They will be finished in 2018, check for new commits regularly.  
 A proper README with instructions on how to configure Bumblebee will be provided as well.
 
+### Depedencies
+
+- The ```switch-screen``` script assumes the display manager is LightDM (which is e.g. used by Kubuntu 14.04). If your distribution uses a different one you need to change the XAUTHORITY variable there.
+
 ### Usage
 
 ```shell

@@ -8,9 +8,9 @@ trap 'echo "Error at line $LINENO, exit code is $?" >&2' ERR
 shopt -s nullglob
 shopt -s failglob
 
-# SET THIS TO THE HOMEDIR OF YOUR USER ACCOUNT!
-# FIXME: Make independent of user.
-HOME='/home/leo'
+# If you're not using LightDM set this to the location of your display manager's Xauthority file
+export XAUTHORITY='/var/run/lightdm/root/:0'
+
 
 print_usage() {
 	echo "Usage: $0 [external|dual|internal]"
@@ -29,7 +29,6 @@ sync
 
 # FIXME: https://phihag.de/2012/thinkpad-docking.html says we can use xhost
 export DISPLAY=':0'
-export HOME
 
 modprobe bbswitch
 
