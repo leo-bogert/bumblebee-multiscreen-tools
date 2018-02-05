@@ -35,7 +35,9 @@ sudo switch-screen internal
 sudo switch-screen dual
 ```
 
-### Known issues
+### Known issues and workarounds
+
+#### External screen not working
 
 switch-screen may fail to switch to the external screen due to Nvidia GPU initialization failing.  
 The kernel log will contain something like:
@@ -50,6 +52,12 @@ This is **triggered by high CPU and/or I/O load** - so you can easily avoid it b
 It should be fixed by newer kernels so consider upgrading your distribution.  
 Meanwhile retrying when the system is idle again may work, otherwise a reboot will fix the issue.
 
+#### Mouse cursor issues
+
+- When using the external screen the mouse cursor may sometimes not be visible.
+- After disconnecting an USB mouse and re-connecting it the cursor may jump around in a strange fashion when you move it.
+
+Any such issues can usually be fixed by switching to the internal screen and then back to the external one.
 
 ### License
 
