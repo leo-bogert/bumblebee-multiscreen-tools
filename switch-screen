@@ -28,7 +28,6 @@ fi
 # To avoid data loss flush the file system buffers.
 sync
 
-# FIXME: https://phihag.de/2012/thinkpad-docking.html says we can use xhost
 
 modprobe bbswitch
 
