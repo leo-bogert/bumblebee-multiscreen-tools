@@ -10,6 +10,7 @@ shopt -s failglob
 
 # If you're not using LightDM set this to the location of your display manager's Xauthority file
 export XAUTHORITY='/var/run/lightdm/root/:0'
+export DISPLAY=':0'
 
 
 print_usage() {
@@ -28,7 +29,6 @@ fi
 sync
 
 # FIXME: https://phihag.de/2012/thinkpad-docking.html says we can use xhost
-export DISPLAY=':0'
 
 modprobe bbswitch
 
