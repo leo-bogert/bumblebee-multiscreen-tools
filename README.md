@@ -9,7 +9,8 @@ Other devices are not tested but may work, these scripts are not very hardware d
 
 ### WARNING
 
-This is work in progress! Read the scripts before running them!
+This is work in progress! Read the scripts first before running them!  
+**They contain quite a bit of harcoded configuration, you MUST really read the whole scripts!**
 
 They will be finished in 2018, check for new commits regularly.  
 A proper README with instructions on how to configure Bumblebee will be provided as well.
@@ -23,7 +24,7 @@ A proper README with instructions on how to configure Bumblebee will be provided
 #### Manual screen switching
 
 ```shell
-# Read and adapt script to your environment first!
+# Read the script and adapt its hardcoded configuration to your environment first!
 nano switch-screen
 # Switch to DisplayPort #2 on docking station.
 # This enables the NVidia GPU as the DisplayPort can only be accessed through it.
@@ -40,8 +41,9 @@ sudo switch-screen dual
 #### Switching screen automatically with a docking station
 
 If you have a docking station, in particular the "Lenovo ThinkPad Mini Dock Plus Series 3", you can use the ```dock-handler``` script as an ACPI event handler.  
-It will automatically switch the screen to the external screen when docked, and to the internal screen when undocked.
+Again, please read and configure the script before using it!
 
+It will automatically switch the screen to the external screen when docked, and to the internal screen when undocked.  
 Further, the following powersaving and noise-related optimizations are done by the script:
 * When undocked:
   * the NVIDIA GPU is disabled by ```switch-screen```.
