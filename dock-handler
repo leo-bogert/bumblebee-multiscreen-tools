@@ -1,0 +1,103 @@
+#!/bin/bash
+# Generic bash options which I always use for safety. Not all may be needed for this particular script.
+set -o nounset
+set -o pipefail
+set -o errexit
+set -o errtrace
+trap 'echo "Error at line $LINENO, exit code is $?" >&2' ERR
+shopt -s nullglob
+shopt -s failglob
+
+# CONFIGURATION ################################################################
+SWITCH_SCREEN=/root/.bin/bumblebee-multiscreen-tools/switch-screen
+DEBUG=0
+LOG='/var/log/thinkpad-w530-dock.log'
+# TODO: Add USB name of dock
+# TODO: Add CPU governor and its parameters
+################################################################################
+
+
+if [ "$DEBUG" -eq 1 ] ; then
+	touch "$LOG"
+	chown root:root "$LOG"
+	chmod 700 "$LOG"
+	exec &>> "$LOG"
+fi
+
+# We support both passing the dock state and autodetecting it:
+# Autodetection is needed for being able to use this script on system wakeup
+# from suspend/hibernation.
+# But when we trigger this script by /etc/acpi/events then it is executed so
+# quickly that autodetection doesn't work - so we must have the scripts there
+# pass the state to us.
+DOCKED=0
+if [ $# -ge 1 ] ; then
+	if [ "$1" = "docked" ] ; then
+		DOCKED=1
+	fi
+else
+	if lsusb | fgrep 'Lenovo ThinkPad Mini Dock Plus Series 3' --quiet ; then
+		DOCKED=1
+	fi
+fi
+
+# FIXME: Deal with concurrency since SWITCH_SCREEN can take a long time
+# TODO: Display resulting states on KDE OSD
+# TODO: Move $(date...) to function
+
+case "$DOCKED" in
+	'0') #undocked event
+		echo "$(date --rfc-3339=seconds): Undock handler..."
+
+		# FIXME: Enable NVidia card while AC is connected.
+		if ! "$SWITCH_SCREEN" internal ; then # prevent errexit
+			echo "Warning: Switching display failed!" >&2
+		fi
+
+		#  FIXME: Use same code as in /etc/pm/sleep.d/thinkpad-w530.sh
+		for cpu in /sys/devices/system/cpu/cpu* ; do
+			gov="$cpu"/cpufreq/scaling_governor
+			if [ -e "$gov" ] ; then
+				echo "Setting CPU frequency governor to powersave for $cpu..."
+				echo "powersave" > "$gov"
+			fi
+		done
+		echo "Disabling Intel TurboBoost..."
+		echo 0 > /sys/devices/system/cpu/cpufreq/boost
+
+		# FIXME: Add something like this to unmount your fileserver (in an unclean fashion as the network is already disconnected)
+		# /root/.bin/shell-tools-root/force-unmount-server.sh
+
+		echo "$(date --rfc-3339=seconds): Undock handler finished."
+	;;
+	'1') #docked event
+		echo "$(date --rfc-3339=seconds): Dock handler..."
+
+		if ! "$SWITCH_SCREEN" external ; then
+			echo "Warning: Switching display failed!" >&2
+		fi
+
+		#  FIXME: Use same code as in /etc/pm/sleep.d/thinkpad-w530.sh
+		for cpu in /sys/devices/system/cpu/cpu* ; do
+			gov="$cpu"/cpufreq/scaling_governor
+			if [ -e "$gov" ] ; then
+				echo "Setting CPU frequency governor to conservative for $cpu..."
+				echo "conservative" > "$gov"
+			fi
+		done
+		echo "Setting upclocking threshold to 80% CPU usage, downlocking at 50%..."
+		echo 80 > /sys/devices/system/cpu/cpufreq/conservative/up_threshold
+		echo 50 > /sys/devices/system/cpu/cpufreq/conservative/down_threshold
+		echo "Telling governor to ignore processes with niceness > 0..."
+		echo 1 > /sys/devices/system/cpu/cpufreq/conservative/ignore_nice_load
+		echo "Enabling Intel TurboBoost..."
+		echo 1 > /sys/devices/system/cpu/cpufreq/boost
+
+		# FIXME: Add something like this to mount your fileserver
+		# /root/.bin/shell-tools-root/mount-server.sh
+
+		echo "$(date --rfc-3339=seconds): Dock handler finished."
+	;;
+esac
+
+exit 0

@@ -20,6 +20,8 @@ A proper README with instructions on how to configure Bumblebee will be provided
 
 ### Usage
 
+#### Manual screen switching
+
 ```shell
 # Read and adapt script to your environment first!
 nano switch-screen
@@ -34,6 +36,11 @@ sudo switch-screen internal
 # This enables the NVidia GPU just like external mode.
 sudo switch-screen dual
 ```
+
+#### Switching screen automatically with a docking station
+
+If you have a docking station, in particular the "Lenovo ThinkPad Mini Dock Plus Series 3", you can use the ```dock-handler``` script as an ACPI event handler.  
+It will automatically switch the screen to the external screen when docked, and to the internal screen when undocked.
 
 ### Known issues and workarounds
 
