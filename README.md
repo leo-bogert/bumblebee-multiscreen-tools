@@ -42,17 +42,17 @@ sudo switch-screen dual
 If you have a docking station, in particular the "Lenovo ThinkPad Mini Dock Plus Series 3", you can use the ```dock-handler``` script as an ACPI event handler.  
 It will automatically switch the screen to the external screen when docked, and to the internal screen when undocked.
 
-Further, the following powersaving and noise-related optimizations are done:
+Further, the following powersaving and noise-related optimizations are done by the script:
 * When undocked:
   * the NVIDIA GPU is disabled by ```switch-screen```.
   * the "powersave" [CPU governor](https://www.kernel.org/doc/Documentation/cpu-freq/governors.txt) is used to permanently downlock the CPU to its lowest speed.
   * [Intel Turbo Boost](https://en.wikipedia.org/wiki/Intel_Turbo_Boost) (automatic load-based overclocking) is disabled.
 * When docked:
   * the NVIDIA GPU is enabled. While this makes sense from a "we're not on battey so no need to save power" perspective it is also strictly necessary: On many laptops, e.g. the ThinkPad W530, the external video outputs are only available through the NVIDIA GPU.
-  * the "conservative" CPU governor is used. Compared to the default "ondemand" governor this will not instantly clock the CPU to the maximum speed under load but slowly uplock if the load persists. With the ThinkPad W530 this greatly reduces noise when e.g. browsing JavaScript-heavy websites. It is configured as such:
-    * if above 80% CPU load for some time upclocking happens
-    * if below 50% CPU load for some time downclocking happens
-    * CPU load of processes with niceness > 0 is ignored when considering whether to upclock. Niceness is the Linux name for process priority, higher values equal lower priority. To launch a command with the default niceness of 10 use "nice command_name".
+  * the "conservative" CPU governor is used. Compared to the default "ondemand" governor this will not instantly clock the CPU to its maximum speed under load but slowly uplock if the load persists. With the ThinkPad W530 this greatly reduces noise when e.g. browsing JavaScript-heavy websites. It is configured as such:
+    * if above 80% CPU load for some time upclocking happens.
+    * if below 50% CPU load for some time downclocking happens.
+    * CPU load of processes with niceness > 0 is ignored when considering whether to upclock. Niceness is the Linux name for process priority, higher values equal lower priority. To launch a command with the default niceness of 10 use ```nice command_name```.
   * Intel Turbo Boost is enabled
 
 ### Known issues and workarounds
