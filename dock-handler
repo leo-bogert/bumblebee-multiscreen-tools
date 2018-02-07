@@ -51,7 +51,7 @@ case "$DOCKED" in
 
 		# FIXME: Enable NVidia card while AC is connected.
 		if ! "$SWITCH_SCREEN" internal ; then # prevent errexit
-			echo "Warning: Switching display failed!" >&2
+			echo "WARNING: Switching display failed!" >&2
 		fi
 
 		#  FIXME: Use same code as in /etc/pm/sleep.d/thinkpad-w530.sh
@@ -74,7 +74,7 @@ case "$DOCKED" in
 		echo "$(date --rfc-3339=seconds): Dock handler..."
 
 		if ! "$SWITCH_SCREEN" external ; then
-			echo "Warning: Switching display failed!" >&2
+			echo "WARNING: Switching display failed!" >&2
 		fi
 
 		#  FIXME: Use same code as in /etc/pm/sleep.d/thinkpad-w530.sh
