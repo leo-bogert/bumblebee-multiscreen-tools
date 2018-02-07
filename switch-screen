@@ -8,9 +8,13 @@ trap 'echo "Error at line $LINENO, exit code is $?" >&2' ERR
 shopt -s nullglob
 shopt -s failglob
 
+# CONFIGURATION ################################################################
+# FIXME: You currently have to manually set the screen resolution and number of external display (e.g. "VIRTUAL8") in the actual code below!
+
 # If you're not using LightDM set this to the location of your display manager's Xauthority file
 export XAUTHORITY='/var/run/lightdm/root/:0'
 export DISPLAY=':0'
+################################################################################
 
 
 print_usage() {
