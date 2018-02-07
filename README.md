@@ -50,7 +50,7 @@ Further, the following powersaving and noise-related optimizations are done by t
   * the "powersave" [CPU governor](https://www.kernel.org/doc/Documentation/cpu-freq/governors.txt) is used to permanently downlock the CPU to its lowest speed.
   * [Intel Turbo Boost](https://en.wikipedia.org/wiki/Intel_Turbo_Boost) (automatic load-based overclocking) is disabled.
 * When docked:
-  * the Nvidia GPU is enabled. While this makes sense from a "we're not on battey so no need to save power" perspective it is also strictly necessary: On many laptops, e.g. the ThinkPad W530, the external video outputs are only available through the Nvidia GPU. NOTICE: By default all rendering still happens on the Intel GPU. If you want an application to use the Nvidia GPU you must launch it using Bumblebee's ```optirun``` or ```primusrun```.
+  * the Nvidia GPU is enabled. While this makes sense from a "we're not on battey so no need to save power" perspective it is also strictly necessary: On many laptops, e.g. the ThinkPad W530, the external video outputs are only available through the Nvidia GPU. **NOTICE:** By default all rendering still happens on the Intel GPU. If you want an application to use the Nvidia GPU you must launch it using Bumblebee's ```optirun``` or ```primusrun```.
   * the "conservative" CPU governor is used. Compared to the default "ondemand" governor this will not instantly clock the CPU to its maximum speed under load but slowly uplock if the load persists. With the ThinkPad W530 this greatly reduces noise when e.g. browsing JavaScript-heavy websites. It is configured as such:
     * if above 80% CPU load for some time upclocking happens.
     * if below 50% CPU load for some time downclocking happens.
