@@ -1,5 +1,5 @@
 ## bumblebee-multiscreen-tools
-### Scripts to do screen and GPU switching on NVidia Optimus laptops with [Bumblebee](https://github.com/Bumblebee-Project/Bumblebee).
+### Scripts to do screen and GPU switching on Nvidia Optimus laptops with [Bumblebee](https://github.com/Bumblebee-Project/Bumblebee).
 
 These scripts allow you to easily switch your laptop's screen from internal to external or enable both screens at once.  
 They should work with a docking station.
@@ -27,14 +27,14 @@ The ```switch-screen``` script assumes the display manager is LightDM (which is 
 # Read the script and adapt its hardcoded configuration to your environment first!
 nano switch-screen
 # Switch to DisplayPort #2 on docking station.
-# This enables the NVidia GPU as the DisplayPort can only be accessed through it.
+# This enables the Nvidia GPU as the DisplayPort can only be accessed through it.
 # Software will keep using the Intel GPU unless you run it with "optirun COMMAND_NAME".
 sudo switch-screen external
 # Switch to internal screen.
-# This disables the NVidia GPU for optimal power usage.
+# This disables the Nvidia GPU for optimal power usage.
 sudo switch-screen internal
 # Enable both screens with laptop screen being the primary screen, left of the external one.
-# This enables the NVidia GPU just like external mode.
+# This enables the Nvidia GPU just like external mode.
 sudo switch-screen dual
 ```
 
@@ -46,11 +46,11 @@ Again, please read and configure the script before using it!
 It will automatically switch the screen to the external screen when docked, and to the internal screen when undocked.  
 Further, the following powersaving and noise-related optimizations are done by the script:
 * When undocked:
-  * the NVIDIA GPU is disabled by ```switch-screen```.
+  * the Nvidia GPU is disabled by ```switch-screen```.
   * the "powersave" [CPU governor](https://www.kernel.org/doc/Documentation/cpu-freq/governors.txt) is used to permanently downlock the CPU to its lowest speed.
   * [Intel Turbo Boost](https://en.wikipedia.org/wiki/Intel_Turbo_Boost) (automatic load-based overclocking) is disabled.
 * When docked:
-  * the NVIDIA GPU is enabled. While this makes sense from a "we're not on battey so no need to save power" perspective it is also strictly necessary: On many laptops, e.g. the ThinkPad W530, the external video outputs are only available through the NVIDIA GPU. NOTICE: By default all rendering still happens on the Intel GPU. If you want an application to use the NVIDIA GPU you must launch it using Bumblebee's ```optirun``` or ```primusrun```.
+  * the Nvidia GPU is enabled. While this makes sense from a "we're not on battey so no need to save power" perspective it is also strictly necessary: On many laptops, e.g. the ThinkPad W530, the external video outputs are only available through the Nvidia GPU. NOTICE: By default all rendering still happens on the Intel GPU. If you want an application to use the Nvidia GPU you must launch it using Bumblebee's ```optirun``` or ```primusrun```.
   * the "conservative" CPU governor is used. Compared to the default "ondemand" governor this will not instantly clock the CPU to its maximum speed under load but slowly uplock if the load persists. With the ThinkPad W530 this greatly reduces noise when e.g. browsing JavaScript-heavy websites. It is configured as such:
     * if above 80% CPU load for some time upclocking happens.
     * if below 50% CPU load for some time downclocking happens.
