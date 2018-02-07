@@ -17,7 +17,7 @@ A proper README with instructions on how to configure Bumblebee will be provided
 
 ### Depedencies
 
-- The ```switch-screen``` script assumes the display manager is LightDM (which is e.g. used by Kubuntu 14.04). If your distribution uses a different one you need to change the XAUTHORITY variable there.
+The ```switch-screen``` script assumes the display manager is LightDM (which is e.g. used by Kubuntu 14.04). If your distribution uses a different one you need to change the XAUTHORITY variable there.
 
 ### Usage
 
@@ -76,8 +76,8 @@ Meanwhile retrying when the system is idle again may work, otherwise a reboot wi
 
 #### Mouse cursor issues
 
-- When using the external screen the mouse cursor may sometimes not be visible.
-- After disconnecting an USB mouse and re-connecting it the cursor may jump around in a strange fashion when you move it.
+* When using the external screen the mouse cursor may sometimes not be visible.
+* After disconnecting an USB mouse and re-connecting it the cursor may jump around in a strange fashion when you move it.
 
 Any such issues can usually be fixed by switching to the internal screen and then back to the external one.
 
