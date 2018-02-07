@@ -1,5 +1,5 @@
 ## bumblebee-multiscreen-tools
-### - scripts to do screen and GPU switching on NVidia Optimus laptops with [Bumblebee](https://github.com/Bumblebee-Project/Bumblebee).
+### Scripts to do screen and GPU switching on NVidia Optimus laptops with [Bumblebee](https://github.com/Bumblebee-Project/Bumblebee).
 
 These scripts allow you to easily switch your laptop's screen from internal to external or enable both screens at once.  
 They should work with a docking station.
