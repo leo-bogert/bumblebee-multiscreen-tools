@@ -62,7 +62,7 @@ case "$DOCKED" in
 				echo "powersave" > "$gov"
 			fi
 		done
-		echo "Disabling Intel TurboBoost..."
+		echo "Disabling Intel Turbo Boost..."
 		echo 0 > /sys/devices/system/cpu/cpufreq/boost
 
 		# FIXME: Add something like this to unmount your fileserver (in an unclean fashion as the network is already disconnected)
@@ -92,7 +92,7 @@ case "$DOCKED" in
 		echo 50 > /sys/devices/system/cpu/cpufreq/conservative/down_threshold
 		echo "Telling governor to ignore processes with niceness > 0..."
 		echo 1 > /sys/devices/system/cpu/cpufreq/conservative/ignore_nice_load
-		echo "Enabling Intel TurboBoost..."
+		echo "Enabling Intel Turbo Boost..."
 		echo 1 > /sys/devices/system/cpu/cpufreq/boost
 
 		# FIXME: Add something like this to mount your fileserver
