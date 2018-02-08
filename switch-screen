@@ -47,7 +47,7 @@ modprobe bbswitch
 
 case "$1" in
 	'external')
-		# External screen only, DisplayPort #2 on dock.
+		# External screen only, DisplayPort #2 on dock (not using #1 because using #2 makes zip-tieing the cables easier :)
 			echo ON > /proc/acpi/bbswitch
 			optirun true
 			# (Won't start a second one if already running)
