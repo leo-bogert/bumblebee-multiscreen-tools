@@ -40,6 +40,7 @@ if [[ ":$PATH:" != *":/sbin:"* ]]; then
 	export PATH="/sbin:$PATH"
 fi
 
+# TODO: Make README tell user to add it to /etc/modules?
 modprobe bbswitch
 
 # FIXME: Set niceness of Xorg
