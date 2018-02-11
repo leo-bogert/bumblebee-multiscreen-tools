@@ -58,7 +58,8 @@ case "$1" in
 			# TODO: Using "--mode" is a workaround for "--auto" not working as of 2017-10-27. Try --auto instead of mode in some years.
 			#
 			# TODO: Remove --primary if it doesn't help with vsync
-			xrandr --output LVDS1 --off ; xrandr --output VIRTUAL8 --mode VIRTUAL8.742-1920x1200 --primary
+			xrandr --output LVDS1 --off
+			xrandr --output VIRTUAL8 --mode VIRTUAL8.742-1920x1200 --primary
 		;;
 	'dual')
 		# Docked mode with dualscreen - laptop screen left to DisplayPort #2 screen.
@@ -68,12 +69,14 @@ case "$1" in
 			intel-virtual-output
 			# Change "--left-of" / "--right-of" / "--primary" according to your preferences
 			# Set "--mode" like above.
-			xrandr --output LVDS1 --left-of VIRTUAL8 --primary --auto ; xrandr --output VIRTUAL8 --right-of LVDS1 --mode VIRTUAL8.742-1920x1200
+			xrandr --output LVDS1 --left-of VIRTUAL8 --primary --auto
+			xrandr --output VIRTUAL8 --right-of LVDS1 --mode VIRTUAL8.742-1920x1200
 		;;
 	'internal')
 		# Mobile mode - only the laptop's internal screen.
 		# Rendered by Intel card, NVidia card is off to reduce power usage.
-			xrandr --output VIRTUAL8 --off ; xrandr --output LVDS1 --auto
+			xrandr --output VIRTUAL8 --off
+			xrandr --output LVDS1 --auto
 			killall intel-virtual-output || true
 			# FIXME: This might also kill the fgrep because its command line parameter cause it to match itself form the output of ps. Adding "fgrep -v fgrep" to the pipe probably will fix it.
 			kill $(ps ax | fgrep Xorg | fgrep ':8' | awk '{print $1}') || true
