@@ -55,9 +55,8 @@ case "$1" in
 			intel-virtual-output
 			# Set "--mode" to the resolution of your external display.
 			# You can lookup the mode's of your external display by: "xrandr --display :8 --query"
-			# TODO: Using "--mode" is a workaround for "--auto" not working as of 2017-10-27. Try --auto instead of mode in some years.
-			#
-			# TODO: Remove --primary if it doesn't help with vsync
+			# TODO: Using "--mode" is a workaround for "--auto" not working as of 2017-10-27 on Kubuntu 14.04. Try --auto instead of --mode once you're on a newer distribution.
+			# TODO: "--primary" is an attempted workaround to improve vsync with videos in Chromium as of 2017-10-27 on Kubuntu 14.04. Remove if it doesn't help / vsync improves on a newer distribution.
 			xrandr --output LVDS1 --off
 			xrandr --output VIRTUAL8 --mode VIRTUAL8.742-1920x1200 --primary
 		;;
