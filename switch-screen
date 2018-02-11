@@ -47,7 +47,8 @@ modprobe bbswitch
 
 case "$1" in
 	'external')
-		# External screen only, DisplayPort #2 on dock (not using #1 because using #2 makes zip-tieing the cables easier :)
+		# Docked mode - External screen only, DisplayPort #2 on dock (not using #1 because using #2 makes zip-tieing the cables easier :)
+		# Rendered by Intel card, can use NVidia card on demand with optirun/primusrun.
 			echo ON > /proc/acpi/bbswitch
 			optirun true
 			# (Won't start a second one if already running)
@@ -60,7 +61,8 @@ case "$1" in
 			xrandr --output LVDS1 --off ; xrandr --output VIRTUAL8 --mode VIRTUAL8.742-1920x1200 --primary
 		;;
 	'dual')
-		# Docked mode with dualscreen - laptop screen left to DisplayPort #2 screen. Rendered by Intel card, can use NVidia card on demand with optirun/primusrun:
+		# Docked mode with dualscreen - laptop screen left to DisplayPort #2 screen.
+		# Rendered by Intel card, can use NVidia card on demand with optirun/primusrun.
 			echo ON > /proc/acpi/bbswitch
 			optirun true
 			intel-virtual-output
@@ -69,7 +71,8 @@ case "$1" in
 			xrandr --output LVDS1 --left-of VIRTUAL8 --primary --auto ; xrandr --output VIRTUAL8 --right-of LVDS1 --mode VIRTUAL8.742-1920x1200
 		;;
 	'internal')
-		# Mobile mode - only the laptop's internal screen. Rendered by Intel card, NVidia card is off to reduce power usage
+		# Mobile mode - only the laptop's internal screen.
+		# Rendered by Intel card, NVidia card is off to reduce power usage.
 			xrandr --output VIRTUAL8 --off ; xrandr --output LVDS1 --auto
 			killall intel-virtual-output || true
 			# FIXME: This might also kill the fgrep because its command line parameter cause it to match itself form the output of ps. Adding "fgrep -v fgrep" to the pipe probably will fix it.
