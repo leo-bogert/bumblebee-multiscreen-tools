@@ -78,7 +78,7 @@ case "$1" in
 			xrandr --output LVDS1 --auto
 
 			echo "Waiting for intel-virtual-output to terminate..."
-			killall --wait --exact intel-virtual-output || true
+			killall --wait --exact --quiet intel-virtual-output || true
 			# killall does not support matching processes by their command line arguments so we must use pkill/pgrep
 			pkill --full 'Xorg(.*):8(.*)' || true
 			echo "Waiting for Xorg to terminate..."
