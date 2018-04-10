@@ -76,13 +76,16 @@ case "$1" in
 		# Rendered by Intel card, NVidia card is off to reduce power usage.
 			xrandr --output VIRTUAL8 --off
 			xrandr --output LVDS1 --auto
-			killall intel-virtual-output || true
-			# FIXME: This might also kill the fgrep because its command line parameter cause it to match itself form the output of ps. Adding "fgrep -v fgrep" to the pipe probably will fix it.
-			kill $(ps ax | fgrep Xorg | fgrep ':8' | awk '{print $1}') || true
-			# FIXME: Once the above is fixed enable these instead of sleeping for a constant amount:
-			# while [ "$(ps ax | fgrep intel-virtual-output | awk '{print $1}')" != "" ] ; do sleep 0.5s ; done
-			# while [ "$(ps ax | fgrep Xorg | fgrep ':8' | awk '{print $1}')" != "" ] ; do sleep 0.5s ; done
-			sleep 5s
+
+			echo "Waiting for intel-virtual-output to terminate..."
+			killall --wait --exact intel-virtual-output || true
+			# killall does not support matching processes by their command line arguments so we must use pkill/pgrep
+			pkill --full 'Xorg(.*):8(.*)' || true
+			echo "Waiting for Xorg to terminate..."
+			while [ "$(pgrep --full --count 'Xorg(.*):8(.*)')" != '0' ] ; do
+				sleep 0.1s
+			done
+
 			# FIXME: Make it ignore "rmmod: ERROR: Module nvidia_drm is not currently loaded" and remove the "|| true" to avoid also ignoring the fact that it cannot be unloaded because something is using it.
 			rmmod nvidia_drm || true
 			rmmod nvidia_modeset || true
