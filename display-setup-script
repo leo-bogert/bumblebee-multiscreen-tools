@@ -21,7 +21,7 @@ if [ "$DEBUG" = 1 ] ; then
 fi
 
 l() {
-	echo "$(date --rfc-3339=seconds): display-setup-script: $@"
+	echo "$(date --rfc-3339=seconds): display-setup-script $$: $@"
 }
 
 l "Started..."
