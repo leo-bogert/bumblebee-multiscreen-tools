@@ -32,9 +32,6 @@ fi
 # To avoid data loss flush the file system buffers.
 sync
 
-# FIXME: Move the below workarounds to separate LightDM display-setup-script.
-# Workaround for the mouse not working after login if using this from a LightDM display-setup-script.
-sleep 3s
 # Workaround for not finding modprobe command if using this from a LightDM display-setup-script.
 if [[ ":$PATH:" != *":/sbin:"* ]]; then
 	export PATH="/sbin:$PATH"

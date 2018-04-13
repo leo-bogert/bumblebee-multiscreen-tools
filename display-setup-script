@@ -50,5 +50,8 @@ while ! pgrep --count bumblebeed > /dev/null ; do
 done
 
 l "Finished: bumblebeed running. Calling dock-handler..."
+# Workaround for the mouse not working after login.
+# FIXME: Does this even help?
+sleep 10s
 /root/.bin/bumblebee-multiscreen-tools/dock-handler
 exit 0
