@@ -57,7 +57,7 @@ Further, the following powersaving and noise-related optimizations are done by t
     * CPU load of processes with niceness > 0 is ignored when considering whether to upclock. Niceness is the Linux name for process priority, higher values equal lower priority. To launch a command with the default niceness of 10 use ```nice command_name```.
   * Intel Turbo Boost is enabled.
 
-#### Detecting dock state right at startup and switching screen accordingly
+#### Detecting dock state at startup/logout and switching screen accordingly
 
 Use ```display-setup-script``` as follows on LightDM:
 ```shell
@@ -70,7 +70,8 @@ sudo nano /etc/lightdm/lightdm.conf.d/99-bumblebee.conf
 chmod 644 /etc/lightdm/lightdm.conf.d/99-bumblebee.conf
 ```
 
-The script will be run be LightDM right at startup of the X server. It will wait for ```bumblebeed``` to start and then run the ```dock-handler``` script.
+The script will be run be LightDM right at startup of the X server. It will wait for ```bumblebeed``` to start and then run the ```dock-handler``` script.  
+It will also be run by LightDM when you log out, which is important as it then restarts the X server which makes it necessary to re-choose the screen.
 
 ### Known issues and workarounds
 
