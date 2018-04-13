@@ -26,7 +26,20 @@ l() {
 
 l "Started..."
 
-l "Waiting for bumblebeed to start..."
+if [ $# -ne 1 ] ; then
+	# We want to wait for bumblebeed to start, but it is started after LightDM.
+	# So if we don't exit this script now then LightDM will wait for it
+	# forever, and bumblebee won't be started because of that, so we would be
+	# deadlocked.
+	l "Forking worker child process so LightDM doesn't wait for us..."
+	nohup "$0" "child" &> /dev/null &
+	exit 0
+elif [ "$1" != child ] ; then
+	l "Unknown argument: $1" >&2
+	exit 1
+fi
+
+l "Child is waiting for bumblebeed to start..."
 time=0
 while ! pgrep --count bumblebeed > /dev/null ; do
 	sleep 1s
