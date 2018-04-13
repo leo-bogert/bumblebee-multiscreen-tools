@@ -20,16 +20,22 @@ if [ "$DEBUG" = 1 ] ; then
 	exec &>> "$LOG"
 fi
 
-echo "display-setup-script: Waiting for bumblebeed to start..."
+l() {
+	echo "$(date --rfc-3339=seconds): display-setup-script: $@"
+}
+
+l "Started..."
+
+l "Waiting for bumblebeed to start..."
 time=0
 while ! pgrep --count bumblebeed > /dev/null ; do
 	sleep 1s
 	if ((++time >= 60)); then
-		echo "display-setup-script: Timed out waiting for bumblebeed!" >&2
+		l "Timed out waiting for bumblebeed! Exiting!" >&2
 		exit 1
 	fi
 done
 
-echo "display-setup-script: bumblebeed running. Calling dock-handler..."
+l "Finished: bumblebeed running. Calling dock-handler..."
 /root/.bin/bumblebee-multiscreen-tools/dock-handler
 exit 0
