@@ -42,8 +42,8 @@ fi
 l "Child is waiting for bumblebeed to start..."
 time=0
 while ! pgrep --count bumblebeed > /dev/null ; do
-	sleep 1s
-	if ((++time >= 60)); then
+	sleep 0.1s
+	if ((++time >= 600)); then
 		l "Timed out waiting for bumblebeed! Exiting!" >&2
 		exit 1
 	fi
