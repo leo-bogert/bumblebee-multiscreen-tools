@@ -1,0 +1,35 @@
+#!/bin/bash
+# Generic bash options which I always use for safety. Not all may be needed for this particular script.
+set -o nounset
+set -o pipefail
+set -o errexit
+set -o errtrace
+trap 'echo "Error at line $LINENO, exit code is $?" >&2' ERR
+shopt -s nullglob
+shopt -s failglob
+
+# CONFIGURATION ################################################################
+DEBUG=0
+LOG='/var/log/thinkpad-w530-dock.log'
+################################################################################
+
+if [ "$DEBUG" = 1 ] ; then
+	touch "$LOG"
+	chown root:root "$LOG"
+	chmod 700 "$LOG"
+	exec &>> "$LOG"
+fi
+
+echo "display-setup-script: Waiting for bumblebeed to start..."
+time=0
+while ! pgrep --count bumblebeed > /dev/null ; do
+	sleep 1s
+	if ((++time >= 60)); then
+		echo "display-setup-script: Timed out waiting for bumblebeed!" >&2
+		exit 1
+	fi
+done
+
+echo "display-setup-script: bumblebeed running. Calling dock-handler..."
+/root/.bin/bumblebee-multiscreen-tools/dock-handler
+exit 0
