@@ -68,11 +68,11 @@ Port #2 was merely used because it was the most easy to cable for me.
 
 The ```switch-screen``` script assumes the display manager is LightDM. If your distribution uses a different one (which does also apply to newer versions of Kubuntu!) you need to change the ```XAUTHORITY``` variable there.
 
-### Nvidia GPU drivers
+### Intel GPU drivers
 
 FIXME
 
-### Intel GPU drivers
+### Nvidia GPU drivers
 
 FIXME
 
