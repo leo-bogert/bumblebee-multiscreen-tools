@@ -6,3 +6,16 @@
 
 ## Low priority
 - Renice Xorg, perhaps helps with vsync issues
+
+- Split this up into multiple repositories:
+	- thinkpad-dock-tools:
+		- dock-handler script. Will call all scripts in /etc/thinkpad-dock-tools/(un)dock.d
+		- /etc/acpi/events/thinkpad-series3dock_(un)docked to trigger the execution of the dock-handler script.
+	- bumblebee-multiscreen-tools:
+		- switch-screen script to switch the screen.
+		- /etc/thinkpad-dock-tools/(un)dock.d/choose-screen script as hook to call switch-screen when dock state changes.
+	- thinkpad-pm-tools:
+		- /etc/pm/sleep.d/thinkpad script to handle hibernation/suspend and wakeup. Shall trigger the execution of the dock-handler script and thereby /etc/thinkpad-dock-tools/(un)dock.d - which ensures screen switching happens before and after suspend/hibernate. Also shall set the CPU governor before hibernation and after wakeup.
+		- /etc/pm/power.d/thinkpad script to handle switching between AC and battery power. Shall also call the dock handler and deal with the CPU governor.
+		
+		See /usr/share/doc/pm-utils/HOWTO.hooks.gz for how to do the above using /etc/pm/
