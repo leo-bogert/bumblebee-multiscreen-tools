@@ -11,11 +11,11 @@ Bumblebee is preferred over the official Nvidia package ```nvidia-prime``` becau
 
 ### WARNING
 
-This is work in progress! Read the scripts first before running them!  
+This is work in progress! Not only read the [Installation and Configuration section](#installation-and-configuration) but in fact read the whole scripts first before running them!  
 **They contain quite a bit of harcoded configuration, you MUST really read the whole scripts!**
 
-They will be finished in 2018, check for new commits regularly.  
-A proper README with instructions on how to configure Bumblebee will be provided as well.
+This will be finished in 2018, check for new commits regularly.  
+This README is currently lacking instructions on how to configure Bumblebee, they will be provided as well.
 
 The Nouveau drivers provide [much more simple configuration of Optimus](https://nouveau.freedesktop.org/wiki/Optimus/) than Bumblebee and if they work for you you should prefer them.  
 Once I am done with this repository for Bumblebee I will investigate whether I can adapt it to user Nouveau and if yes, update this README to point to that.
