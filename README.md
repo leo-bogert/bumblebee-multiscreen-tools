@@ -2,9 +2,9 @@
 ### Scripts to do screen and GPU switching on Nvidia Optimus laptops with [Bumblebee](https://github.com/Bumblebee-Project/Bumblebee).
 
 These scripts allow you to easily switch your laptop's screen from internal to external or enable both screens at once.  
-They should work with a docking station.
+Usage of a docking station is supported, the screen can be switched automatically to/from the one attached to the dock.
 
-They've been written for a Lenovo ThinkPad W530 and the "Lenovo ThinkPad Mini Dock Plus Series 3" docking station.  
+This software has been designed for a Lenovo ThinkPad W530 and the "Lenovo ThinkPad Mini Dock Plus Series 3" docking station.  
 Other devices are not tested but may work, these scripts are not very hardware dependent.
 
 ### WARNING
