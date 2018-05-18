@@ -20,7 +20,7 @@ A proper README with instructions on how to configure Bumblebee will be provided
 The Nouveau drivers provide [much more simple configuration of Optimus](https://nouveau.freedesktop.org/wiki/Optimus/) than Bumblebee and if they work for you you should prefer them.  
 Once I am done with this repository for Bumblebee I will investigate whether I can adapt it to user Nouveau and if yes, update this README to point to that.
 
-### Detailed features / Usage
+### Features
 
 #### Manual screen switching
 
@@ -58,7 +58,7 @@ Further, the following powersaving and noise-related optimizations are done by t
     * CPU load of processes with niceness > 0 is ignored when considering whether to upclock. Niceness is the Linux name for process priority, higher values equal lower priority. To launch a command with the default niceness of 10 use ```nice command_name```.
   * Intel Turbo Boost is enabled.
 
-### Configuration
+### Installation and Configuration
 
 This has been developed and tested on Kubuntu 14.04.  
 In some instances settings for Debian 9 may be mentioned. The Debian 9 settings aren't tested yet, I got them from a friend.
