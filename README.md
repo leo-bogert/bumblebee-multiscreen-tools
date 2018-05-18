@@ -7,6 +7,8 @@ Usage of a docking station is supported, the screen can be switched automaticall
 This software has been designed for a Lenovo ThinkPad W530 and the "Lenovo ThinkPad Mini Dock Plus Series 3" docking station.  
 Other devices are not tested but may work, these scripts are not very hardware dependent.
 
+Bumblebee is preferred over the official Nvidia package "nvidia-prime" because that would require logging out and in again to switch the GPU.
+
 ### WARNING
 
 This is work in progress! Read the scripts first before running them!  
