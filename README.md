@@ -20,9 +20,15 @@ A proper README with instructions on how to configure Bumblebee will be provided
 The Nouveau drivers provide [much more simple configuration of Optimus](https://nouveau.freedesktop.org/wiki/Optimus/) than Bumblebee and if they work for you you should prefer them.  
 Once I am done with this repository for Bumblebee I will investigate whether I can adapt it to user Nouveau and if yes, update this README to point to that.
 
-### Depedencies
+### Configuration
 
-The ```switch-screen``` script assumes the display manager is LightDM (which is e.g. used by Kubuntu 14.04). If your distribution uses a different one you need to change the XAUTHORITY variable there.
+This has been developed and tested on Kubuntu 14.04.  
+In some instances settings for Debian 9 may be mentioned. The Debian 9 settings aren't tested yet, I got them from a friend.
+
+It is assumed that a single external screens is connected to the ThinkPad dock's DisplayPort #2 (visible as "DP-5" in ```xrandr --query``` once you've applied the configuration).  
+Port #2 was merely used because it was the most easy to cable for me.
+
+The ```switch-screen``` script assumes the display manager is LightDM. If your distribution uses a different one (which does also apply to newer versions of Kubuntu!) you need to change the ```XAUTHORITY``` variable there.
 
 ### Usage
 
