@@ -68,6 +68,26 @@ Port #2 was merely used because it was the most easy to cable for me.
 
 The ```switch-screen``` script assumes the display manager is LightDM. If your distribution uses a different one (which does also apply to newer versions of Kubuntu!) you need to change the ```XAUTHORITY``` variable there.
 
+#### Nvidia GPU drivers
+
+FIXME
+
+#### Intel GPU drivers
+
+FIXME
+
+#### Bumblebee
+
+FIXME
+
+#### Video acceleration
+
+FIXME
+
+#### Automatic display switching with docking station
+
+FIXME
+
 #### Detecting dock state at startup/logout and switching screen accordingly
 
 Use ```display-setup-script``` as follows on LightDM:
