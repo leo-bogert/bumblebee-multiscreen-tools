@@ -58,7 +58,7 @@ Further, the following powersaving and noise-related optimizations are done by t
     * CPU load of processes with niceness > 0 is ignored when considering whether to upclock. Niceness is the Linux name for process priority, higher values equal lower priority. To launch a command with the default niceness of 10 use ```nice command_name```.
   * Intel Turbo Boost is enabled.
 
-### Installation and Configuration
+## Installation and Configuration
 
 This has been developed and tested on Kubuntu 14.04.  
 In some instances settings for Debian 9 may be mentioned. The Debian 9 settings aren't tested yet, I got them from a friend.
@@ -68,27 +68,27 @@ Port #2 was merely used because it was the most easy to cable for me.
 
 The ```switch-screen``` script assumes the display manager is LightDM. If your distribution uses a different one (which does also apply to newer versions of Kubuntu!) you need to change the ```XAUTHORITY``` variable there.
 
-#### Nvidia GPU drivers
+### Nvidia GPU drivers
 
 FIXME
 
-#### Intel GPU drivers
+### Intel GPU drivers
 
 FIXME
 
-#### Bumblebee
+### Bumblebee
 
 FIXME
 
-#### Video acceleration
+### Video acceleration
 
 FIXME
 
-#### Automatic display switching with docking station
+### Automatic display switching with docking station
 
 FIXME
 
-#### Detecting dock state at startup/logout and switching screen accordingly
+### Detecting dock state at startup/logout and switching screen accordingly
 
 Use ```display-setup-script``` as follows on LightDM:
 ```shell
@@ -104,9 +104,9 @@ chmod 644 /etc/lightdm/lightdm.conf.d/99-bumblebee.conf
 The script will be run be LightDM right at startup of the X server. It will wait for ```bumblebeed``` to start and then run the ```dock-handler``` script.  
 It will also be run by LightDM when you log out, which is important as it then restarts the X server which makes it necessary to re-choose the screen.
 
-### Known issues and workarounds
+## Known issues and workarounds
 
-#### External screen not working
+### External screen not working
 
 switch-screen may fail to switch to the external screen due to Nvidia GPU initialization failing.  
 The kernel log will contain something like:
@@ -121,13 +121,13 @@ This is **triggered by high CPU and/or I/O load** - so you can easily avoid it b
 It should be fixed by newer kernels so consider upgrading your distribution.  
 Meanwhile retrying when the system is idle again may work, otherwise a reboot will fix the issue.
 
-#### Mouse cursor issues
+### Mouse cursor issues
 
 * When using the external screen the mouse cursor may sometimes not be visible.
 * After disconnecting an USB mouse and re-connecting it the cursor may jump around in a strange fashion when you move it.
 
 Any such issues can usually be fixed by switching to the internal screen and then back to the external one.
 
-### License
+## License
 
 Do whatever you want to do with this. Relicense as you please. No warranty.
