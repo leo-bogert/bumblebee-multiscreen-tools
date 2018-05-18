@@ -4,7 +4,7 @@
 These scripts allow you to easily switch your laptop's screen from internal to external or enable both screens at once.  
 Usage of a docking station is supported, the screen can be switched automatically to/from the one attached to the dock.
 
-This software has been designed for a Lenovo ThinkPad W530 and the "Lenovo ThinkPad Mini Dock Plus Series 3" docking station.  
+This software has been designed for a Lenovo ThinkPad W530 and the ```Lenovo ThinkPad Mini Dock Plus Series 3``` docking station.  
 Other devices are not tested but may work, these scripts are not very hardware dependent.
 
 Bumblebee is preferred over the official Nvidia package ```nvidia-prime``` because that would require logging out and in again to switch the GPU.
