@@ -126,7 +126,7 @@ primus:amd64 (0~20131127-2, automatic)
 Before we configure Bumblebee please take a moment to understand its purpose:
 
 Bumblebee is a daemon which is meant to disable the Nvidia GPU while it is not used.  
-For using the Nvidia GPU it offers two tools: ```optirun``` and ```primusrun```.  
+For using the Nvidia GPU it offers two shell commands: ```optirun``` and ```primusrun```.  
 They can be used as prefix to any other shell command in order to run that command using the Nvidia GPU.
 
 The difference between the two commands is that ```primusrun``` is a rewrite which uses some newer methods.  
