@@ -103,6 +103,13 @@ For the Intel GPU - **FIXME**: Test whether this works with vlc:
 ```shell
 sudo apt-get install libva-intel-vaapi-driver
 ```
+
+On my system this resulted in the following packages being installed according to ```/var/log/apt/history.log```:
+```
+i965-va-driver:amd64 (1.3.0-1ubuntu1, automatic)
+libva-intel-vaapi-driver:amd64 (1.3.0-1ubuntu1)
+```
+
 **FIXME**: While looking for these packages I noticed that searching aptitude for "vaapi" yields the fact that "gstreamer", which is installed on my machine, also has VAAPI plugins which are not installed. Check whether this is used by anything important such as Firefox/Chromium and if yes install the VAAPI plugins.  
 **FIXME**: Also check for packages for the competing API "vdpau".
 
