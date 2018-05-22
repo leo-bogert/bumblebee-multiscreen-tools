@@ -70,7 +70,7 @@ The ```switch-screen``` script assumes the display manager is LightDM. If your d
 
 ### Intel GPU drivers
 
-Ensure that intel-virtual-output is installed - on Ubuntu should be by default as part of the xserver-xorg-video-intel package:
+Ensure that ```intel-virtual-output``` is installed - on Ubuntu should be by default as part of the ```xserver-xorg-video-intel``` package:
 ```shell
 which intel-virtual-output || sudo apt-get install xserver-xorg-video-intel
 ````
