@@ -7,7 +7,16 @@ Usage of a docking station is supported, the screen can be switched automaticall
 This software has been designed for a Lenovo ThinkPad W530 and the ```Lenovo ThinkPad Mini Dock Plus Series 3``` docking station.  
 Other devices are not tested but may work, these scripts are not very hardware dependent.
 
-Bumblebee is preferred over the official Nvidia package ```nvidia-prime``` because that would require logging out and in again to switch the GPU.
+The key aspect of the hardware this targets is that those laptops, and many other Optimus laptops, do **only** provide access to the external video ports through the Nvidia GPU because they're not physically connected to the Intel GPU.  
+This means that in order to use an external screen the Nvidia GPU must be forced to stay enabled, and the Intel GPU's video output must be copied into the video memory of the Nvidia GPU.  
+We cannot just render everything with the Nvidia GPU because that would prevent disabling the Nvidia GPU when trying to switch to the internal screen:  
+Like the external screen depends on the Nvidia GPU, the internal screen is only accessible through the Intel GPU.
+
+We make this setup usable by:
+- using Bumblebee to be able to disable/enable the Nvidia GPU and run a secondary X-Server for it.
+- using a magic tool called ```intel-virtual-output``` to copy the content of the video memory of the Intel GPU into the secondary X-Server.
+
+This is preferred over the official Nvidia package ```nvidia-prime``` because that would require logging out and in again to switch the GPU.
 
 ### WARNING
 
