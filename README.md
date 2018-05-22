@@ -93,6 +93,22 @@ sudo apt-get install nvidia-384
 sudo apt-get-install bumblebee-nvidia
 ```
 
+On my system this resulted in the following packages being installed according to ```/var/log/apt/history.log```:
+```
+primus-libs-ia32:i386 (0~20131127-2, automatic)
+primus-libs:amd64 (0~20131127-2, automatic)
+primus-libs:i386 (0~20131127-2, automatic)
+nvidia-settings:amd64 (331.20-0ubuntu8, automatic)
+libcuda1-384:amd64 (384.90-0ubuntu0.14.04.1, automatic)
+bumblebee:amd64 (3.2.1-5, automatic)
+bumblebee-nvidia:amd64 (3.2.1-5)
+nvidia-384:amd64 (384.90-0ubuntu0.14.04.1)
+bbswitch-dkms:amd64 (0.7-2ubuntu1, automatic)
+nvidia-prime:amd64 (0.6.2.1, automatic)
+nvidia-opencl-icd-384:amd64 (384.90-0ubuntu0.14.04.1, automatic)
+primus:amd64 (0~20131127-2, automatic)
+```
+
 ### Bumblebee
 
 FIXME
