@@ -121,9 +121,21 @@ nvidia-opencl-icd-384:amd64 (384.90-0ubuntu0.14.04.1, automatic)
 primus:amd64 (0~20131127-2, automatic)
 ```
 
-### Bumblebee
+### Bumblebee configuration
 
-FIXME
+Before we configure Bumblebee please take a moment to understand its purpose:
+
+Bumblebee is a daemon which is meant to disable the Nvidia GPU while it is not used.  
+For using the Nvidia GPU it offers two tools: ```optirun``` and ```primusrun```.  
+They can be used as prefix to any other shell command in order to run that command using the Nvidia GPU.
+
+The difference between the two commands is that ```primusrun``` is a rewrite which uses some newer methods.  
+You should prefer primusrun, but notice that in some instances only one of the both commands will work. E.g. Steam's hardware information might show that it is using the wrong GPU.  
+If that happens then try again with the other command.
+
+Notice: I haven't verified whether strictly ALL of the below config settings are necessary. I just set them all and then tried whether it works. It is possible that some can be ignored.
+
+FIXME: Add the config settings
 
 ### Video acceleration
 
