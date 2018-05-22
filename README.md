@@ -70,7 +70,17 @@ The ```switch-screen``` script assumes the display manager is LightDM. If your d
 
 ### Intel GPU drivers
 
-FIXME
+Ensure that intel-virtual-output is installed - on Ubuntu should be by default as part of the xserver-xorg-video-intel package:
+```shell
+which intel-virtual-output || sudo apt-get install xserver-xorg-video-intel
+````
+
+Optionally, for debugging purposes:
+```shell
+sudo apt-get install intel-gpu-tools
+# To see the available tools:
+dpkg --listfiles intel-gpu-tools
+```
 
 ### Nvidia GPU drivers
 
@@ -82,7 +92,12 @@ FIXME
 
 ### Video acceleration
 
-FIXME
+For the Intel GPU - **FIXME**: Test whether this works with vlc:
+```shell
+sudo apt-get install libva-intel-vaapi-driver
+```
+**FIXME**: While looking for these packages I noticed that searching aptitude for "vaapi" yields the fact that "gstreamer", which is installed on my machine, also has VAAPI plugins which are not installed. Check whether this is used by anything important such as Firefox/Chromium and if yes install the VAAPI plugins.  
+**FIXME**: Also check for packages for the competing API "vdpau".
 
 ### Automatic display switching with docking station
 
