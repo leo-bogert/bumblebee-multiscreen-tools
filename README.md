@@ -28,7 +28,7 @@ This will be finished in 2018, check for new commits regularly.
 This README is currently lacking instructions on how to configure Bumblebee, they will be provided as well.
 
 The Nouveau drivers provide [much more simple configuration of Optimus](https://nouveau.freedesktop.org/wiki/Optimus/) than Bumblebee and if they work for you you should prefer them.  
-Once I am done with this repository for Bumblebee I will investigate whether I can adapt it to user Nouveau and if yes, update this README to point to that.
+Once I am done with this repository for Bumblebee I will investigate whether I can adapt it to use Nouveau and if yes, update this README to point to that.
 
 ### Features
 
