@@ -61,7 +61,8 @@ Further, the following powersaving and noise-related optimizations are done by t
 ## Installation and Configuration
 
 This has been developed and tested on Kubuntu 14.04.  
-In some instances settings for Debian 9 may be mentioned. The Debian 9 settings aren't tested yet, I got them from a friend.
+In some instances settings for Debian 9 may be mentioned. The Debian 9 settings aren't tested yet, I got them from a friend.  
+The names of the mentioned packages may be different on Debian, I did not check what they're called there.
 
 It is assumed that a single external screens is connected to the ThinkPad dock's DisplayPort #2 (visible as "DP-5" in ```xrandr --query``` once you've applied the configuration).  
 Port #2 was merely used because it was the most easy to cable for me.
@@ -84,7 +85,13 @@ dpkg --listfiles intel-gpu-tools
 
 ### Nvidia GPU drivers
 
-FIXME
+```shell
+sudo apt-get install nvidia-384
+# Install Bumblebee **after** the Nvidia driver to ensure you don't
+# get the older version of the Nvidia driver which Bumblebee chooses
+# as dependency.
+sudo apt-get-install bumblebee-nvidia
+```
 
 ### Bumblebee
 
