@@ -89,11 +89,13 @@ dpkg --listfiles intel-gpu-tools
 sudo apt-get install nvidia-384
 # Install Bumblebee **after** the Nvidia driver to ensure you don't
 # get the older version of the Nvidia driver which Bumblebee chooses
-# as dependency.
+# as dependency. If you want to use a package manager such as aptitude
+# you can do this in one step by marking nvidia-384 for installation
+# first.
 sudo apt-get-install bumblebee-nvidia
 ```
 
-On my system this resulted in the following packages being installed according to ```/var/log/apt/history.log```:
+On my system this resulted in the following packages being installed according to ```/var/log/apt/history.log``` (the order here is random due to using aptitude instead of apt-get):
 ```
 primus-libs-ia32:i386 (0~20131127-2, automatic)
 primus-libs:amd64 (0~20131127-2, automatic)
