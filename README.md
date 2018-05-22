@@ -175,6 +175,10 @@ Meanwhile retrying when the system is idle again may work, otherwise a reboot wi
 
 Any such issues can usually be fixed by switching to the internal screen and then back to the external one.
 
+## Similar tutorials
+
+- http://www.unixreich.com/blog/2013/linux-nvidia-optimus-on-thinkpad-w520w530-with-external-monitor-finally-solved/
+
 ## License
 
 Do whatever you want to do with this. Relicense as you please. No warranty.
