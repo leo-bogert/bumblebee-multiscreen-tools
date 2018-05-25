@@ -143,7 +143,11 @@ cp -i --preserve=all --no-preserve=links /etc/bumblebee/bumblebee.conf /etc/bumb
 # configuration! Anything which is not listed must be kept as it is in the default config.
 nano /etc/bumblebee/bumblebee.conf
     [bumblebeed]
-        # Source: https://github.com/Bumblebee-Project/Bumblebee/wiki/Multi-monitor-setup
+        # Keep the X server running permanently even if the Nvidia GPU isn't used by optirun/primusrun
+        # because the external display ports are only available through the Nvidia GPU and hence we need
+        # to keep its server available.
+        # Shutting it off when using the internal screen will be handled by bumblebee-multiscreen-tools' own
+        # scripts.
         KeepUnusedXServer=true
         
         Driver=nvidia
@@ -175,11 +179,7 @@ nano /etc/bumblebee/bumblebee.conf
         #   lsmod | fgrep nvidia
         KernelDriver=nvidia-384-drm
         
-        # Disable power management because for Laptops where the external screen is only available through
-        # the Nvidia GPU we must keep the Nvidia GPU running all the time even if nothing is using it for 3D
-        # rendering using Bumblebee's optirun/primus run.
-        # Shutting it off when using the internal screen will be handled by bumblebee-multiscreen-tools' own
-        # scripts.
+        # Keep Nvidia GPU enabled all the time to keep the external video ports available.
         PMMethod=none
         
         # This was determined by taking the existing paths it defaulted to and listing for "nvidia*" in
@@ -262,6 +262,7 @@ Any such issues can usually be fixed by switching to the internal screen and the
 
 ## Similar tutorials
 
+- https://github.com/Bumblebee-Project/Bumblebee/wiki/Multi-monitor-setup
 - http://www.unixreich.com/blog/2013/linux-nvidia-optimus-on-thinkpad-w520w530-with-external-monitor-finally-solved/
 
 ## License
