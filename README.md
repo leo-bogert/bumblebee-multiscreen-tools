@@ -194,7 +194,9 @@ nano /etc/bumblebee/bumblebee.conf
     PMMethod=none
 ```
 
-FIXME: Add X server configuration
+### Xorg configuration
+
+FIXME
 
 ### Video acceleration
 
