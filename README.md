@@ -152,8 +152,9 @@ nano /etc/bumblebee/bumblebee.conf
         XorgBinary=/usr/lib/xorg/Xorg
         
     [optirun]
-        # On Debian 9:
-        PrimusLibraryPath=/usr/lib/x86_64-linux-gnu/primus:/usr/lib/i386-linux-gnu/primus:/usr/lib/primus:/usr/lib32/primus
+        # On Debian 9 (in one line!):
+        PrimusLibraryPath=/usr/lib/x86_64-linux-gnu/primus:/usr/lib/i386-linux-gnu/primus
+            :/usr/lib/primus:/usr/lib32/primus
         
         # Allow optirun/primusrun to fallback to Intel if the Nvidia GPU is unavailable?
         # FIXME: Once everything works well set this to true and change your desktop icons to run important
