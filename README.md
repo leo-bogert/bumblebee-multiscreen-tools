@@ -135,7 +135,57 @@ If that happens then try again with the other command.
 
 Notice: I haven't verified whether strictly ALL of the below config settings are necessary. I just set them all and then tried whether it works. It is possible that some can be ignored.
 
-FIXME: Add the config settings
+```
+# Back up the default config in case you need to have a look at it again.
+cp -i --preserve=all --no-preserve=links /etc/bumblebee/bumblebee.conf /etc/bumblebee/bumblebee.conf.default
+# Edit the config.
+# NOTICE: What's listed here is ONLY the settings you have to change as compared to the default configuration!
+# Anything which is not listed must be kept as it is in the default config.
+nano /etc/bumblebee/bumblebee.conf
+	[bumblebeed]
+		# Source: https://github.com/Bumblebee-Project/Bumblebee/wiki/Multi-monitor-setup
+		KeepUnusedXServer=true
+		
+		Driver=nvidia
+		
+		# On Debian 9:
+		XorgBinary=/usr/lib/xorg/Xorg
+		
+	[optirun]
+		# On Debian 9:
+		PrimusLibraryPath=/usr/lib/x86_64-linux-gnu/primus:/usr/lib/i386-linux-gnu/primus:/usr/lib/primus:/usr/lib32/primus
+		
+		# Allow optirun/primusrun to fallback to Intel if the Nvidia GPU is unavailable?
+		# FIXME: Once everything works well set this to true and change your desktop icons to run important stuff such as browsers with optirun/primusrun to get them to use the Nvidia card opportunistically if you have enabled it currently.
+		AllowFallbackToIGC=false
+	
+	[driver-nvidia]
+		# Nvidia kernel module to load.
+		# If we used "nvidia-384" only then the "nvidia_drm" and "nvidia_modeset" modules won't be loaded
+		# - which normally are part of the NVidia drivers without Bumblebee.
+		# Lack of the modeset module would cause the X-Server of bumblebee to not detect any screens (see /var/log/Xorg.8.log).
+		# We enforce loading all 3 modules by telling bumblebee to load the drm module first - it loads the modeset module as a dependency, and that loads the main module as a dependency, so all 3 are loaded.
+		# On Debian 9 this module might have a different name. To find out the name use "lsmod | fgrep nvidia".
+		KernelDriver=nvidia-384-drm
+		
+		# Disable power management because for Laptops where the external screen is only available through the
+		# Nvidia GPU we must keep the Nvidia GPU running all the time even if nothing is using it for 3D
+		# rendering using Bumblebee's optirun/primus run.
+		# Shutting it off when using the internal screen will be handled by bumblebee-multiscreen-tools' own scripts.
+		PMMethod=none
+		
+		# This was determined by taking the existing paths it defaulted to and listing for "nvidia*" in their parent directory.
+		LibraryPath=/usr/lib/nvidia-384:/usr/lib32/nvidia-384:/usr/lib/nvidia
+		XorgModulePath=/usr/lib/nvidia-384/xorg,/usr/lib/xorg/modules
+		# On Debian 9 this might be:
+		LibraryPath=/usr/lib/x86_64-linux-gnu/nvidia:/usr/lib/i386-linux-gnu/nvidia:/usr/lib/nvidia
+		XorgModulePath=/usr/lib/nvidia/nvidia,/usr/lib/xorg/modules
+		
+	[driver-nouveau]
+		PMMethod=none
+```
+
+FIXME: Add X server configuration
 
 ### Video acceleration
 
