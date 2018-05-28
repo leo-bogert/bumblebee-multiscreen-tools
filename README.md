@@ -308,8 +308,8 @@ FIXME
 
 ### General troubleshooting
 
-If you run into a situation where you have no video output at all you have these options to recover
-it:
+If you run into a situation where you have no video output at all or limited video output (e.g.
+one of external/internal video not working) you have these options to recover it:
 - trigger a reconfiguration of the video outputs by rerunning the  ```dock-handler``` script by
   undocking and docking again.
   This will resolve the most video output issues!
@@ -319,21 +319,24 @@ it:
 - kill the X server with ```ALT+SysRq+K```. The SysRq key is also known as the PRINT key. Notice
   that on some distributions this is disabled by default any might need to be enabled by e.g.:
   ```
-      nano /etc/sysctl.d/10-magic-sysrq.conf
-          kernel.sysrq = 244
+  nano /etc/sysctl.d/10-magic-sysrq.conf
+      kernel.sysrq = 244
   ```
 
-Once you've recovered video output you can:
-- read the log files:
-  - ```/var/log/thinkpad-w530-dock.log``` - the dock-handler log which also contains output of the
-    attempts to switch the screen. Notice that this has to be enabled in the dock-handler script.
+Once you've recovered video output you can follow this procedure to get video output again:
+1. read the log files:
+  - ```/var/log/thinkpad-w530-dock.log``` - the ```dock-handler``` script's log which also contains
+    output of the attempts to switch the screen. Notice that this has to be enabled in the script.
   - ```/var/log/Xorg.0.log``` - Intel X-server log
   - ```/var/log/Xorg.8.log``` - Bumblebee X-server log
   - ```/var/log/lightdm/lightdm.log``` - LightDM display manager log
   - ```/var/log/syslog```
   - ```/var/log/kern.log```
-- kill the X-servers and IVO using ```killall Xorg ; killall intel-virtual-output```.
-- edit the configuration files and reboot.
+2. edit the configuration files.
+3. Retry by either:
+  - killing the X-servers and IVO using ```killall Xorg ; killall intel-virtual-output```,
+    restarting Bumblebee using ```service bumblebeed restart```, and rerunning the dock-handler.
+  - rebooting using ```reboot```.
 
 ### External screen not working
 
