@@ -220,6 +220,7 @@ nano /etc/bumblebee/xorg.conf.nvidia
         Identifier  "Layout0"
         # Automatically detecting screens as they are attached
         Option      "AutoAddDevices" "true"
+        # Don't automatically add the GPU(s) because we want to manually chose which one to use.
         Option      "AutoAddGPU" "false"
     EndSection
     
