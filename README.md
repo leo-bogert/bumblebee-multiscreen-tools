@@ -203,13 +203,7 @@ cp -i --preserve=all --no-preserve=links /etc/bumblebee/xorg.conf.nvidia /etc/bu
 nano /etc/bumblebee/xorg.conf.nvidia
     # The below instructions are only about changing the file from the default settings as usual.
     # A full listing of the resulting file follows afterwards.
-    
-    # Inside 'Section "ServerLayout"' - for automatically detecting screens as they are attached:
-    Option      "AutoAddDevices" "true"
-    # Inside 'Section "Device"' on Debian 9 remove this - TODO: why?
-    BusID "PCI:01:00:0"
-    # Inside 'Section "Device"' - EDID is for auto-detection of a display's resolution etc., the default of false makes no sense:
-    Option "UseEDID" "true"
+
     # REMOVE this at 'Section "Device"' (Source: https://github.com/Bumblebee-Project/Bumblebee/wiki/Multi-monitor-setup):
     Option "UseDisplayDevice" "none"
     # Inside 'Section "Device"'
@@ -232,6 +226,7 @@ nano /etc/bumblebee/xorg.conf.nvidia
     
     Section "ServerLayout"
         Identifier  "Layout0"
+        # Automatically detecting screens as they are attached
         Option      "AutoAddDevices" "true"
         Option      "AutoAddGPU" "false"
     EndSection
@@ -248,6 +243,7 @@ nano /etc/bumblebee/xorg.conf.nvidia
     #   This Setting may be needed in some platforms with more than one
     #   nvidia card, which may confuse the proprietary driver (e.g.,
     #   trying to take ownership of the wrong device). Also needed on Ubuntu 13.04.
+        # On Debian 9 you might have to remove this (I don't remember where I read this, sorry).
         BusID "PCI:01:00:0"
     
     #   Setting ProbeAllGpus to false prevents the new proprietary driver
@@ -262,6 +258,7 @@ nano /etc/bumblebee/xorg.conf.nvidia
     
         Option "NoLogo" "true"
         Option "AllowEmptyInitialConfiguration" "true"
+        # Auto-detect your monitor's resolution etc.
         Option "UseEDID" "true"
     EndSection
     
