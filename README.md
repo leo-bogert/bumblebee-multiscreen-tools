@@ -321,6 +321,7 @@ one of external/internal video not working) you have these options to recover it
   ```
   nano /etc/sysctl.d/10-magic-sysrq.conf
       kernel.sysrq = 244
+  reboot
   ```
 
 Once you've recovered video output you can follow this procedure to get video output again:
