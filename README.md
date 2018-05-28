@@ -359,7 +359,8 @@ Meanwhile retrying when the system is idle again may work, otherwise a reboot wi
 * When using the external screen the mouse cursor may sometimes not be visible.
 * After disconnecting an USB mouse and re-connecting it the cursor may jump around in a strange fashion when you move it.
 
-Any such issues can usually be fixed by switching to the internal screen and then back to the external one.
+Any such issues can usually be fixed by switching to the internal screen and then back to the external one,
+e.g. by undocking and docking again.
 
 ## Similar tutorials
 
