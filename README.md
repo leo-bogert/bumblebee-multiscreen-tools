@@ -196,6 +196,17 @@ nano /etc/bumblebee/bumblebee.conf
 
 ### Xorg configuration
 
+There will be two Xorg servers running with our configuration:
+- Display ```:0```: The default main server which is spawned by LightDM and runs on the Intel GPU.
+  Its log file is at ```/var/log/Xorg.0.log```.
+- Display ```:8```: Bumblebee's secondary server for the Nvidia GPU. It will only be running while
+  the Nvidia GPU is enabled. The log file is  ```/var/log/Xorg.8.log```.
+
+#### Intel Xorg configuration
+
+FIXME
+
+#### Nvidia Xorg configuration
 ```
 # Back up the default config in case you need to have a look at it again.
 cp -i --preserve=all --no-preserve=links /etc/bumblebee/xorg.conf.nvidia /etc/bumblebee/xorg.conf.nvidia.default
