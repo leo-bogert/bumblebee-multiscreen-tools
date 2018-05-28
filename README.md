@@ -306,6 +306,35 @@ FIXME
 
 ## Known issues and workarounds
 
+### General troubleshooting
+
+If you run into a situation where you have no video output at all you have these options to recover
+it:
+- trigger a reconfiguration of the video outputs by rerunning the  ```dock-handler``` script by
+  undocking and docking again.
+  This will resolve the most video output issues!
+- switch to terminal mode with ```CTRL+ALT+FX``` where FX is one of the F-keys. Terminals are
+  usually attached to F1 to F7, F8 switches back to Xorg. This may vary across distributions, try
+  all the F-keys.
+- kill the X server with ```ALT+SysRq+K```. The SysRq key is also known as the PRINT key. Notice
+  that on some distributions this is disabled by default any might need to be enabled by e.g.:
+  ```
+      nano /etc/sysctl.d/10-magic-sysrq.conf
+          kernel.sysrq = 244
+  ```
+
+Once you've recovered video output you can:
+- read the log files:
+  - ```/var/log/thinkpad-w530-dock.log``` - the dock-handler log which also contains output of the
+    attempts to switch the screen. Notice that this has to be enabled in the dock-handler script.
+  - ```/var/log/Xorg.0.log``` - Intel X-server log
+  - ```/var/log/Xorg.8.log``` - Bumblebee X-server log
+  - ```/var/log/lightdm/lightdm.log``` - LightDM display manager log
+  - ```/var/log/syslog```
+  - ```/var/log/kern.log```
+- kill the X-servers and IVO using ```killall Xorg ; killall intel-virtual-output```.
+- edit the configuration files and reboot.
+
 ### External screen not working
 
 switch-screen may fail to switch to the external screen due to Nvidia GPU initialization failing.  
