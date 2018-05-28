@@ -201,74 +201,74 @@ FIXME: Merge this into the below code section:
 # Back up the default config in case you need to have a look at it again.
 cp -i --preserve=all --no-preserve=links /etc/bumblebee/xorg.conf.nvidia /etc/bumblebee/xorg.conf.nvidia.default
 nano /etc/bumblebee/xorg.conf.nvidia
-	# The below instructions are only about changing the file from the default settings as usual.
-	# A full listing of the resulting file follows afterwards.
-	
-	# Inside 'Section "ServerLayout"' - for automatically detecting screens as they are attached:
-	Option      "AutoAddDevices" "true"
-	# Inside 'Section "Device"' on Debian 9 remove this - TODO: why?
-	BusID "PCI:01:00:0"
-	# Inside 'Section "Device"' - EDID is for auto-detection of a display's resolution etc., the default of false makes no sense:
-	Option "UseEDID" "true"
-	# REMOVE this at 'Section "Device"' (Source: https://github.com/Bumblebee-Project/Bumblebee/wiki/Multi-monitor-setup):
-	Option "UseDisplayDevice" "none"
-	# Inside 'Section "Device"'
-	# Source: http://us.download.nvidia.com/XFree86/Linux-x86/384.90/README/xconfigoptions.html says "Another scenario where this is useful is in Optimus-based laptops, where RandR 1.4 display offloadis used to display the screen on the non-NVIDIA internal display panel, but an external display might be connected later."
-	Option "AllowEmptyInitialConfiguration" "true"
-	
-	# This is definitely necessary on Ubuntu, otherwise startup of bumblebee's X-Server fails because it tries to use the Intel driver on the NVidia GPU, see /var/log/Xorg.8.log
-	Section "Screen"
-		Identifier "Screen0"
-		Device "DiscreteNVidia"
-	EndSection
+    # The below instructions are only about changing the file from the default settings as usual.
+    # A full listing of the resulting file follows afterwards.
+    
+    # Inside 'Section "ServerLayout"' - for automatically detecting screens as they are attached:
+    Option      "AutoAddDevices" "true"
+    # Inside 'Section "Device"' on Debian 9 remove this - TODO: why?
+    BusID "PCI:01:00:0"
+    # Inside 'Section "Device"' - EDID is for auto-detection of a display's resolution etc., the default of false makes no sense:
+    Option "UseEDID" "true"
+    # REMOVE this at 'Section "Device"' (Source: https://github.com/Bumblebee-Project/Bumblebee/wiki/Multi-monitor-setup):
+    Option "UseDisplayDevice" "none"
+    # Inside 'Section "Device"'
+    # Source: http://us.download.nvidia.com/XFree86/Linux-x86/384.90/README/xconfigoptions.html says "Another scenario where this is useful is in Optimus-based laptops, where RandR 1.4 display offloadis used to display the screen on the non-NVIDIA internal display panel, but an external display might be connected later."
+    Option "AllowEmptyInitialConfiguration" "true"
+    
+    # This is definitely necessary on Ubuntu, otherwise startup of bumblebee's X-Server fails because it tries to use the Intel driver on the NVidia GPU, see /var/log/Xorg.8.log
+    Section "Screen"
+        Identifier "Screen0"
+        Device "DiscreteNVidia"
+    EndSection
 ```
 
 ```
 # Back up the default config in case you need to have a look at it again.
 cp -i --preserve=all --no-preserve=links /etc/bumblebee/xorg.conf.nvidia /etc/bumblebee/xorg.conf.nvidia.default
 nano /etc/bumblebee/xorg.conf.nvidia
-	# As opposed to previous configuration instructions hereby the *full* file is listed, not just
-	# the changes as compared to the defaults.
-	
-	Section "ServerLayout"
-		Identifier  "Layout0"
-		Option      "AutoAddDevices" "true"
-		Option      "AutoAddGPU" "false"
-	EndSection
-	
-	Section "Device"
-		Identifier  "DiscreteNvidia"
-		Driver      "nvidia"
-		VendorName  "NVIDIA Corporation"
-	
-	#   If the X server does not automatically detect your VGA device,
-	#   you can manually set it here.
-	#   To get the BusID prop, run `lspci | egrep 'VGA|3D'` and input the data
-	#   as you see in the commented example.
-	#   This Setting may be needed in some platforms with more than one
-	#   nvidia card, which may confuse the proprietary driver (e.g.,
-	#   trying to take ownership of the wrong device). Also needed on Ubuntu 13.04.
-		BusID "PCI:01:00:0"
-	
-	#   Setting ProbeAllGpus to false prevents the new proprietary driver
-	#   instance spawned to try to control the integrated graphics card,
-	#   which is already being managed outside bumblebee.
-	#   This option doesn't hurt and it is required on platforms running
-	#   more than one nvidia graphics card with the proprietary driver.
-	#   (E.g. Macbook Pro pre-2010 with nVidia 9400M + 9600M GT).
-	#   If this option is not set, the new Xorg may blacken the screen and
-	#   render it unusable (unless you have some way to run killall Xorg).
-		Option "ProbeAllGpus" "false"
-	
-		Option "NoLogo" "true"
-		Option "AllowEmptyInitialConfiguration" "true"
-		Option "UseEDID" "true"
-	EndSection
-	
-	Section "Screen"
-		Identifier "Screen0"
-		Device "DiscreteNVidia"
-	EndSection
+    # As opposed to previous configuration instructions hereby the *full* file is listed, not just
+    # the changes as compared to the defaults.
+    
+    Section "ServerLayout"
+        Identifier  "Layout0"
+        Option      "AutoAddDevices" "true"
+        Option      "AutoAddGPU" "false"
+    EndSection
+    
+    Section "Device"
+        Identifier  "DiscreteNvidia"
+        Driver      "nvidia"
+        VendorName  "NVIDIA Corporation"
+    
+    #   If the X server does not automatically detect your VGA device,
+    #   you can manually set it here.
+    #   To get the BusID prop, run `lspci | egrep 'VGA|3D'` and input the data
+    #   as you see in the commented example.
+    #   This Setting may be needed in some platforms with more than one
+    #   nvidia card, which may confuse the proprietary driver (e.g.,
+    #   trying to take ownership of the wrong device). Also needed on Ubuntu 13.04.
+        BusID "PCI:01:00:0"
+    
+    #   Setting ProbeAllGpus to false prevents the new proprietary driver
+    #   instance spawned to try to control the integrated graphics card,
+    #   which is already being managed outside bumblebee.
+    #   This option doesn't hurt and it is required on platforms running
+    #   more than one nvidia graphics card with the proprietary driver.
+    #   (E.g. Macbook Pro pre-2010 with nVidia 9400M + 9600M GT).
+    #   If this option is not set, the new Xorg may blacken the screen and
+    #   render it unusable (unless you have some way to run killall Xorg).
+        Option "ProbeAllGpus" "false"
+    
+        Option "NoLogo" "true"
+        Option "AllowEmptyInitialConfiguration" "true"
+        Option "UseEDID" "true"
+    EndSection
+    
+    Section "Screen"
+        Identifier "Screen0"
+        Device "DiscreteNVidia"
+    EndSection
 ```
 
 ### Video acceleration
