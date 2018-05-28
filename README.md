@@ -352,7 +352,8 @@ Nov 24 22:40:32 hostname kernel: [351621.701735] NVRM: rm_init_adapter failed fo
 
 This is **triggered by high CPU and/or I/O load** - so you can easily avoid it by ensuring the system is idle before you try to switch the screen.  
 It should be fixed by newer kernels so consider upgrading your distribution.  
-Meanwhile retrying when the system is idle again may work, otherwise a reboot will fix the issue.
+Meanwhile retrying when the system is idle again may work (e.g. undock, ensure the system is idle,
+and dock again), otherwise a reboot will fix the issue.
 
 ### Mouse cursor issues
 
