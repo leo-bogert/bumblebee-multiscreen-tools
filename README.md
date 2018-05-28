@@ -196,6 +196,7 @@ nano /etc/bumblebee/bumblebee.conf
 
 ### Xorg configuration
 
+FIXME: Merge this into the below code section:
 ```
 # Back up the default config in case you need to have a look at it again.
 cp -i --preserve=all --no-preserve=links /etc/bumblebee/xorg.conf.nvidia /etc/bumblebee/xorg.conf.nvidia.default
@@ -222,8 +223,13 @@ nano /etc/bumblebee/xorg.conf.nvidia
 	EndSection
 ```
 
-Full listing of resulting /etc/bumblebee/xorg.conf.nvidia:
 ```
+# Back up the default config in case you need to have a look at it again.
+cp -i --preserve=all --no-preserve=links /etc/bumblebee/xorg.conf.nvidia /etc/bumblebee/xorg.conf.nvidia.default
+nano /etc/bumblebee/xorg.conf.nvidia
+	# As opposed to previous configuration instructions hereby the *full* file is listed, not just
+	# the changes as compared to the defaults.
+	
 	Section "ServerLayout"
 		Identifier  "Layout0"
 		Option      "AutoAddDevices" "true"
