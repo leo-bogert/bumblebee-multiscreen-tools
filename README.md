@@ -227,7 +227,7 @@ nano /etc/bumblebee/xorg.conf.nvidia
         Identifier  "DiscreteNvidia"
         Driver      "nvidia"
         VendorName  "NVIDIA Corporation"
-    
+        
         # Tell driver which GPU to use precisely.
         # If the X server does not automatically detect your GPU you can manually set it here.
         # To get the BusID prop run "lspci | egrep 'VGA|3D'".
@@ -236,17 +236,15 @@ nano /etc/bumblebee/xorg.conf.nvidia
         # On Debian 9 you might have to remove this.
         # (I don't remember where I read all of the above, sorry.)
         BusID "PCI:01:00:0"
-    
-    #   Setting ProbeAllGpus to false prevents the new proprietary driver
-    #   instance spawned to try to control the integrated graphics card,
-    #   which is already being managed outside bumblebee.
-    #   This option doesn't hurt and it is required on platforms running
-    #   more than one nvidia graphics card with the proprietary driver.
-    #   (E.g. Macbook Pro pre-2010 with nVidia 9400M + 9600M GT).
-    #   If this option is not set, the new Xorg may blacken the screen and
-    #   render it unusable (unless you have some way to run killall Xorg).
+        
+        # Setting ProbeAllGpus to false prevents the Nvidia driver from trying to control the other
+        # GPU which is already being managed outside bumblebee.
+        # Required on platforms with more than one Nvidia GPU, e.g. Macbook Pro pre-2010 with Nvidia
+        # 9400M + 9600M GT.
         Option "ProbeAllGpus" "false"
-    
+        
+        # TODO: This option isn't mentioned in the current documentation anymore, probably obsolete?
+        # Likely was intended to avoid displaying the Nvidia logo for some seconds at startup.
         Option "NoLogo" "true"
         # From the documentation:
         # "Enabling this option makes sense in configurations when starting the X server with no
