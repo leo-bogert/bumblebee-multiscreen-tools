@@ -137,7 +137,8 @@ Notice: I haven't verified whether strictly ALL of the below config settings are
 
 ```
 # Back up the default config in case you need to have a look at it again.
-cp -i --preserve=all --no-preserve=links /etc/bumblebee/bumblebee.conf /etc/bumblebee/bumblebee.conf.default
+cp -i --preserve=all --no-preserve=links /etc/bumblebee/bumblebee.conf \
+    /etc/bumblebee/bumblebee.conf.default
 # Edit the config.
 # NOTICE: What's listed here is ONLY the settings you have to change as compared to the default
 # configuration! Anything which is not listed must be kept as it is in the default config.
@@ -209,7 +210,8 @@ FIXME
 #### Nvidia Xorg configuration
 ```
 # Back up the default config in case you need to have a look at it again.
-cp -i --preserve=all --no-preserve=links /etc/bumblebee/xorg.conf.nvidia /etc/bumblebee/xorg.conf.nvidia.default
+cp -i --preserve=all --no-preserve=links /etc/bumblebee/xorg.conf.nvidia \
+    /etc/bumblebee/xorg.conf.nvidia.default
 nano /etc/bumblebee/xorg.conf.nvidia
     # As opposed to previous configuration instructions hereby the *full* file is listed, not just
     # the changes as compared to the defaults.
