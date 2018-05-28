@@ -196,33 +196,14 @@ nano /etc/bumblebee/bumblebee.conf
 
 ### Xorg configuration
 
-FIXME: Merge this into the below code section:
-```
-# Back up the default config in case you need to have a look at it again.
-cp -i --preserve=all --no-preserve=links /etc/bumblebee/xorg.conf.nvidia /etc/bumblebee/xorg.conf.nvidia.default
-nano /etc/bumblebee/xorg.conf.nvidia
-    # The below instructions are only about changing the file from the default settings as usual.
-    # A full listing of the resulting file follows afterwards.
-
-    # REMOVE this at 'Section "Device"' (Source: https://github.com/Bumblebee-Project/Bumblebee/wiki/Multi-monitor-setup):
-    Option "UseDisplayDevice" "none"
-    # Inside 'Section "Device"'
-    # Source: http://us.download.nvidia.com/XFree86/Linux-x86/384.90/README/xconfigoptions.html says "Another scenario where this is useful is in Optimus-based laptops, where RandR 1.4 display offloadis used to display the screen on the non-NVIDIA internal display panel, but an external display might be connected later."
-    Option "AllowEmptyInitialConfiguration" "true"
-    
-    # This is definitely necessary on Ubuntu, otherwise startup of bumblebee's X-Server fails because it tries to use the Intel driver on the NVidia GPU, see /var/log/Xorg.8.log
-    Section "Screen"
-        Identifier "Screen0"
-        Device "DiscreteNVidia"
-    EndSection
-```
-
 ```
 # Back up the default config in case you need to have a look at it again.
 cp -i --preserve=all --no-preserve=links /etc/bumblebee/xorg.conf.nvidia /etc/bumblebee/xorg.conf.nvidia.default
 nano /etc/bumblebee/xorg.conf.nvidia
     # As opposed to previous configuration instructions hereby the *full* file is listed, not just
     # the changes as compared to the defaults.
+    # For documentation of the options used here and further possible ones see:
+    # http://us.download.nvidia.com/XFree86/Linux-x86/384.90/README/xconfigoptions.html
     
     Section "ServerLayout"
         Identifier  "Layout0"
@@ -257,11 +238,16 @@ nano /etc/bumblebee/xorg.conf.nvidia
         Option "ProbeAllGpus" "false"
     
         Option "NoLogo" "true"
+        # From the documentation:
+        # "Enabling this option makes sense in configurations when starting the X server with no
+        # display devices connected to the NVIDIA GPU is expected, but one might be connected later"
         Option "AllowEmptyInitialConfiguration" "true"
         # Auto-detect your monitor's resolution etc.
         Option "UseEDID" "true"
     EndSection
     
+    # On Ubuntu prevent startup of Bubmblee's Xorg from failing due to trying to use the Intel
+    # driver on the Nvidia GPU, see "/var/log/Xorg.8.log".
     Section "Screen"
         Identifier "Screen0"
         Device "DiscreteNVidia"
