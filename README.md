@@ -228,14 +228,13 @@ nano /etc/bumblebee/xorg.conf.nvidia
         Driver      "nvidia"
         VendorName  "NVIDIA Corporation"
     
-    #   If the X server does not automatically detect your VGA device,
-    #   you can manually set it here.
-    #   To get the BusID prop, run `lspci | egrep 'VGA|3D'` and input the data
-    #   as you see in the commented example.
-    #   This Setting may be needed in some platforms with more than one
-    #   nvidia card, which may confuse the proprietary driver (e.g.,
-    #   trying to take ownership of the wrong device). Also needed on Ubuntu 13.04.
-        # On Debian 9 you might have to remove this (I don't remember where I read this, sorry).
+        # Tell driver which GPU to use precisely.
+        # If the X server does not automatically detect your GPU you can manually set it here.
+        # To get the BusID prop run "lspci | egrep 'VGA|3D'".
+        # This setting may be needed in some platforms with more than one Nvidia card.
+        # Also may be needed on Ubuntu 13.04.
+        # On Debian 9 you might have to remove this.
+        # (I don't remember where I read all of the above, sorry.)
         BusID "PCI:01:00:0"
     
     #   Setting ProbeAllGpus to false prevents the new proprietary driver
