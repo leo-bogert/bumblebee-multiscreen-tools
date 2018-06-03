@@ -309,8 +309,8 @@ starting X will fail.
 So we provide our own X11 config which tells the X server to use the Intel GPU by default.
 
 Remember: Bumblebee works by always having the video output be composed on the Intel GPU. Rendering
-something on the Nvidia GPU means it is rendered on the secondary X-server and then copied into the video
-memory of the primary X-server which runs on the Intel GPU.  
+something on the Nvidia GPU means it is rendered on the secondary Nvidia X-server and then copied into the
+video memory of the primary X-server which runs on the Intel GPU.  
 So the config we hereby provide is for the said primary X-server.
 
 ```
