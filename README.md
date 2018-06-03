@@ -304,7 +304,9 @@ switched to external screen and back to internal screen.
 
 This is because, at least on my Kubuntu 14.04, upon logout something creates a ```/etc/X11/xorg.conf```
 which tells X to use the Nvidia GPU - but the Nvidia GPU is disabled when using the internal screen so
-starting X will fail.
+starting X will fail.  
+TODO: I had determinated the above before I specified a display-setup-script for LightDM. Check whether
+it still applies with the script.
 
 So we provide our own X11 config which tells the X server to use the Intel GPU by default.
 
