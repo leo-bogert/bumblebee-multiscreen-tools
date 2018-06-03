@@ -293,6 +293,60 @@ nano /etc/bumblebee/xorg.conf.nvidia
     EndSection
 ```
 
+### Main Xorg configuration
+
+In theory there should not be a ```/etc/X11/xorg.conf``` with this setup:  
+Bumblebee is supposed to manage the X config, which is e.g. shown by there not being an
+```/etc/X11/xorg.conf``` shipped by the Bumblebee packages.
+
+However, without providing one as specified below, the X server will die when you log out after having
+switched to external screen and back to internal screen.
+
+This is because, at least on my Kubuntu 14.04, upon logout something creates a ```/etc/X11/xorg.conf```
+which tells X to use the NVidia GPU - but the Nvidia GPU is disabled when using the internal screen so
+starting X will fail.
+
+So we provide our own X11 config which tells the X server to use the Intel GPU by default.
+
+Remember: Bumblebee works by always having the video output be composed on the Intel GPU. Rendering
+something on the Nvidia GPU means it is rendered on the secondary X-server and then copied into the video
+memory of the primary X-server which runs on the Intel GPU.  
+So the config we hereby provide is for the said primary X-server.
+
+```
+sudo -i
+cd /etc/X11/
+mv xorg.conf xorg.conf.default.bumblebee
+touch xorg.conf
+chown root:root xorg.conf
+chmod 644 xorg.conf
+nano xorg.conf
+    # Based on our above:
+    # /etc/bumblebee/xorg.conf.nvidia
+    # /usr/share/X11/xorg.conf.d/20-thinkpad-w530-intel-gpu.conf
+    # FIXME: Could the latter config file be removed and all of it instead be placed in this one here?
+    
+    Section "ServerLayout"
+        Identifier  "Layout0"
+        Option "AutoAddDevices" "true"
+        Option "AutoAddGPU" "false"
+    EndSection
+    
+    Section "Device"
+        Identifier "intelgpu0"
+        Driver "intel"
+        Option "TearFree" "true"
+        Option "VSync" "true"
+    EndSection
+    
+    Section "Screen"
+        Identifier "Screen0"
+        Device "intelgpu0"
+    EndSection
+# Make file immutable so whatever tries to create it automatically cannot delete/modify it.
+chattr +i xorg.conf
+```
+
 ### Video acceleration
 
 For the Intel GPU - **FIXME**: Test whether this works with vlc:
