@@ -136,6 +136,7 @@ If that happens then try again with the other command.
 Notice: I haven't verified whether strictly ALL of the below config settings are necessary. I just set them all and then tried whether it works. It is possible that some can be ignored.
 
 ```
+sudo -i
 # Back up the default config in case you need to have a look at it again.
 cp -i --preserve=all --no-preserve=links /etc/bumblebee/bumblebee.conf \
     /etc/bumblebee/bumblebee.conf.default
@@ -206,6 +207,7 @@ There will be two Xorg servers running with our configuration:
 #### Intel Xorg configuration
 
 ```
+sudo -i
 cd /usr/share/X11/xorg.conf.d/
 touch 20-thinkpad-w530-intel-gpu.conf
 chown root:root 20-thinkpad-w530-intel-gpu.conf
@@ -234,6 +236,7 @@ nano 20-thinkpad-w530-intel-gpu.conf
 
 #### Nvidia Xorg configuration
 ```
+sudo -i
 # Back up the default config in case you need to have a look at it again.
 cp -i --preserve=all --no-preserve=links /etc/bumblebee/xorg.conf.nvidia \
     /etc/bumblebee/xorg.conf.nvidia.default
