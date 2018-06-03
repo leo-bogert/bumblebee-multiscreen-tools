@@ -293,7 +293,7 @@ nano /etc/bumblebee/xorg.conf.nvidia
     EndSection
 ```
 
-### Main Xorg configuration
+#### Main Xorg configuration
 
 In theory there should not be a ```/etc/X11/xorg.conf``` with this setup:  
 Bumblebee is supposed to manage the X config, which is e.g. shown by there not being an
