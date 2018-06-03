@@ -205,7 +205,32 @@ There will be two Xorg servers running with our configuration:
 
 #### Intel Xorg configuration
 
-FIXME
+```
+cd /usr/share/X11/xorg.conf.d/
+touch 20-thinkpad-w530-intel-gpu.conf
+chown root:root 20-thinkpad-w530-intel-gpu.conf
+chmod 644 20-thinkpad-w530-intel-gpu.conf
+nano 20-thinkpad-w530-intel-gpu.conf
+    Section "Device"
+        Identifier "intelgpu0"
+        Driver "intel"
+        
+        # TODO: Those don't seem to help on the external screen. Maybe it wrongly syncs to internal screen?
+        # TODO: Test whether they at least help for the internal screen, if not remove.
+        Option "TearFree" true
+        Option "VSync" "true"
+        
+        # FIXME: Needed?
+        #     Option "XvMCSurfaces" 7
+        #     Option "XvMC" true
+        
+        # TODO: The following may be needed on Debian 9 - validate whether it really is.
+        #     Option "VirtualHeads" "2"
+        
+        # Add your options here. See: man 4 intel
+        # FIXME: Read the whole manpage and consider whether there are other useful ones
+    EndSection
+```
 
 #### Nvidia Xorg configuration
 ```
