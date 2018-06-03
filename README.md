@@ -171,7 +171,7 @@ nano /etc/bumblebee/bumblebee.conf
     [driver-nvidia]
     # Nvidia kernel module to load.
     # If we used "nvidia-384" only then the "nvidia_drm" and "nvidia_modeset" modules won't be loaded
-    # - which normally are part of the NVidia drivers without Bumblebee.
+    # - which normally are part of the Nvidia drivers without Bumblebee.
     # Lack of the modeset module would cause the X-Server of bumblebee to not detect any screens (see
     # /var/log/Xorg.8.log).
     # We enforce loading all 3 modules by telling bumblebee to load the drm module first - it loads the
@@ -303,7 +303,7 @@ However, without providing one as specified below, the X server will die when yo
 switched to external screen and back to internal screen.
 
 This is because, at least on my Kubuntu 14.04, upon logout something creates a ```/etc/X11/xorg.conf```
-which tells X to use the NVidia GPU - but the Nvidia GPU is disabled when using the internal screen so
+which tells X to use the Nvidia GPU - but the Nvidia GPU is disabled when using the internal screen so
 starting X will fail.
 
 So we provide our own X11 config which tells the X server to use the Intel GPU by default.
