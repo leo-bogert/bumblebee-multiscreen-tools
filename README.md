@@ -349,6 +349,55 @@ nano xorg.conf
 chattr +i xorg.conf
 ```
 
+### Kernel modules
+
+We have to prevent the Nvidia driver from being loaded at boot, that would cause the Bumblebee X-server to
+fail starting. Symptoms would be ```/var/log/Xorg.8.log``` saying:
+
+```
+[   147.859] (II) NVIDIA(0): NVIDIA GPU Quadro K2000M (GK107GL) at PCI:1:0:0 (GPU-0)
+[   147.859] (--) NVIDIA(0): Memory: 2097152 kBytes
+[   147.859] (--) NVIDIA(0): VideoBIOS: 80.07.31.00.18
+[   147.859] (II) NVIDIA(0): Detected PCI Express Link width: 16X
+[   147.859] (EE) NVIDIA(GPU-0): Failed to acquire modesetting permission.
+[   147.859] (EE) NVIDIA(0): Failing initialization of X screen 0
+[   147.859] (II) UnloadModule: "nvidia"
+[   147.859] (II) UnloadSubModule: "wfb"
+[   147.859] (II) UnloadSubModule: "fb"
+[   147.859] (EE) Screen(s) found, but none have a usable configuration.
+```
+
+To prevent the modules from loading we do this:
+
+```
+sudo -i
+# Preserve default configuration
+# - We must copy the backup into a different directory as in *.d directories usually all files are loaded.
+mkdir -p ~/defaults/etc/modprobe.d
+cp -i --preserve=all --no-preserve=links /etc/modprobe.d/bumblebee.conf ~/defaults/etc/modprobe.d/
+
+nano /etc/modprobe.d/bumblebee.conf
+    # "lsmod | fgrep -i nvidia" shows that nvidia_384 is loaded because nvidia_384_modeset depends on it,
+    # and nvidia_384_modeset is loaded because nvidia_384_drm depends on it, which is the only module which
+    # is loaded automatically on its own.
+    # Also in some instances, e.g. when using VLC with VDPAU, the module nvidia_384_uvm is loaded which
+    # depends on nvidia_384.
+    # So we blacklist this dependency chain in reverse - albeit I'm not sure whether the order matters. It
+    # would probably be enough to just blacklist the drm module.
+    #
+    # We blacklist the actual module file names, not the aliases which lsmod shows. These can be determined
+    # by "find / -iname '*nvidia*.ko' - ko files are kernel modules, so the part before the .ko
+    # is the name.
+    blacklist nvidia_384_drm
+    blacklist nvidia_384_modeset
+    blacklist nvidia_384_uvm
+    blacklist nvidia_384
+update-initramfs -u
+update-grub
+```
+
+Source: [Bumblebee wiki](https://github.com/Bumblebee-Project/Bumblebee/wiki/Troubleshooting#bbswitch-is-ineffective-due-to-nvidia-driver-loading-on-boot----bbswitch-device-xxx-is-in-use-by-driver-nvidia-refusing-off)
+
 ### Video acceleration
 
 For the Intel GPU - **FIXME**: Test whether this works with vlc:
