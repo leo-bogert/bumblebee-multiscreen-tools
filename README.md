@@ -340,6 +340,12 @@ Once you've recovered video output you can follow this procedure to get video ou
     restarting Bumblebee using ```service bumblebeed restart```, and rerunning the dock-handler.
   - rebooting using ```reboot```.
 
+### Parts of screen are black, KDE tray icons are misplaced
+
+These rendering errors go away on their own by moving windows around a bit.
+
+You can e.g. try to de-maximize a window and maximize it again.
+
 ### External screen not working
 
 switch-screen may fail to switch to the external screen due to Nvidia GPU initialization failing.  
