@@ -418,8 +418,7 @@ You must add any user account which wants to use the Intel GPU for video acceler
 ```shell
 sudo adduser USER video
 ```
-As the Intel GPU will be what is used by default for rendering it is recommended to add all your user accounts to that group.
-
+As the Intel GPU will be what is used by default for rendering it is recommended to add all your user accounts to that group.  
 If you don't do that then programs such as Chromium/Firefox will print this when launched from a shell:
 ```
 libGL error: failed to open drm device: Permission denied
