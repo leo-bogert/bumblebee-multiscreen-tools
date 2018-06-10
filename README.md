@@ -404,10 +404,10 @@ There are two established video acceleration APIs on Linux - Nvidia's [VDPAU](ht
 We're going to install all libraries required for both APIs to work on both GPUs.
 
 ```shell
-# Intel GPU - VDPAU
-sudo apt-get install libvdpau-va-gl1 i965-va-driver
 # Intel GPU - VA API
 sudo apt-get install libva-intel-vaapi-driver i965-va-driver
+# Intel GPU - VDPAU
+sudo apt-get install libvdpau-va-gl1 i965-va-driver
 # Nvidia GPU - VDPAU
 sudo apt-get install libvdpau1
 # Nvidia GPU - VA API
