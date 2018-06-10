@@ -400,9 +400,18 @@ Source: [Bumblebee wiki](https://github.com/Bumblebee-Project/Bumblebee/wiki/Tro
 
 ### Video acceleration
 
-For the Intel GPU - **FIXME**: Test whether this works with vlc:
+There are two established video acceleration APIs on Linux - Nvidia's [VDPAU](https://en.wikipedia.org/wiki/VDPAU) and Intel's [VA API](https://en.wikipedia.org/wiki/Video_Acceleration_API).  
+We're going to install all libraries required for both APIs to work on both GPUs.
+
 ```shell
-sudo apt-get install libva-intel-vaapi-driver
+# Intel GPU - VDPAU
+sudo apt-get install libvdpau-va-gl1 i965-va-driver
+# Intel GPU - VA API
+sudo apt-get install libva-intel-vaapi-driver i965-va-driver
+# Nvidia GPU - VDPAU
+sudo apt-get install libvdpau1
+# Nvidia GPU - VA API
+sudo apt-get install vdpau-vadriver
 ```
 
 On my system this resulted in the following packages being installed according to ```/var/log/apt/history.log```:
@@ -411,6 +420,7 @@ i965-va-driver:amd64 (1.3.0-1ubuntu1, automatic)
 libva-intel-vaapi-driver:amd64 (1.3.0-1ubuntu1)
 ```
 
+**FIXME**: Test whether this works as explained on the [Ubuntuusers.de wiki](https://wiki.ubuntuusers.de/Video-Dekodierung_beschleunigen/). Also test with VLC.
 **FIXME**: While looking for these packages I noticed that searching aptitude for "vaapi" yields the fact that "gstreamer", which is installed on my machine, also has VAAPI plugins which are not installed. Check whether this is used by anything important such as Firefox/Chromium and if yes install the VAAPI plugins.  
 **FIXME**: Also check for packages for the competing API "vdpau".
 
