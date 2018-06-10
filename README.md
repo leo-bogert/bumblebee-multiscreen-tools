@@ -420,7 +420,7 @@ i965-va-driver:amd64 (1.3.0-1ubuntu1, automatic)
 libva-intel-vaapi-driver:amd64 (1.3.0-1ubuntu1)
 ```
 
-**FIXME**: Test whether this works as explained on the [Ubuntuusers.de wiki](https://wiki.ubuntuusers.de/Video-Dekodierung_beschleunigen/). Also test with VLC.
+**FIXME**: Test whether this works as explained on the [Ubuntuusers.de wiki](https://wiki.ubuntuusers.de/Video-Dekodierung_beschleunigen/). Also test with VLC.  
 **FIXME**: While looking for these packages I noticed that searching aptitude for "vaapi" yields the fact that "gstreamer", which is installed on my machine, also has VAAPI plugins which are not installed. Check whether this is used by anything important such as Firefox/Chromium and if yes install the VAAPI plugins.  
 **FIXME**: Also check for packages for the competing API "vdpau".
 
