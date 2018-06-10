@@ -102,7 +102,7 @@ sudo apt install nvidia-384
 # as dependency. If you want to use a package manager such as aptitude
 # you can do this in one step by marking nvidia-384 for installation
 # first.
-sudo apt-install bumblebee-nvidia
+sudo apt install bumblebee-nvidia
 ```
 
 On my system this resulted in the following packages being installed according to ```/var/log/apt/history.log``` (the order here is random due to using aptitude instead of apt):
