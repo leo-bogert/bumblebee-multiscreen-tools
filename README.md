@@ -513,6 +513,11 @@ and dock again), otherwise a reboot will fix the issue.
 Any such issues can usually be fixed by switching to the internal screen and then back to the external one,
 e.g. by undocking and docking again.
 
+### libGL error: failed to open drm device: Permission denied
+### libGL error: failed to load driver: i965
+
+You forgot to [add your user account to the video group](#video-acceleration).
+
 ## Similar tutorials
 
 - https://github.com/Bumblebee-Project/Bumblebee/wiki/Multi-monitor-setup
