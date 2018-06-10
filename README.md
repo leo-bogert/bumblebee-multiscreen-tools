@@ -83,12 +83,12 @@ The ```switch-screen``` script assumes the display manager is LightDM. If your d
 
 Ensure that ```intel-virtual-output``` is installed - on Ubuntu should be by default as part of the ```xserver-xorg-video-intel``` package:
 ```shell
-which intel-virtual-output || sudo apt-get install xserver-xorg-video-intel
+which intel-virtual-output || sudo apt install xserver-xorg-video-intel
 ````
 
 Optionally, for debugging purposes:
 ```shell
-sudo apt-get install intel-gpu-tools
+sudo apt install intel-gpu-tools
 # To see the available tools:
 dpkg --listfiles intel-gpu-tools
 ```
@@ -96,16 +96,16 @@ dpkg --listfiles intel-gpu-tools
 ### Nvidia GPU drivers
 
 ```shell
-sudo apt-get install nvidia-384
+sudo apt install nvidia-384
 # Install Bumblebee **after** the Nvidia driver to ensure you don't
 # get the older version of the Nvidia driver which Bumblebee chooses
 # as dependency. If you want to use a package manager such as aptitude
 # you can do this in one step by marking nvidia-384 for installation
 # first.
-sudo apt-get-install bumblebee-nvidia
+sudo apt-install bumblebee-nvidia
 ```
 
-On my system this resulted in the following packages being installed according to ```/var/log/apt/history.log``` (the order here is random due to using aptitude instead of apt-get):
+On my system this resulted in the following packages being installed according to ```/var/log/apt/history.log``` (the order here is random due to using aptitude instead of apt):
 ```
 primus-libs-ia32:i386 (0~20131127-2, automatic)
 primus-libs:amd64 (0~20131127-2, automatic)
@@ -405,13 +405,13 @@ We're going to install all libraries required for both APIs to work on both GPUs
 
 ```shell
 # Intel GPU - VA API
-sudo apt-get install libva-intel-vaapi-driver i965-va-driver
+sudo apt install libva-intel-vaapi-driver i965-va-driver
 # Intel GPU - VDPAU
-sudo apt-get install libvdpau-va-gl1 i965-va-driver
+sudo apt install libvdpau-va-gl1 i965-va-driver
 # Nvidia GPU - VDPAU
-sudo apt-get install libvdpau1
+sudo apt install libvdpau1
 # Nvidia GPU - VA API
-sudo apt-get install vdpau-vadriver
+sudo apt install vdpau-vadriver
 ```
 
 **FIXME**: Test whether this works as explained on the [Ubuntuusers.de wiki](https://wiki.ubuntuusers.de/Video-Dekodierung_beschleunigen/). Also test with VLC.  
