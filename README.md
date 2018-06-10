@@ -414,6 +414,12 @@ sudo apt install libvdpau1
 sudo apt install vdpau-vadriver
 ```
 
+You must add any user account which wants to use the Intel GPU for video acceleration to the ```video``` group:
+```shell
+sudo adduser USER video
+```
+As the Intel GPU will be what is used by default for rendering it is recommended to add all your user accounts to that group.
+
 **FIXME**: Test whether this works as explained on the [Ubuntuusers.de wiki](https://wiki.ubuntuusers.de/Video-Dekodierung_beschleunigen/). Also test with VLC.  
 **FIXME**: While looking for these packages I noticed that searching aptitude for "vaapi" yields the fact that "gstreamer", which is installed on my machine, also has VAAPI plugins which are not installed. Check whether this is used by anything important such as Firefox/Chromium and if yes install the VAAPI plugins.  
 **FIXME**: Also check for packages for the competing API "vdpau".
