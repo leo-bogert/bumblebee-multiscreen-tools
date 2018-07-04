@@ -464,6 +464,10 @@ Graphics /
 As of 2018, some googling showed that video acceleration not working in e.g. Firefox isn't really an issue of the GPU-related configuration.  
 It's rather that Mozilla don't seem keen on supporting video acceleration on Linux, there are open ancient entries like [this](https://bugzilla.mozilla.org/show_bug.cgi?id=563206), [this](https://bugzilla.mozilla.org/show_bug.cgi?id=1210727) and [this](https://bugzilla.mozilla.org/show_bug.cgi?id=1210729) in the bugtracker about implementing it - which looks like it never got beyond the "planned feature" stage.
 
+#### Chromium
+
+FIXME
+
 ### Automatic display switching with docking station
 
 FIXME
