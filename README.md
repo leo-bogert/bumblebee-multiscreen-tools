@@ -430,6 +430,41 @@ This also shows that the ```video``` group may even be required for access to Op
 **FIXME**: While looking for these packages I noticed that searching aptitude for "vaapi" yields the fact that "gstreamer", which is installed on my machine, also has VAAPI plugins which are not installed. Check whether this is used by anything important such as Firefox/Chromium and if yes install the VAAPI plugins.  
 **FIXME**: Also check for packages for the competing API "vdpau".
 
+#### Firefox
+
+Make sure the user which runs Firefox is in the ```video``` group as explained [#video-acceleration](above).  
+Browse to ```about:config``` and set:
+```
+layers.acceleration.disabled: false
+layers.acceleration.force-enabled: true
+media.hardware-video-decoding.enabled: true
+media.hardware-video-decoding.force-enabled: true
+```
+
+To check whether that it worked, browse to ```about:support```.
+It should say:
+```
+Graphics /
+  Features /
+    WebGL 1 Driver Renderer: Intel Open Source Technology Center ...
+    WebGL 2 Driver Renderer: Intel Open Source Technology Center ...
+
+  GPU #1 /
+    Active: Yes
+    Description: Intel Open Source Technology Center ...
+
+  Decision Log /
+    HW_COMPOSITING:
+      blocked by default: Acceleration blocked by platform
+      force_enabled by user: Force-enabled by pref
+    OPENGL_COMPOSITING:
+      force_enabled by user: Force-enabled by pref
+```
+
+TODO: This only enables HTML rendering to be accelerated, not video rendering:  
+As of 2018, some googling showed that video acceleration not working in e.g. Firefox isn't really an issue of the GPU-related configuration.  
+It's rather that browser vendors don't seem keen on supporting video acceleration on Linux, there are open ancient entries like [this](https://bugzilla.mozilla.org/show_bug.cgi?id=563206) and [this](https://bugzilla.mozilla.org/show_bug.cgi?id=1210727) in the bugtracker about implementing it - which looks like it never got beyond the "planned feature" stage.
+
 ### Automatic display switching with docking station
 
 FIXME
