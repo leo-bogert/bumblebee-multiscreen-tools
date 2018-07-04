@@ -459,7 +459,7 @@ Graphics /
       force_enabled by user: Force-enabled by pref
 ```
 
-TODO: This only enables HTML rendering to be accelerated, not video rendering:  
+**TODO**: This only enables HTML rendering to be accelerated, not video rendering:  
 As of 2018, some googling showed that video acceleration not working in e.g. Firefox isn't really an issue of the GPU-related configuration.  
 It's rather that browser vendors don't seem keen on supporting video acceleration on Linux, there are open ancient entries like [this](https://bugzilla.mozilla.org/show_bug.cgi?id=563206) and [this](https://bugzilla.mozilla.org/show_bug.cgi?id=1210727) in the bugtracker about implementing it - which looks like it never got beyond the "planned feature" stage.
 
