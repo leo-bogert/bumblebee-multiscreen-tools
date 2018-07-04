@@ -446,6 +446,7 @@ It should say:
 ```
 Graphics /
   Features /
+    Compositing: OpenGL
     WebGL 1 Driver Renderer: Intel Open Source Technology Center ...
     WebGL 2 Driver Renderer: Intel Open Source Technology Center ...
   GPU #1 /
