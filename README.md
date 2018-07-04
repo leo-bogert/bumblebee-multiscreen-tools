@@ -432,7 +432,7 @@ This also shows that the ```video``` group may even be required for access to Op
 
 #### Firefox
 
-Make sure the user which runs Firefox is in the ```video``` group as explained [#video-acceleration](above).  
+Make sure the user which runs Firefox is in the ```video``` group as explained [above](#video-acceleration).  
 Browse to ```about:config``` and set:
 ```
 layers.acceleration.disabled: false
