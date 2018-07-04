@@ -448,11 +448,9 @@ Graphics /
   Features /
     WebGL 1 Driver Renderer: Intel Open Source Technology Center ...
     WebGL 2 Driver Renderer: Intel Open Source Technology Center ...
-
   GPU #1 /
     Active: Yes
     Description: Intel Open Source Technology Center ...
-
   Decision Log /
     HW_COMPOSITING:
       blocked by default: Acceleration blocked by platform
