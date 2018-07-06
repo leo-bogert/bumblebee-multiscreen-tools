@@ -502,6 +502,31 @@ Close VLC. Start it from a terminal with a video file as parameter. The output s
 **TODO**: Newer versions of VLC may support VDPAU and thus could be used with the Nvidia GPU.  
 However as of 2018 the Intel GPU seems fast enough for very high resolution h264 videos.
 
+### Flash player
+
+_I don't use the Flash player anymore so this is untested!_
+
+We'll use the Intel GPU as video decoding isn't a high performance task and using the Intel GPU is more easy as it is always enabled.  
+So make sure the user which runs the browser is in the ```video``` group as explained [above](#video-acceleration).  
+
+In a terminal, do:
+```bash
+sudo -i
+mkdir /etc/adobe
+nano /etc/adobe/mms.cfg
+    EnableLinuxHWVideoDecode=1
+    OverrideGPUValidation=true
+chmod o+rx /etc/adobe
+chmod o+r /etc/adobe/mms.cfg
+```
+
+To check whether this is working, right click a flash video and select ```Stats for nerds```.
+
+If the Flash plugin crashes often, try without the previous /etc configuration change, i.e. only install libvdpau1.  
+That will make it only use hardware rendering but not hardware decoding (or vice versa?).
+
+Source: [ubunduusers.de](http://wiki.ubuntuusers.de/Adobe_Flash)
+
 ### Automatic display switching with docking station
 
 FIXME
