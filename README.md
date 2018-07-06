@@ -430,6 +430,9 @@ This also shows that the ```video``` group may even be required for access to Op
 **FIXME**: While looking for these packages I noticed that searching aptitude for "vaapi" yields the fact that "gstreamer", which is installed on my machine, also has VAAPI plugins which are not installed. Check whether this is used by anything important such as Firefox/Chromium and if yes install the VAAPI plugins.  
 **FIXME**: Also check for packages for the competing API "vdpau".
 
+Now that we've installed video acceleration libraries we will have to configure various software to actually use them.  
+Instructions for Firefox, Chromium, VLC and the Flash player follow.
+
 #### Firefox
 
 We'll use the Intel GPU as browsing isn't a high performance task and using the Intel GPU is more easy as it is always enabled.  
