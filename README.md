@@ -441,7 +441,7 @@ media.hardware-video-decoding.enabled: true
 media.hardware-video-decoding.force-enabled: true
 ```
 
-To check whether that it worked, browse to ```about:support```.
+To check whether it works, browse to ```about:support```.
 It should say:
 ```
 Graphics /
@@ -466,7 +466,16 @@ It's rather that Mozilla don't seem keen on supporting video acceleration on Lin
 
 #### Chromium
 
-FIXME
+Make sure the user which runs Chromium is in the ```video``` group as explained [above](#video-acceleration).  
+Browse to ```chrome://flags``` and set:
+```
+Override software rendering list: On
+GPU rasterization: On
+```
+To check whether it works, browse to ```chrome://gpu```.
+**TODO**: As of 2018 it is likely that even though Chromium says it does use hardware decoding it doesn't actually do so.  
+Check for example [this](https://www.pcsuggest.com/chromium-hardware-accelerated-video-decoding-linux/) and [this](https://old.reddit.com/r/linux/comments/60o1l1/chrome_on_linux_needs_to_support_hw_video/):  
+People there say that overriding the blacklist just means that it will try to use GPU acceleration, but it won't actually do so because it isn't compiled into it.
 
 ### Automatic display switching with docking station
 
