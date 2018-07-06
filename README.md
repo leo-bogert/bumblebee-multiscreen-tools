@@ -426,7 +426,7 @@ libGL error: failed to load driver: i965
 ```
 This also shows that the ```video``` group may even be required for access to OpenGL in general, not just video acceleration.
 
-**FIXME**: Test whether this works as explained on the [Ubuntuusers.de wiki](https://wiki.ubuntuusers.de/Video-Dekodierung_beschleunigen/). Also test with VLC.  
+**FIXME**: Test whether this works as explained on the [Ubuntuusers.de wiki](https://wiki.ubuntuusers.de/Video-Dekodierung_beschleunigen/).
 **FIXME**: While looking for these packages I noticed that searching aptitude for "vaapi" yields the fact that "gstreamer", which is installed on my machine, also has VAAPI plugins which are not installed. Check whether this is used by anything important such as Firefox/Chromium and if yes install the VAAPI plugins.  
 **FIXME**: Also check for packages for the competing API "vdpau".
 
