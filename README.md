@@ -432,6 +432,8 @@ This also shows that the ```video``` group may even be required for access to Op
 
 #### Firefox
 
+We'll use the Intel GPU as browsing isn't a high performance task and using the Intel GPU is more easy as it is always enabled.
+
 Make sure the user which runs Firefox is in the ```video``` group as explained [above](#video-acceleration).  
 Browse to ```about:config``` and set:
 ```
@@ -466,6 +468,8 @@ It's rather that Mozilla don't seem keen on supporting video acceleration on Lin
 
 #### Chromium
 
+We'll use the Intel GPU as browsing isn't a high performance task and using the Intel GPU is more easy as it is always enabled.
+
 Make sure the user which runs Chromium is in the ```video``` group as explained [above](#video-acceleration).  
 Browse to ```chrome://flags``` and set:
 ```
@@ -481,6 +485,8 @@ The later link shows that a pull request for VAAPI support wasn't merged yet (in
 
 #### VLC
 
+We'll use the Intel GPU as video decoding isn't a high performance task and using the Intel GPU is more easy as it is always enabled.
+
 Make sure the user which runs VLC is in the ```video``` group as explained [above](#video-acceleration).  
 In ```Tools / Preferences``` set:
 ```
@@ -493,7 +499,7 @@ Close VLC. Start it from a terminal with a video file as parameter. The output s
 [...] avcodec decoder: Using VA API version 0.35 for hardware decoding. [...]
 ```
 
-TODO: This uses the Intel GPU. Newer versions of VLC may support VDPAU and thus could be used with the Nvidia GPU.
+TODO: Newer versions of VLC may support VDPAU and thus could be used with the Nvidia GPU.  
 However as of 2018 the Intel GPU seems fast enough for very high resolution h264 videos.
 
 ### Automatic display switching with docking station
