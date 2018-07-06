@@ -479,6 +479,20 @@ Check for example [this](https://www.pcsuggest.com/chromium-hardware-accelerated
 At the former links people say that overriding the blacklist just means that it will try to use GPU acceleration, but it won't actually do so because it isn't compiled into it.  
 The later link shows that a pull request for VAAPI support wasn't merged yet (indicated by "Merge Conflict" which shows that it couldn't even be merged right now because of unresolved Git merge conflicts).
 
+#### VLC
+
+Make sure the user which runs VLC is in the ```video``` group as explained [above](#video-acceleration).  
+In ```Tools / Preferences``` set:
+```
+Simple settings / "Input / codecs" /
+	Hardware-accelerated decoding: Video acceleration (VA) API
+```
+
+Close VLC. Start it from a terminal with a video file as parameter. The output should indicate hardware rendering by e.g.:
+```
+[...] avcodec decoder: Using VA API version 0.35 for hardware decoding. [...]
+```
+
 ### Automatic display switching with docking station
 
 FIXME
