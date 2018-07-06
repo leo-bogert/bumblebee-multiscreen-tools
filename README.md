@@ -476,7 +476,8 @@ To check whether it works, browse to ```chrome://gpu```.
 
 **TODO**: As of 2018 it is likely that even though Chromium says it does use hardware decoding it doesn't actually do so.  
 Check for example [this](https://www.pcsuggest.com/chromium-hardware-accelerated-video-decoding-linux/), [this](https://old.reddit.com/r/linux/comments/60o1l1/chrome_on_linux_needs_to_support_hw_video/) and [this](https://chromium-review.googlesource.com/c/chromium/src/+/532294):  
-People there say that overriding the blacklist just means that it will try to use GPU acceleration, but it won't actually do so because it isn't compiled into it.
+At the former links people say that overriding the blacklist just means that it will try to use GPU acceleration, but it won't actually do so because it isn't compiled into it.  
+The later link shows that a pull request for VAAPI support wasn't merged yet (indicated by "Merge Conflict" which shows that it couldn't even be merged right now because of unresolved Git merge conflicts).
 
 ### Automatic display switching with docking station
 
