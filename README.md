@@ -502,7 +502,7 @@ Close VLC. Start it from a terminal with a video file as parameter. The output s
 **TODO**: Newer versions of VLC may support VDPAU and thus could be used with the Nvidia GPU.  
 However as of 2018 the Intel GPU seems fast enough for very high resolution h264 videos.
 
-### Flash player
+#### Flash player
 
 _I don't use the Flash player anymore so this is untested!_
 
