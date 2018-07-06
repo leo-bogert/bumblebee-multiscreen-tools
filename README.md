@@ -432,9 +432,9 @@ This also shows that the ```video``` group may even be required for access to Op
 
 #### Firefox
 
-We'll use the Intel GPU as browsing isn't a high performance task and using the Intel GPU is more easy as it is always enabled.
+We'll use the Intel GPU as browsing isn't a high performance task and using the Intel GPU is more easy as it is always enabled.  
+So make sure the user which runs Firefox is in the ```video``` group as explained [above](#video-acceleration).
 
-Make sure the user which runs Firefox is in the ```video``` group as explained [above](#video-acceleration).  
 Browse to ```about:config``` and set:
 ```
 layers.acceleration.disabled: false
@@ -468,9 +468,9 @@ It's rather that Mozilla don't seem keen on supporting video acceleration on Lin
 
 #### Chromium
 
-We'll use the Intel GPU as browsing isn't a high performance task and using the Intel GPU is more easy as it is always enabled.
+We'll use the Intel GPU as browsing isn't a high performance task and using the Intel GPU is more easy as it is always enabled.  
+So make sure the user which runs Chromium is in the ```video``` group as explained [above](#video-acceleration).
 
-Make sure the user which runs Chromium is in the ```video``` group as explained [above](#video-acceleration).  
 Browse to ```chrome://flags``` and set:
 ```
 Override software rendering list: On
@@ -485,9 +485,9 @@ The later link shows that a pull request for VAAPI support wasn't merged yet (in
 
 #### VLC
 
-We'll use the Intel GPU as video decoding isn't a high performance task and using the Intel GPU is more easy as it is always enabled.
+We'll use the Intel GPU as video decoding isn't a high performance task and using the Intel GPU is more easy as it is always enabled.  
+So make sure the user which runs VLC is in the ```video``` group as explained [above](#video-acceleration).
 
-Make sure the user which runs VLC is in the ```video``` group as explained [above](#video-acceleration).  
 In ```Tools / Preferences``` set:
 ```
 Simple settings / "Input / codecs" /
