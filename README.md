@@ -523,7 +523,7 @@ chmod o+r /etc/adobe/mms.cfg
 To check whether this is working, right click a flash video and select ```Stats for nerds```.
 
 If the Flash plugin crashes often, try without the previous ```/etc``` configuration change, i.e. only install ```libvdpau1``` as [aforementioned](#video-acceleration).  
-That will make it only use hardware rendering but not hardware decoding (or vice versa?).
+That will make it only use hardware rendering but not hardware decoding.
 
 Source: [ubuntuusers.de](http://wiki.ubuntuusers.de/Adobe_Flash)
 
