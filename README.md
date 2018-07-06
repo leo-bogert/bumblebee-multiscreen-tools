@@ -493,6 +493,9 @@ Close VLC. Start it from a terminal with a video file as parameter. The output s
 [...] avcodec decoder: Using VA API version 0.35 for hardware decoding. [...]
 ```
 
+TODO: This uses the Intel GPU. Newer versions of VLC may support VDPAU and thus could be used with the Nvidia GPU.
+However as of 2018 the Intel GPU seems fast enough for very high resolution h264 videos.
+
 ### Automatic display switching with docking station
 
 FIXME
