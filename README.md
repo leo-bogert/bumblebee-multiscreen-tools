@@ -569,7 +569,15 @@ sudo apt install mesa-utils
 optirun -- glxinfo | fgrep "OpenGL renderer"
 # Should show the Intel GPU
 glxinfo | fgrep "OpenGL renderer"
-```
+
+### Checking availability of external screens
+
+List screens:
+
+    xrandr --query
+
+Once `intel-virtual-output` was started, e.g. by manually using `switch-screen` or having configured `dock-handler` to automatically switch the screen, the external screens should be listed as `VIRTUALX` where X is a number between 1 and 9.  
+The laptop's internal screen is usually labeled as `LVDS1`.
 
 ## Usage
 
