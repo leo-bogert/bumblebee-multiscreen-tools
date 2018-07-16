@@ -437,6 +437,8 @@ git verify-tag NEWEST_TAG_WHICH_WAS_JUST_FETCHED
 git merge --ff-only NEWEST_TAG
 ```
 
+**FIXME**: Move other bumblee-multiscreen-tools related sections below this one.
+
 ### Video acceleration
 
 There are two established video acceleration APIs on Linux - Nvidia's [VDPAU](https://en.wikipedia.org/wiki/VDPAU) and Intel's [VA API](https://en.wikipedia.org/wiki/Video_Acceleration_API).  
