@@ -557,7 +557,7 @@ Now that configuration is finished you should **reboot** before testing.
 ### Checking whether the Nvidia GPU is currently enabled
 
 ```bash
-    cat /proc/acpi/bbswitch
+cat /proc/acpi/bbswitch
 ```
 This will *only* determine whether the GPU is powered on, it does *not* mean that it is actually in use.  
 
