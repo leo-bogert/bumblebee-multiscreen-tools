@@ -80,6 +80,8 @@ If you want to use a different port you can change it in the `switch-screen` scr
 
 The ```switch-screen``` script assumes the display manager is LightDM. If your distribution uses a different one (which does also apply to newer versions of Kubuntu!) you need to change the ```XAUTHORITY``` variable there. This will be mentioned later on again.
 
+We will now first configure the standard system drivers and Bumblebee before actually installing `bumblebee-multiscreen-tools`.
+
 ### Intel GPU drivers
 
 Ensure that ```intel-virtual-output``` is installed - on Ubuntu should be by default as part of the ```xserver-xorg-video-intel``` package:
@@ -401,6 +403,8 @@ Source: [Bumblebee wiki](https://github.com/Bumblebee-Project/Bumblebee/wiki/Tro
 
 ### bumblebee-multiscreen-tools
 
+Now that the system drivers and Bumblebee are installed and configured you should reboot and then proceed to install `bumblebee-multiscreen-tools` as follows.
+
 ```bash
 sudo -i
 # Download the repository
@@ -586,8 +590,6 @@ The script will be run be LightDM right at startup of the X server. It will wait
 It will also be run by LightDM when you log out, which is important as it then restarts the X server which makes it necessary to re-choose the screen.
 
 ## Testing
-
-Now that configuration is finished you should **reboot** before testing.
 
 ### Checking whether the Nvidia GPU is currently enabled
 
