@@ -50,8 +50,9 @@ case "$1" in
 			optirun true
 			# (Won't start a second one if already running)
 			intel-virtual-output
-			# Set "--mode" to the resolution of your external display.
-			# You can lookup the mode's of your external display by: "xrandr --display :8 --query"
+			# Set "--mode" to the xrandr mode of your external display.
+			# You can lookup the mode's of your external display on DisplayPort #2 aka "DP-5" aka "VIRTUAL8", by: "xrandr --query"
+			# For that to work do the above 3 commands manually. Once you know the mode of VIRTUAL8 do "switch-screen internal" to undo this.
 			# TODO: Using "--mode" is a workaround for "--auto" not working as of 2017-10-27 on Kubuntu 14.04. Try --auto instead of --mode once you're on a newer distribution.
 			# TODO: "--primary" is an attempted workaround to improve vsync with videos in Chromium as of 2017-10-27 on Kubuntu 14.04. Remove if it doesn't help / vsync improves on a newer distribution.
 			xrandr --output LVDS1 --off
