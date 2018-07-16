@@ -602,7 +602,7 @@ Especially on modern screen resolutions such as 1920x1080 and higher you'll run 
 
 ## Donations
 
-FIXME
+[Bitcoin](https://bitcoin.org): 1JdewDzqhfwtDtbzmBbLzJXVWCF6ZH82bm
 
 ## Known issues and workarounds
 
