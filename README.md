@@ -550,6 +550,17 @@ chmod 644 /etc/lightdm/lightdm.conf.d/99-bumblebee.conf
 The script will be run be LightDM right at startup of the X server. It will wait for ```bumblebeed``` to start and then run the ```dock-handler``` script.  
 It will also be run by LightDM when you log out, which is important as it then restarts the X server which makes it necessary to re-choose the screen.
 
+## Testing
+
+Now that configuration is finished you should **reboot** before testing.
+
+### Checking whether the Nvidia GPU is currently enabled
+
+```bash
+    cat /proc/acpi/bbswitch
+```
+This will *only* determine whether the GPU is powered on, it does *not* mean that it is actually in use.  
+
 ## Donations
 
 FIXME
