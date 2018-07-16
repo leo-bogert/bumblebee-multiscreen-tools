@@ -561,6 +561,18 @@ cat /proc/acpi/bbswitch
 ```
 This will *only* determine whether the GPU is powered on, it does *not* mean that it is actually in use.  
 
+## Usage
+
+### Run something on the Nvidia GPU
+
+Old approach:
+	optirun -- COMMAND
+[New](https://askubuntu.com/questions/669011/what-is-the-difference-between-optirun-and-primusrun) and [faster](https://www.bitblokes.de/nvidia-karte-unter-linux-primusrun-optirun-auf-speed-mit-benchmark) approach:
+	primusrun -- COMAND
+
+**IMPORTANT**: With some applications either of both approaches may wrongly use the Intel GPU, try the other one if things seem very slow.  
+Also always try only using the Intel GPU, i.e. not using optirun/primusrun, because Bumblebee has a certain performance penalty due to copying video data across PCIe from the video buffer of the Nvidia GPU to the buffer of the Intel GPU.
+
 ## Donations
 
 FIXME
