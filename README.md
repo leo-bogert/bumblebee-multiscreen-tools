@@ -610,7 +610,10 @@ List screens:
 
     xrandr --query
 
-Once `intel-virtual-output` was started, e.g. by manually using `switch-screen` or having configured `dock-handler` to automatically switch the screen, the external screens should be listed as `VIRTUALX` where X is a number between 1 and 9.  
+Without `intel-virtual-output` running, e.g. before you've configured the `dock-handler` script to automatically switch the screen, and before you've used `switch-screen external`, it will show display port #2 as `DP-5`.
+
+Once `intel-virtual-output` was started, the external screens should be listed as `VIRTUALX` where X is a number between 1 and 9.  
+
 The laptop's internal screen is usually labeled as `LVDS1`.
 
 ## Usage
