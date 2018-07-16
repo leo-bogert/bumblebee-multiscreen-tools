@@ -596,6 +596,10 @@ Old approach:
 Also always try only using the Intel GPU, i.e. not using optirun/primusrun, because Bumblebee has a certain performance penalty due to copying video data across PCIe from the video buffer of the Nvidia GPU to the buffer of the Intel GPU.  
 Especially on modern screen resolutions such as 1920x1080 and higher you'll run into that problem frequently. If games are slow both with the Intel and the Nvidia GPU try running them with a lower resolution on the Nvidia GPU.
 
+### Run nvidia-settings
+
+    optirun -b none nvidia-settings -c :8
+
 ## Donations
 
 FIXME
