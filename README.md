@@ -573,7 +573,7 @@ Old approach:
 
     primusrun -- COMAND
 
-**IMPORTANT**: With some applications either of both approaches may wrongly use the Intel GPU, try the other one if things seem very slow.  
+**IMPORTANT**: With some applications either of both approaches may wrongly use the Intel GPU, try the other one if things seem very slow. Also much graphics-related software does offer a way to show info about the GPU it is using, if available always have a look at that.  
 Also always try only using the Intel GPU, i.e. not using optirun/primusrun, because Bumblebee has a certain performance penalty due to copying video data across PCIe from the video buffer of the Nvidia GPU to the buffer of the Intel GPU.
 
 ## Donations
