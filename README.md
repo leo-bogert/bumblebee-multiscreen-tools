@@ -569,6 +569,7 @@ sudo apt install mesa-utils
 optirun -- glxinfo | fgrep "OpenGL renderer"
 # Should show the Intel GPU
 glxinfo | fgrep "OpenGL renderer"
+```
 
 ### Checking availability of external screens
 
