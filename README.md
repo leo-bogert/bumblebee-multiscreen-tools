@@ -77,7 +77,7 @@ The names of the mentioned packages may be different on Debian, I did not check 
 It is assumed that a single external screens is connected to the ThinkPad dock's DisplayPort #2 (visible as `VIRTUAL8` or `DP-5` in ```xrandr --query``` once you've applied the configuration).  
 Port #2 was merely used because it was the most easy to cable for me.
 
-The ```switch-screen``` script assumes the display manager is LightDM. If your distribution uses a different one (which does also apply to newer versions of Kubuntu!) you need to change the ```XAUTHORITY``` variable there.
+The ```switch-screen``` script assumes the display manager is LightDM. If your distribution uses a different one (which does also apply to newer versions of Kubuntu!) you need to change the ```XAUTHORITY``` variable there. This will be mentioned later on again.
 
 ### Intel GPU drivers
 
@@ -410,7 +410,7 @@ gpg --recv-key "1517 3ECB BC72 0C9E F420  5805 B26B E43E 4B5E AD69"
 # Verify signature of most recent tag. Don't use this repository if there is no valid one!
 git verify-tag "$(git describe)"
 # IMPORTANT: As lots of the settings are still hardcoded first review the screen-switching script
-# for whether it matches your machine's display resolution etc.:
+# for whether it matches your machine's display resolution, XAUTHORITY, etc.:
 nano ~/.bin/bumblebee-multiscreen-tools/switch-screen
 # Add bumblee-multiscreen-tools to $PATH so you can run the scripts from anywhere
 cp -i --preserve=all --no-preserve=links .bashrc .bashrc.default
