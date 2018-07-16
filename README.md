@@ -561,6 +561,16 @@ cat /proc/acpi/bbswitch
 ```
 This will *only* determine whether the GPU is powered on, it does *not* mean that it is actually in use.  
 
+### Checking whether rendering on the Nvidia GPU works
+
+```bash
+sudo apt install mesa-utils
+# Should show the Nvidia GPU
+optirun -- glxinfo | fgrep "OpenGL renderer"
+# Should show the Intel GPU
+glxinfo | fgrep "OpenGL renderer"
+```
+
 ## Usage
 
 ### Run something on the Nvidia GPU
