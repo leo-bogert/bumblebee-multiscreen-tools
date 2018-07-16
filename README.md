@@ -74,7 +74,7 @@ This has been developed and tested on Kubuntu 14.04.
 In some instances settings for Debian 9 may be mentioned. The Debian 9 settings aren't tested yet, I got them from a friend.  
 The names of the mentioned packages may be different on Debian, I did not check what they're called there.
 
-It is assumed that a single external screens is connected to the ThinkPad dock's DisplayPort #2 (visible as "DP-5" in ```xrandr --query``` once you've applied the configuration).  
+It is assumed that a single external screens is connected to the ThinkPad dock's DisplayPort #2 (visible as `VIRTUAL8` or `DP-5` in ```xrandr --query``` once you've applied the configuration).  
 Port #2 was merely used because it was the most easy to cable for me.
 
 The ```switch-screen``` script assumes the display manager is LightDM. If your distribution uses a different one (which does also apply to newer versions of Kubuntu!) you need to change the ```XAUTHORITY``` variable there.
