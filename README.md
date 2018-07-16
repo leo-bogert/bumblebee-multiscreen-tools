@@ -398,6 +398,39 @@ update-grub
 
 Source: [Bumblebee wiki](https://github.com/Bumblebee-Project/Bumblebee/wiki/Troubleshooting#bbswitch-is-ineffective-due-to-nvidia-driver-loading-on-boot----bbswitch-device-xxx-is-in-use-by-driver-nvidia-refusing-off)
 
+### bumblebee-multiscreen-tools
+
+```bash
+sudo -i
+# Download the repository
+git clone https://github.com/leo-bogert/bumblebee-multiscreen-tools ~/.bin/bumblebee-multiscreen-tools
+cd ~/.bin/bumblebee-multiscreen-tools
+# Download my GPG key to verify the signature on this repository as you'll run its programs as root
+gpg --recv-key "1517 3ECB BC72 0C9E F420  5805 B26B E43E 4B5E AD69"
+# Verify signature of most recent tag. Don't use this repository if there is no valid one!
+git verify-tag "$(git describe)"
+# IMPORTANT: As lots of the settings are still hardcoded first review the screen-switching script
+# for whether it matches your machine's display resolution etc.:
+nano ~/.bin/bumblebee-multiscreen-tools/switch-screen
+# Add bumblee-multiscreen-tools to $PATH so you can run the scripts from anywhere
+cp -i --preserve=all --no-preserve=links .bashrc .bashrc.default
+nano .bashrc
+    # Append to end of file:
+    PATH="$PATH:$HOME/.bin/bumblebee-multiscreen-tools"
+# Bash reconfiguration won't be in effect until restart of bash so log out
+exit
+```
+
+**IMPORTANT**: Now that you've changed the PATH to include all binaries from the repository it is critically important to be aware of the fact that GitHub could serve you arbitrary binaries to replace standard shell commands if you update the repository without checking signatures first!  
+So if you want to update it in the future, do **not** use `git pull`. Instead do:
+```bash
+sudo -i
+cd ~/.bin/bumblebee-multiscreen-tools
+git fetch
+git verify-tag NEWEST_TAG_WHICH_WAS_JUST_FETCHED
+git merge --ff-only NEWEST_TAG
+```
+
 ### Video acceleration
 
 There are two established video acceleration APIs on Linux - Nvidia's [VDPAU](https://en.wikipedia.org/wiki/VDPAU) and Intel's [VA API](https://en.wikipedia.org/wiki/Video_Acceleration_API).  
