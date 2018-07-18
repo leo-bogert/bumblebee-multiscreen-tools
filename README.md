@@ -437,7 +437,84 @@ git verify-tag NEWEST_TAG_WHICH_WAS_JUST_FETCHED
 git merge --ff-only NEWEST_TAG
 ```
 
-**FIXME**: Move other bumblee-multiscreen-tools related sections below this one.
+
+### Automatic display switching with docking station
+
+FIXME
+
+### Detecting dock state at startup/logout and switching screen accordingly
+
+Use ```display-setup-script``` as follows on LightDM:
+```shell
+# Source: https://wiki.ubuntu.com/LightDM#Adding_System_Hooks
+sudo nano /etc/lightdm/lightdm.conf.d/99-bumblebee.conf
+    # ATTENTION: Later versions of lightdm (15.10 onwards) have replaced the obsolete [SeatDefaults]
+    # with [Seat:*]
+    [SeatDefaults]
+    display-setup-script=/root/.bin/bumblebee-multiscreen-tools/display-setup-script
+chmod 644 /etc/lightdm/lightdm.conf.d/99-bumblebee.conf
+```
+
+The script will be run be LightDM right at startup of the X server. It will wait for ```bumblebeed``` to start and then run the ```dock-handler``` script.  
+It will also be run by LightDM when you log out, which is important as it then restarts the X server which makes it necessary to re-choose the screen.
+
+## Testing
+
+### Checking whether the Nvidia GPU is currently enabled
+
+```bash
+cat /proc/acpi/bbswitch
+```
+This will *only* determine whether the GPU is powered on, it does *not* mean that it is actually in use.  
+
+### Checking whether rendering on the Nvidia GPU works
+
+```bash
+sudo apt install mesa-utils
+# Should show the Nvidia GPU
+optirun -- glxinfo | fgrep "OpenGL renderer"
+# Should show the Intel GPU
+glxinfo | fgrep "OpenGL renderer"
+```
+
+### Checking availability of external screens
+
+List screens:
+
+    xrandr --query
+
+Without `intel-virtual-output` running, e.g. before you've configured the `dock-handler` script to automatically switch the screen, and before you've used `switch-screen external`, it will show DisplayPort #2 as `DP-5`.  
+**FIXME**: It may also be the case that it will only be called `DP-5` when listing screens on the Nvidia GPU by `xrandr --display :8 --query`?
+
+Once `intel-virtual-output` was started, the external screens should be listed as `VIRTUALX` where X is a number between 1 and 9.  
+DisplayPort #2 will be `VIRTUAL8`.
+
+The laptop's internal screen is usually labeled as `LVDS1`.
+
+## Usage
+
+### Run something on the Nvidia GPU
+
+Old approach:
+
+    optirun -- COMMAND
+
+[New](https://askubuntu.com/questions/669011/what-is-the-difference-between-optirun-and-primusrun) and [faster](https://www.bitblokes.de/nvidia-karte-unter-linux-primusrun-optirun-auf-speed-mit-benchmark) approach:
+
+    primusrun -- COMAND
+
+**IMPORTANT**: With some applications either of both approaches may wrongly use the Intel GPU, try the other one if things seem very slow. Also much graphics-related software does offer a way to show info about the GPU it is using, if available always have a look at that.  
+Also always try only using the Intel GPU, i.e. not using optirun/primusrun, because Bumblebee has a certain performance penalty due to copying video data across PCIe from the video buffer of the Nvidia GPU to the buffer of the Intel GPU.  
+Especially on modern screen resolutions such as 1920x1080 and higher you'll run into that problem frequently. If games are slow both with the Intel and the Nvidia GPU try running them with a lower resolution on the Nvidia GPU.
+
+### Run nvidia-settings
+
+    optirun -b none nvidia-settings -c :8
+
+## Optional features
+
+By now the system is ready for basic multiscreen usage.  
+Still, there are lots of additional things possible - which the following sections will explain.
 
 ### Video acceleration
 
@@ -570,79 +647,6 @@ If the Flash plugin crashes often, try without the previous ```/etc``` configura
 That will make it only use hardware rendering but not hardware decoding.
 
 Source: [ubuntuusers.de](http://wiki.ubuntuusers.de/Adobe_Flash)
-
-### Automatic display switching with docking station
-
-FIXME
-
-### Detecting dock state at startup/logout and switching screen accordingly
-
-Use ```display-setup-script``` as follows on LightDM:
-```shell
-# Source: https://wiki.ubuntu.com/LightDM#Adding_System_Hooks
-sudo nano /etc/lightdm/lightdm.conf.d/99-bumblebee.conf
-    # ATTENTION: Later versions of lightdm (15.10 onwards) have replaced the obsolete [SeatDefaults]
-    # with [Seat:*]
-    [SeatDefaults]
-    display-setup-script=/root/.bin/bumblebee-multiscreen-tools/display-setup-script
-chmod 644 /etc/lightdm/lightdm.conf.d/99-bumblebee.conf
-```
-
-The script will be run be LightDM right at startup of the X server. It will wait for ```bumblebeed``` to start and then run the ```dock-handler``` script.  
-It will also be run by LightDM when you log out, which is important as it then restarts the X server which makes it necessary to re-choose the screen.
-
-## Testing
-
-### Checking whether the Nvidia GPU is currently enabled
-
-```bash
-cat /proc/acpi/bbswitch
-```
-This will *only* determine whether the GPU is powered on, it does *not* mean that it is actually in use.  
-
-### Checking whether rendering on the Nvidia GPU works
-
-```bash
-sudo apt install mesa-utils
-# Should show the Nvidia GPU
-optirun -- glxinfo | fgrep "OpenGL renderer"
-# Should show the Intel GPU
-glxinfo | fgrep "OpenGL renderer"
-```
-
-### Checking availability of external screens
-
-List screens:
-
-    xrandr --query
-
-Without `intel-virtual-output` running, e.g. before you've configured the `dock-handler` script to automatically switch the screen, and before you've used `switch-screen external`, it will show DisplayPort #2 as `DP-5`.  
-**FIXME**: It may also be the case that it will only be called `DP-5` when listing screens on the Nvidia GPU by `xrandr --display :8 --query`?
-
-Once `intel-virtual-output` was started, the external screens should be listed as `VIRTUALX` where X is a number between 1 and 9.  
-DisplayPort #2 will be `VIRTUAL8`.
-
-The laptop's internal screen is usually labeled as `LVDS1`.
-
-## Usage
-
-### Run something on the Nvidia GPU
-
-Old approach:
-
-    optirun -- COMMAND
-
-[New](https://askubuntu.com/questions/669011/what-is-the-difference-between-optirun-and-primusrun) and [faster](https://www.bitblokes.de/nvidia-karte-unter-linux-primusrun-optirun-auf-speed-mit-benchmark) approach:
-
-    primusrun -- COMAND
-
-**IMPORTANT**: With some applications either of both approaches may wrongly use the Intel GPU, try the other one if things seem very slow. Also much graphics-related software does offer a way to show info about the GPU it is using, if available always have a look at that.  
-Also always try only using the Intel GPU, i.e. not using optirun/primusrun, because Bumblebee has a certain performance penalty due to copying video data across PCIe from the video buffer of the Nvidia GPU to the buffer of the Intel GPU.  
-Especially on modern screen resolutions such as 1920x1080 and higher you'll run into that problem frequently. If games are slow both with the Intel and the Nvidia GPU try running them with a lower resolution on the Nvidia GPU.
-
-### Run nvidia-settings
-
-    optirun -b none nvidia-settings -c :8
 
 ## Donations
 
