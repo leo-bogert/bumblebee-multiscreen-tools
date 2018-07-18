@@ -7,6 +7,10 @@
 
 - What do we do with the `nvidia-persistenced` daemon? Should switch-screen terminate it if the Nvidia card isn't enabled?
 
+- Test whether this still works on Ubuntu 16.04. If it doesn't here are some related links:
+  - http://danielteichman.blogspot.de/2017/03/how-to-install-bumblebee-on-ubuntu-1604.html
+  - https://github.com/Bumblebee-Project/Bumblebee/issues/759
+
 - Update wikis to mention bumblebee-multiscreen-tools once development is sufficiently finished (which it is not yet!):
   - https://github.com/Bumblebee-Project/Bumblebee/wiki/Multi-monitor-setup
   - https://wiki.ubuntuusers.de/Hybrid-Grafikkarten/Bumblebee/
