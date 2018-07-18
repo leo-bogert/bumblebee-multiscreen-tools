@@ -5,6 +5,8 @@
 
 - Allow using the Nvidia GPU with ```optirun``` / ```primusrun``` when having switched to the internal screen using ```switch-screen```, e.g. by adding a screen parameter ```internal-with-nvidia```. Currently the Nvidia GPU is always disabled when only the internal screen is enabled as that is assumed to be the "on battery" mode. Notice: This FIXME is duplicated [here](https://github.com/leo-bogert/bumblebee-multiscreen-tools#run-something-on-the-nvidia-gpu).
 
+- What do we do with the `nvidia-persistenced` daemon? Should switch-screen terminate it if the Nvidia card isn't enabled?
+
 - Update wikis to mention bumblebee-multiscreen-tools once development is sufficiently finished (which it is not yet!):
   - https://github.com/Bumblebee-Project/Bumblebee/wiki/Multi-monitor-setup
   - https://wiki.ubuntuusers.de/Hybrid-Grafikkarten/Bumblebee/
