@@ -494,6 +494,8 @@ The laptop's internal screen is usually labeled as `LVDS1`.
 
 ### Run something on the Nvidia GPU
 
+*Notice*: This won't work when only the internal screen is enabled, bumblebee-multiscreen-tools currently always disables the Nvidia GPU then since it is assumed that usage of the internal screen means you're running on battery and hence won't play games. **FIXME**: Add option to `switch-screen` to enable it on the internal screen.
+
 Old approach:
 
     optirun -- COMMAND
@@ -501,8 +503,6 @@ Old approach:
 [New](https://askubuntu.com/questions/669011/what-is-the-difference-between-optirun-and-primusrun) and [faster](https://www.bitblokes.de/nvidia-karte-unter-linux-primusrun-optirun-auf-speed-mit-benchmark) approach:
 
     primusrun -- COMAND
-
-*Notice*: This won't work when only the internal screen is enabled, bumblebee-multiscreen-tools currently always disables the Nvidia GPU then since it is assumed that usage of the internal screen means you're running on battery and hence won't play games. **FIXME**: Add option to `switch-screen` to enable it on the internal screen.
 
 **IMPORTANT**: With some applications either of both approaches may wrongly use the Intel GPU, try the other one if things seem very slow. Also much graphics-related software does offer a way to show info about the GPU it is using, if available always have a look at that.  
 Also always try only using the Intel GPU, i.e. not using optirun/primusrun, because Bumblebee has a certain performance penalty due to copying video data across PCIe from the video buffer of the Nvidia GPU to the buffer of the Intel GPU.  
