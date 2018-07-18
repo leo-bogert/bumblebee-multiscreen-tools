@@ -492,6 +492,16 @@ The laptop's internal screen is usually labeled as `LVDS1`.
 
 ## Usage
 
+### Manual screen switching
+```bash
+# Switch to DisplayPort #2 on docking station, enable Nvidia GPU.
+sudo switch-screen external
+# Switch to internal screen, disable Nvidia GPU.
+sudo switch-screen internal
+# Enable both screens, enable Nvidia GPU.
+sudo switch-screen dual
+```
+
 ### Run something on the Nvidia GPU
 
 Old approach:
