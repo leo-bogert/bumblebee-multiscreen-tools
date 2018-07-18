@@ -512,6 +512,12 @@ Especially on modern screen resolutions such as 1920x1080 and higher you'll run 
 
     optirun -b none nvidia-settings -c :8
 
+**FIXME**: Anything you configure there likely won't persist as when enabling the Nvidia GPU we currently don't use `nvidia-settings` to load its saved settings. `fgrep -R nvidia /etc` says:
+```
+./xdg/autostart/nvidia-settings-autostart.desktop:Exec=sh -c '/usr/bin/nvidia-settings --load-config-only'
+```
+That command should be amended to the above syntax, and be run by `switch-screen` instead.
+
 ### Manual screen switching
 ```bash
 # Switch to DisplayPort #2 on docking station, enable Nvidia GPU.
