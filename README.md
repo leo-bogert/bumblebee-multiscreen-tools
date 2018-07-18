@@ -437,12 +437,11 @@ git verify-tag NEWEST_TAG_WHICH_WAS_JUST_FETCHED
 git merge --ff-only NEWEST_TAG
 ```
 
-
-### Automatic display switching with docking station
+#### Automatic display switching with docking station
 
 FIXME
 
-### Detecting dock state at startup/logout and switching screen accordingly
+#### Detecting dock state at startup/logout and switching screen accordingly
 
 Use ```display-setup-script``` as follows on LightDM:
 ```shell
