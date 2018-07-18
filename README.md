@@ -502,6 +502,8 @@ Old approach:
 
     primusrun -- COMAND
 
+*Notice*: This won't work when only the internal screen is enabled, bumblebee-multiscreen-tools currently always disables the Nvidia GPU then since it is assumed that usage of the internal screen means you're running on battery and hence won't play games. **FIXME**: Add option to `switch-screen` to enable it on the internal screen.
+
 **IMPORTANT**: With some applications either of both approaches may wrongly use the Intel GPU, try the other one if things seem very slow. Also much graphics-related software does offer a way to show info about the GPU it is using, if available always have a look at that.  
 Also always try only using the Intel GPU, i.e. not using optirun/primusrun, because Bumblebee has a certain performance penalty due to copying video data across PCIe from the video buffer of the Nvidia GPU to the buffer of the Intel GPU.  
 Especially on modern screen resolutions such as 1920x1080 and higher you'll run into that problem frequently. If games are slow both with the Intel and the Nvidia GPU try running them with a lower resolution on the Nvidia GPU.
