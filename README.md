@@ -728,4 +728,4 @@ You forgot to [add your user account to the video group](#video-acceleration).
 
 ## License
 
-Do whatever you want to do with this. Relicense as you please. No warranty.
+Do whatever you want to do with this. Relicense as you please. No warranty, especially not with regards to damage to your hardware, your house burning down, whatever.
