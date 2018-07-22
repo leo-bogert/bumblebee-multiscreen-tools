@@ -726,7 +726,7 @@ If you need to use `primusrun` with compositing and see flickering or bad perfor
 
     PRIMUS_SYNC=1 primusrun ...
 
-Or just disable compositing on demand with the hotkey before as mentioned by the system settings: `ALT + SHIFT + F12`.
+Or just disable compositing on demand with the hotkey as mentioned by the system settings: `ALT + SHIFT + F12`.
 
 ### External screen not working
 
