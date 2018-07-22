@@ -439,7 +439,17 @@ git merge --ff-only NEWEST_TAG
 
 #### Automatic display switching with docking station
 
-FIXME
+Ensure the extra modules package for your kernel is installed, e.g. "linux-image-extra-3.13.0-133-generic":
+```bash
+dpkg -l | head -5 ; : Show table header ; dpkg -l | fgrep linux-image-extra
+```
+
+This is needed so the ThinkPad ACPI module will be loaded (usually automatically), which you can check by:
+```bash
+lsmod | fgrep -i thinkpad_acpi
+```
+
+FIXME: Continue instructions
 
 #### Detecting dock state at startup/logout and switching screen accordingly
 
