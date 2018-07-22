@@ -785,7 +785,7 @@ You forgot to [add your user account to the video group](#video-acceleration).
 ## Similar tutorials
 
 - https://github.com/Bumblebee-Project/Bumblebee/wiki/Multi-monitor-setup
-- http://www.unixreich.com/blog/2013/linux-nvidia-optimus-on-thinkpad-w520w530-with-external-monitor-finally-solved/
+- https://www.unixreich.com/blog/2013/linux-nvidia-optimus-on-thinkpad-w520w530-with-external-monitor-finally-solved/
 
 ## License
 
