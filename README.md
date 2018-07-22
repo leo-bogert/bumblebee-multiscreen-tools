@@ -450,7 +450,7 @@ lsmod | fgrep thinkpad_acpi
 ```
 
 Configure `acpid` to run the `dock-handler` script upon dock/undock:
-```
+```bash
 sudo -i
 nano /etc/acpi/events/thinkpad-series3dock-docked
     # This is a regular expression to match both IBM and Lenovo machines.
