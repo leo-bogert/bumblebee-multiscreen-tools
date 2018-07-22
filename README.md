@@ -441,7 +441,7 @@ git merge --ff-only NEWEST_TAG
 
 Ensure the extra modules package for your kernel is installed, e.g. `linux-image-extra-3.13.0-133-generic`:
 ```bash
-dpkg -l | head -5 ; : Show table header ; dpkg -l | fgrep linux-image-extra
+dpkg --list | head -5 ; : Show table header ; dpkg --list | fgrep linux-image-extra
 ```
 
 This is needed so the ThinkPad ACPI module will be loaded (usually automatically), which you can check by:
