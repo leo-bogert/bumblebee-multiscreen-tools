@@ -439,7 +439,7 @@ git merge --ff-only NEWEST_TAG
 
 #### Automatic display switching with docking station
 
-Ensure the extra modules package for your kernel is installed, e.g. "linux-image-extra-3.13.0-133-generic":
+Ensure the extra modules package for your kernel is installed, e.g. `linux-image-extra-3.13.0-133-generic`:
 ```bash
 dpkg -l | head -5 ; : Show table header ; dpkg -l | fgrep linux-image-extra
 ```
