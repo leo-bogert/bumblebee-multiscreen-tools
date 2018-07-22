@@ -722,7 +722,7 @@ Enable compositing in KDE = render KDE using OpenGL:
 
 - I have not tested this very much.
 
-If you need to use `optirun` / `primusrun` with compositing and see flickering or bad performance, synchronizing the display thread with the application's rendering thread may help according to [this](https://wiki.archlinux.org/index.php?title=Bumblebee&oldid=528317#Primus_issues_under_compositing_window_managers):
+If you need to use `primusrun` with compositing and see flickering or bad performance, synchronizing the display thread with the application's rendering thread may help according to [this](https://wiki.archlinux.org/index.php?title=Bumblebee&oldid=528317#Primus_issues_under_compositing_window_managers):
 
     PRIMUS_SYNC=1 primusrun ...
 
