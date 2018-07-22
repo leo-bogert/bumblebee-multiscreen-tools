@@ -449,7 +449,7 @@ This is needed so the ThinkPad ACPI module will be loaded (usually automatically
 lsmod | fgrep thinkpad_acpi
 ```
 
-Configure `acpid` to run the `dock-handler` script upon dock/undock ([source](https://phihag.de/2012/thinkpad-docking.html)):
+Configure `acpid` to run the `dock-handler` script upon dock/undock (sources: [1](https://phihag.de/2012/thinkpad-docking.html), [2](https://www.kernel.org/doc/Documentation/laptops/thinkpad-acpi.txt)):
 ```bash
 sudo -i
 nano /etc/acpi/events/thinkpad-series3dock-docked
