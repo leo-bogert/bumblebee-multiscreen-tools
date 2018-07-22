@@ -449,7 +449,20 @@ This is needed so the ThinkPad ACPI module will be loaded (usually automatically
 lsmod | fgrep thinkpad_acpi
 ```
 
-**FIXME:** Continue instructions
+Configure `acpid` to run the `dock-handler` script upon dock/undock:
+```
+sudo -i
+nano /etc/acpi/events/thinkpad-series3dock-docked
+    # This is a regular expression to match both IBM and Lenovo machines.
+    event=ibm/hotkey (IBM|LEN)0068:00 00000080 00004010
+    action=/root/.bin/bumblebee-multiscreen-tools/dock-handler docked
+nano /etc/acpi/events/thinkpad-series3dock-undocked
+    event=ibm/hotkey (IBM|LEN)0068:00 00000080 00004011
+    action=/root/.bin/bumblebee-multiscreen-tools/dock-handler undocked
+chmod 644 /etc/acpi/events/thinkpad-series3dock-*
+# Make acpid reload its configurtion
+killall -HUP acpid
+```
 
 #### Detecting dock state at startup/logout and switching screen accordingly
 
