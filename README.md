@@ -710,6 +710,24 @@ These rendering errors go away on their own by moving windows around a bit.
 
 You can e.g. try to de-maximize a window and maximize it again.
 
+#### Alternative workaround
+
+Enable compositing in KDE = render KDE using OpenGL:
+
+    System settings / Desktop effects / Enable desktop effects at startup: On
+
+**WARNING:**
+
+- Bumblebee usually recommends to disable it, I don't know why, some very basic googling says its due to performance.
+
+- I have not tested this very much.
+
+If you need to use `optirun` / `primusrun` with compositing and see flickering or bad performance, synchronizing the display thread with the application's rendering thread may help according to [this](https://wiki.archlinux.org/index.php/bumblebee#Primus_issues_under_compositing_window_managers):
+
+    PRIMUS_SYNC=1 primusrun ...
+
+Or just disable compositing on demand with the hotkey before as mentioned by the system settings: `ALT + SHIFT + F12`.
+
 ### External screen not working
 
 switch-screen may fail to switch to the external screen due to Nvidia GPU initialization failing.  
