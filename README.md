@@ -449,7 +449,7 @@ This is needed so the ThinkPad ACPI module will be loaded (usually automatically
 lsmod | fgrep thinkpad_acpi
 ```
 
-FIXME: Continue instructions
+**FIXME:** Continue instructions
 
 #### Detecting dock state at startup/logout and switching screen accordingly
 
