@@ -457,7 +457,7 @@ chmod 644 /etc/lightdm/lightdm.conf.d/99-bumblebee.conf
 The script will be run be LightDM right at startup of the X server. It will wait for ```bumblebeed``` to start and then run the ```dock-handler``` script.  
 It will also be run by LightDM when you log out, which is important as it then restarts the X server which makes it necessary to re-choose the screen.
 
-**FIXME:** Apparently some script of Ubuntu which executes after the above reverts the CPU governor back to `ondemand`. Figure out which one it is and disable it. Or just add a `pm-utils` hook with a high prefix, e.g. "99", to set the governor after all other hooks were executed.
+**FIXME:** Apparently some script of Ubuntu which executes after the above reverts the CPU governor back to `ondemand`. Figure out which one it is and disable it. Or just add a `pm-utils` hook with a high prefix, e.g. "99", to set the governor after all other hooks were executed. Document in the above section that the CPU governor is also initialized.
 
 ## Testing
 
