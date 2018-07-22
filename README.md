@@ -446,7 +446,7 @@ dpkg --list | head -5 ; : Show table header ; dpkg --list | fgrep linux-image-ex
 
 This is needed so the ThinkPad ACPI module will be loaded (usually automatically), which you can check by:
 ```bash
-lsmod | fgrep -i thinkpad_acpi
+lsmod | fgrep thinkpad_acpi
 ```
 
 FIXME: Continue instructions
