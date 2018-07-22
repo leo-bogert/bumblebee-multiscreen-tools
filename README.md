@@ -782,9 +782,10 @@ e.g. by undocking and docking again.
 
 You forgot to [add your user account to the video group](#video-acceleration).
 
-## Similar tutorials
+## Similar tutorials / sources
 
 - https://github.com/Bumblebee-Project/Bumblebee/wiki/Multi-monitor-setup
+- https://askubuntu.com/questions/103564/external-displays-with-bumblebee/525404#525404
 - https://www.unixreich.com/blog/2013/linux-nvidia-optimus-on-thinkpad-w520w530-with-external-monitor-finally-solved/
 
 ## License
