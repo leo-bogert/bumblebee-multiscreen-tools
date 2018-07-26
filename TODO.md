@@ -35,3 +35,5 @@
 		- /etc/pm/power.d/thinkpad script to handle switching between AC and battery power. Shall also call the dock handler and deal with the CPU governor.
 		
 		See /usr/share/doc/pm-utils/HOWTO.hooks.gz for how to do the above using /etc/pm/
+
+- Add table of contents to README.md once GitHub markdown supports automatically generating it.
