@@ -65,7 +65,7 @@ Further, the following powersaving and noise-related optimizations are done by t
   * the ```conservative``` CPU governor is used. Compared to the default ```ondemand``` governor this will not instantly clock the CPU to its maximum speed under load but slowly uplock if the load persists. With the ThinkPad W530 this greatly reduces noise when e.g. browsing JavaScript-heavy websites. It is configured as such:
     * if above 80% CPU load for some time upclocking happens.
     * if below 50% CPU load for some time downclocking happens.
-    * CPU load of processes with niceness > 0 is ignored when considering whether to upclock. Niceness is the Linux name for process priority, higher values equal *lower* priority. To launch a command with increased niceness, and thereby lower priority, use ```nice command_name```.
+    * CPU load of processes with niceness > 0 is ignored when considering whether to upclock. Niceness is the Linux name for process priority, higher values equal *lower* priority. To launch a command with niceness > 0 use ```nice command_name```.
   * Intel Turbo Boost is enabled.
 
 ## Installation and Configuration
