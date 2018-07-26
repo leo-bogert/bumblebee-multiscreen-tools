@@ -474,7 +474,7 @@ The aforementioned configuration of `acpid` to invoke `dock-handler` only is in 
 To ensure `dock-handler` is invoked related to suspend/hibernate we will now add hooks to `pm-utils`.  
 They will cause:
 - switching to the internal screen and default CPU governor before suspend/hibernate to ensure Bumblebee and kernel code for suspend/hibernate does not have to be bug-free with regards to these special conditions.
-- executing `dock-handler` after suspend/hibernate to restore usage of the proper screen.
+- executing `dock-handler` after suspend/hibernate to restore usage of the proper screen and CPU governor.
 
 FIXME: Implement
 
