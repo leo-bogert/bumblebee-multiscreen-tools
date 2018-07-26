@@ -439,8 +439,9 @@ git merge --ff-only NEWEST_TAG
 
 #### Automatic display switching with docking station
 
-The `dock-handler` script we will configure as follows will automatically switch the screen to the external screen on DisplayPort #2 when the ThinkPad is docked and switch to the internal screen upon undock.  
-While most of the configuration is done in the `switch-screen` script which it uses and which you were already told to review, it might still make sense to have a look at the source code of the `dock-handler` script before you proceed.
+The `dock-handler` script which we will configure as follows will automatically switch the screen to the external screen on DisplayPort #2 when the ThinkPad is docked and switch to the internal screen upon undock.  
+While most of the configuration is done in the `switch-screen` script which it uses and which you were already told to review, it might still make sense to have a look at the source code of the `dock-handler` script before you proceed.  
+Further, `dock-handler` will also tweak power management upon dock/undock by switching and configuring the CPU governor and enabling/disabling Intel TurboBoost. See [the introduction](https://github.com/leo-bogert/bumblebee-multiscreen-tools#switching-screen-automatically-with-a-docking-station) for details.
 
 Ensure the extra modules package for your kernel is installed, e.g. `linux-image-extra-3.13.0-133-generic`:
 ```bash
