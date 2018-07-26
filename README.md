@@ -468,6 +468,16 @@ chmod 644 /etc/acpi/events/thinkpad-series3dock-*
 killall -HUP acpid
 ```
 
+#### Detecting dock state before and after suspend/hibernate
+
+The aforementioned configuration of `acpid` to invoke `dock-handler` only is in effect when the system is docked/undocked during live operation.  
+To ensure `dock-handler` is invoked related to suspend/hibernate we will now add hooks to `pm-utils`.  
+They will cause:
+- switching to the internal screen and default CPU governor before suspend/hibernate to ensure Bumblebee and kernel code for suspend/hibernate does not have to be bug-free with regards to these special conditions.
+- executing `dock-handler` after suspend/hibernate to restore usage of the proper screen.
+
+FIXME: Implement
+
 #### Detecting dock state at startup/logout and switching screen accordingly
 
 Use ```display-setup-script``` as follows on LightDM:
