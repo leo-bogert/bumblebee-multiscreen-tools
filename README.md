@@ -791,6 +791,10 @@ and dock again), otherwise a reboot will fix the issue.
 Any such issues can usually be fixed by switching to the internal screen and then back to the external one,
 e.g. by undocking and docking again.
 
+They can be avoided by:
+- ensuring the mouse is not ever reconnected implicitly when using the external screen: Reconnects can happen when you use the external screen as an USB hub and connect the mouse to it: Some screens will shut off the USB ports when you turn the screen off.
+- Also the `ThinkPad Mini Dock Plus Series 3` is a rather jittery construction, touching it only slightly will usually cause a short undock/dock cycle. Better not touch it while the system is running.
+
 ### libGL error: failed to open drm device: Permission denied
 ### libGL error: failed to load driver: i965
 
