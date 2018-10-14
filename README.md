@@ -476,8 +476,6 @@ They will cause:
 - switching to the internal screen and default CPU governor before suspend/hibernate to ensure Bumblebee and kernel code for suspend/hibernate does not have to be bug-free with regards to these special conditions.
 - executing `dock-handler` after suspend/hibernate to restore usage of the proper screen and CPU governor.
 
-FIXME: Fix line length of the below...
-
 ```bash
 sudo -i
 # For documentation on this .d directory see:
@@ -490,15 +488,16 @@ nano /etc/pm/sleep.d/99_thinkpad-w530.sh
     
     case "$1" in
         suspend|hibernate)
-            echo "Suspend/hibernate -> Calling 'dock-handler undocked' to prepare for potential wakeup outside dock..."
+            echo "Suspend/hibernate -> Calling 'dock-handler undocked' to prepare for wakeup outside dock..."
             /root/.bin/bumblebee-multiscreen-tools/dock-handler undocked
             
-            # The pm-utils script /usr/lib/pm-utils/sleep.d/94cpufreq by default set the governor to performance before hibernation to prevent kernel bugs.
+            # The pm-utils script /usr/lib/pm-utils/sleep.d/94cpufreq by default sets the governor to
+            # performance before hibernation to prevent kernel bugs.
             # We will delete that script later on (explanation will follow) so we must do what it did here.
             echo "Setting CPU frequency governor to performance for CPUs:"
             for cpu in /sys/devices/system/cpu/cpu[0-9]* ; do
                 gov="$cpu"/cpufreq/scaling_governor
-                # Set governor if the file is a regular file. Symlink means another CPU handles the frequency.
+                # Only set governor if the file is regular: Symlink means another CPU handles the frequency.
                 if [ -f "$gov" ] && ! [ -h "$gov" ]; then
                     echo "$cpu"
                     echo "performance" > "$gov"
@@ -515,10 +514,14 @@ nano /etc/pm/sleep.d/99_thinkpad-w530.sh
     esac
 chown root:root /etc/pm/sleep.d/99_thinkpad-w530.sh
 chmod 755 /etc/pm/sleep.d/99_thinkpad-w530.sh
-# pm-utils by default will save the CPU governor before suspend/hibernate and restore it afterwards which would override dock-handler's choice of governor based on whether we are connected to AC. So we delete its script which does that.
-# FIXME: This can probably be done without deleting the script using the "disablehook" command mentioned in /usr/share/doc/pm-utils/HOWTO.hooks.gz
+# pm-utils by default will save the CPU governor before suspend/hibernate and restore it afterwards which
+# would override dock-handler's choice of governor based on whether we are connected to AC. So we delete its
+# script which does that.
+# FIXME: This can probably be done without deleting the script using the "disablehook" command mentioned in
+#     /usr/share/doc/pm-utils/HOWTO.hooks.gz
 # That would be preferable because it prevents recreation of the script upon updating pm-utils.
-# Alternatively: Perhaps the fact that our script executes last due to the "99" is enough? Notice that the script we deal with here is in a different directory, perhaps its order is not interleaved with our dir.
+# Alternatively: Perhaps the fact that our script executes last due to the "99" is enough? Notice that the
+# script we deal with here is in a different directory, perhaps its order is not interleaved with our dir.
 mkdir ~/defaults
 cp -i --preserve=all --no-preserve=links --parents /usr/lib/pm-utils/sleep.d/94cpufreq ~/defaults
 rm /usr/lib/pm-utils/sleep.d/94cpufreq
