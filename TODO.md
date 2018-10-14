@@ -8,7 +8,7 @@
 - Allow using the Nvidia GPU with ```optirun``` / ```primusrun``` when having switched to the internal screen using ```switch-screen```, e.g. by adding a screen parameter ```internal-with-nvidia```. Currently the Nvidia GPU is always disabled when only the internal screen is enabled as that is assumed to be the "on battery" mode. Notice: This FIXME is duplicated [here](https://github.com/leo-bogert/bumblebee-multiscreen-tools#run-something-on-the-nvidia-gpu).
 
 	- To make this work automatically switch the Nvidia GPU on when on AC power. Implement this by putting a script into `/etc/pm/power.d/` to enable/disable the Nvidia GPU if AC is plugged/unplugged without a docking station being involved (and also set the CPU governor there). See `/usr/share/doc/pm-utils/HOWTO.hooks.gz`.  
-	WARNING: This will be in a race condition with our scripts `/etc/acpi/events/thinkpad-series3dock-*` and `/etc/pm/sleep.d/99_thinkpad-w530.sh`. It could be resolved by having the new script wait for something like 10 seconds, then check if a docking station is present, and if yes do nothing.
+	WARNING: This will be in a race condition with our scripts `/etc/acpi/events/thinkpad-series3dock-*`, `/etc/pm/sleep.d/99_thinkpad-w530.sh` and `/root/.bin/bumblebee-multiscreen-tools/display-setup-script`. It could be resolved by having the new script wait for something like 10 seconds, then check if a docking station is present, and if yes do nothing.
 
 - What do we do with the `nvidia-persistenced` daemon? Should switch-screen terminate it if the Nvidia card isn't enabled?
 
