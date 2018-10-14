@@ -582,7 +582,7 @@ The laptop's internal screen is usually labeled as `LVDS1`.
 
 ### Run something on the Nvidia GPU
 
-*Notice*: This won't work when only the internal screen is enabled, bumblebee-multiscreen-tools currently always disables the Nvidia GPU then since it is assumed that usage of the internal screen means you're running on battery and hence won't play games. **FIXME**: Add option to `switch-screen` to enable it on the internal screen. Add `/etc/pm/` handler to use it automatically if the AC state changes.
+*Notice*: This won't work when only the internal screen is enabled, bumblebee-multiscreen-tools currently always disables the Nvidia GPU then since it is assumed that usage of the internal screen means you're running on battery and hence won't play games. **FIXME**: Add option to `switch-screen` to enable it on the internal screen. Add `/etc/pm/` handler to use it automatically if the AC state changes. See `TODO.md` for details.
 
 Old approach:
 
