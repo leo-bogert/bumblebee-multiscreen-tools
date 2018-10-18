@@ -631,17 +631,17 @@ To launch it with niceness > 0 use `nice BROWSER_COMMAND`.
 
 To add a KDE task bar icon for launching Firefox as such:
 ```
-    Add a secondary KDE menu shortcut for Firefox (you can also edit the existing one if you like to):
-        Right click the KDE-Menu / Edit Applications .. / Right click Internet / New item / Firefox (nice):
-            General / Icon (the blank button): Other icons / firefox
-            General / Command: nice firefox %u
-        Click the "Save" button in the toolbar.
-    
-    Add a shortcut to task bar:
-        Right click task bar / Unlock widgets.
-        KDE Menu / Internet / Firefox (nice): right click, select "Add to panel".
-        Click configuration icon of task bar at the right. You now can drag the Firefox icon to where you want it.
-        Right click the desktop / Lock widgets.
+Add a secondary KDE menu shortcut for Firefox (you can also edit the existing one if you like to):
+    Right click the KDE-Menu / Edit Applications .. / Right click Internet / New item / Firefox (nice):
+        General / Icon (the blank button): Other icons / firefox
+        General / Command: nice firefox %u
+    Click the "Save" button in the toolbar.
+
+Add a shortcut to task bar:
+    Right click task bar / Unlock widgets.
+    KDE Menu / Internet / Firefox (nice): right click, select "Add to panel".
+    Click configuration icon of task bar at the right. You now can drag the Firefox icon to the right place.
+    Right click the desktop / Lock widgets.
 ```
 
 The same concept can be applied to any other application of course.
