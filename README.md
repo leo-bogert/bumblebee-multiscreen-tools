@@ -640,7 +640,7 @@ To add a KDE task bar icon for launching Firefox as such:
     Add a shortcut to task bar:
         Right click task bar / Unlock widgets.
         KDE Menu / Internet / Firefox (nice): right click, select "Add to panel".
-        Click configuration icon of task bar at the right. You now can drag the FF icon to the right place.
+        Click configuration icon of task bar at the right. You now can drag the Firefox icon to where you want it.
         Right click the desktop / Lock widgets.
 ```
 
