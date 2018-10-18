@@ -621,6 +621,31 @@ sudo switch-screen dual
 By now the system is ready for basic multiscreen usage.  
 Still, there are lots of additional things possible - which the following sections will explain.
 
+### Reducing fan noise by avoiding upclocking
+
+The `dock-handler` script configures the CPU governor to ignore CPU load of processes with a niceness above 0 when considering whether to raise the CPU clock.  
+Niceness is the Linux name for process priority, higher values equal *lower* priority.
+
+As modern websites are stuffed to the brim with slow JavaScript it is very advisable to launch your browser with niceness.  
+To launch it with niceness > 0 use `nice BROWSER_COMMAND`.
+
+To add a KDE task bar icon for launching Firefox as such:
+```
+    Add a secondary KDE menu shortcut for Firefox (you can also edit the existing one if you like to):
+        Right click the KDE-Menu / Edit Applications .. / Right click Internet / New item / Firefox (nice):
+            General / Icon (the blank button): Other icons / firefox
+            General / Command: nice firefox %u
+        Click the "Save" button in the toolbar.
+    
+    Add a shortcut to task bar:
+        Right click task bar / Unlock widgets.
+        KDE Menu / Internet / Firefox (nice): right click, select "Add to panel".
+        Click configuration icon of task bar at the right. You now can drag the Firefox icon to where you want it.
+        Right click the desktop / Lock widgets.
+```
+
+The same concept can be applied to any other application of course.
+
 ### Video acceleration
 
 There are two established video acceleration APIs on Linux - Nvidia's [VDPAU](https://en.wikipedia.org/wiki/VDPAU) and Intel's [VA API](https://en.wikipedia.org/wiki/Video_Acceleration_API).  
