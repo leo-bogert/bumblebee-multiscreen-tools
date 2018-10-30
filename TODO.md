@@ -26,6 +26,20 @@
 ## Low priority
 - Anything marked with `TODO` in all the other files.
 
+- Permanently downclock the Nvidia GPU to reduce fan noise. Here's my previous ThinkPad T61p manual for this, it may be possible to recycle this for the W530 by using Bumblebee's Nvidia Xorg config file instead:
+	```bash
+	cp -i --preserve=all --no-preserve=links /etc/X11/xorg.conf /etc/X11/xorg.conf.default
+	nano /etc/X11/xorg.conf
+		Section "Device"
+			Option "Coolbits" "1"
+			Option "RegistryDwords" "PowerMizerEnable=0x1; PerfLevelSrc=0x2222; PowerMizerLevel=0x3; PowerMizerDefault=0x3; PowerMizerDefaultAC=0x3"
+		EndSection
+	```
+	- Source: http://wiki.etechnik-rieke.de/index.php/NVidia_PowerMizer
+	- TODO: Source: https://guilleml.wordpress.com/2011/04/27/nvidia-powermizer-on-linux/
+	- TODO: Doesn't work on later drivers according to https://devtalk.nvidia.com/default/topic/572053/linux/-solved-forcing-maximum-power-saving-on-the-desktop-quot-minimum-power-quot-mode-for-powermizer-/ -> validate this & find a new approach
+	- TODO: Perhaps the easiest approach would be to do this by shell, not by Xorg settings - then you can also switch it manually when you want to play a game: https://bbs.archlinux.org/viewtopic.php?id=162960   - found by google: "nvidia switch power level command line"
+
 - Renice Xorg, perhaps helps with vsync issues
 
 - Split this up into multiple repositories:
