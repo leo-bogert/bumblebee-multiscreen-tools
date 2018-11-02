@@ -543,7 +543,24 @@ chmod 644 /etc/lightdm/lightdm.conf.d/99-bumblebee.conf
 The script will be run be LightDM right at startup of the X server. It will wait for ```bumblebeed``` to start and then run the ```dock-handler``` script.  
 It will also be run by LightDM when you log out, which is important as it then restarts the X server which makes it necessary to re-choose the screen.
 
-**FIXME:** Apparently some script of Ubuntu which executes after the above reverts the CPU governor back to `ondemand`. Figure out which one it is and disable it. Or just add a `pm-utils` hook with a high prefix, e.g. "99", to set the governor after all other hooks were executed. Document in the above section that the CPU governor is also initialized.
+## Setting the CPU governor at startup
+
+The above `display-setup-script` configuration will also set the CPU governor at startup, depending on the dock state (`conservative` when docked, `powersave` otherwise).  
+However, at least on Ubuntu 14.04, this may be overwritten by an init script about 60 seconds after startup. To check for this, see if the governor is correct by:
+```bash
+cat /sys/devices/system/cpu/cpu?/cpufreq/scaling_governor
+```
+
+To disable the init script which is at fault on Ubuntu 14.04, do:
+```bash
+sudo update-rc.d -f ondemand remove
+```
+
+Newer Ubuntu and Debian versions use `systemd` instead of SysV init, you may have to find a different approach.
+Try:
+```bash
+fgrep -R governor /etc
+```
 
 ## Testing
 

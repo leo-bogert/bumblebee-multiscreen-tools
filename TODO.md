@@ -1,8 +1,6 @@
 ## High priority
 - Anything marked with `FIXME` in all the other files.
 
-- The CPU governor is wrong right after booting even though our `display-setup-script` calls `dock-handler`, which should set it. Probably something of `pm-utils` is in a race-condition with us. Figure out what it is and get rid of it.
-
 - Document the BIOS settings
 
 - The Nouveau drivers provide [much more simple configuration of Optimus](https://nouveau.freedesktop.org/wiki/Optimus/) than Bumblebee. They should also be a lot faster because they probably don't copy around data in memory as much as intel-virtual-output does. Create a copy / branch of this repository which uses Nouveau. If it works nicely put a big fat warning into the README.md to use Nouveau instead (notice that it is already mentioned there, replace that text).
