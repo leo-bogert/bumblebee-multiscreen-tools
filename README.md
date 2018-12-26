@@ -242,7 +242,7 @@ nano 20-thinkpad-w530-intel-gpu.conf
         #     Option "VirtualHeads" "2"
         
         # Add your options here. See: man 4 intel
-        # FIXME: Read the whole manpage and consider whether there are other useful ones
+        # TODO: Read the whole manpage and consider whether there are other useful ones
     EndSection
 ```
 
