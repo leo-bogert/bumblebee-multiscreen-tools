@@ -166,9 +166,11 @@ nano /etc/bumblebee/bumblebee.conf
         :/usr/lib/primus:/usr/lib32/primus
     
     # Allow optirun/primusrun to fallback to Intel if the Nvidia GPU is unavailable?
-    # FIXME: Once everything works well set this to true and change your desktop icons to run important
+    # TODO: Once everything works well set this to true and change your desktop icons to run important
     # stuff such as browsers with optirun/primusrun to get them to use the Nvidia card opportunistically
     # if you have enabled it currently.
+    # On the other hand it may be nice to keep this disabled because the Intel GPU probably causes less
+    # fan noise.
     AllowFallbackToIGC=false
     
     [driver-nvidia]
