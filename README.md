@@ -329,7 +329,7 @@ nano xorg.conf
     # Based on our above:
     # /etc/bumblebee/xorg.conf.nvidia
     # /usr/share/X11/xorg.conf.d/20-thinkpad-w530-intel-gpu.conf
-    # FIXME: Could the latter config file be removed and all of it instead be placed in this one here?
+    # TODO: Could the latter config file be removed and all of it instead be placed in this one here?
     
     Section "ServerLayout"
         Identifier  "Layout0"
