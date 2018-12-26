@@ -594,10 +594,8 @@ xrandr --display ':8' --query
 
 The `':0'` and `':8'` in those commands are the display number of the X server - with Bumblebee we have two, 0 is the Intel, 8 is the Nvidia one.
 
-Our desired target DisplayPort #2 will show as `DP-5` on the Nvidia GPU.
-
 Once `intel-virtual-output` was started by `switch-screen`, the external screens should be listed on the Intel GPU as `VIRTUALX` where X is a number between 1 and 9.  
-DisplayPort #2 will be `VIRTUAL8`.
+Our desired target DisplayPort #2 will be `VIRTUAL8`. It will show as `DP-5` on the Nvidia GPU.
 
 The laptop's internal screen is usually labeled as `LVDS1`.
 
