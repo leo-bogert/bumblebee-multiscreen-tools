@@ -584,13 +584,17 @@ glxinfo | fgrep "OpenGL renderer"
 ### Checking availability of external screens
 
 List screens:
+```bash
+# On Intel GPU.
+xrandr --display ':0' --query
+# On Nvidia GPU
+# - Requires running 'switch-screen external|dual' before, possibly by dock-handler.
+xrandr --display ':8' --query
+```
 
-    xrandr --query
+Our desired target DisplayPort #2 will show as `DP-5` on the Nvidia GPU.
 
-Without `intel-virtual-output` running, e.g. before you've configured the `dock-handler` script to automatically switch the screen, and before you've used `switch-screen external`, it will show DisplayPort #2 as `DP-5`.  
-**FIXME**: It may also be the case that it will only be called `DP-5` when listing screens on the Nvidia GPU by `xrandr --display :8 --query`?
-
-Once `intel-virtual-output` was started, the external screens should be listed as `VIRTUALX` where X is a number between 1 and 9.  
+Once `intel-virtual-output` was started by `switch-screen`, the external screens should be listed on the Intel GPU as `VIRTUALX` where X is a number between 1 and 9.  
 DisplayPort #2 will be `VIRTUAL8`.
 
 The laptop's internal screen is usually labeled as `LVDS1`.
