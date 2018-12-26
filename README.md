@@ -227,7 +227,14 @@ nano 20-thinkpad-w530-intel-gpu.conf
         Option "TearFree" true
         Option "VSync" "true"
         
-        # FIXME: Needed?
+        # TODO: The following may be needed for video acceleration of some codecs. See "man 4 intel".
+        # But VLC's stderr does say h264 acceleration by VA-API works with the Intel driver *without* this.
+        # This may be because IIRC somewhere on Internet it was said that XvMC is an outdated acceleration
+        # approach which has been superseded by something else.
+        #
+        # Notice if you plan to enable this:
+        # The man page sounds like this will need additional config in an "XvMCConfig file", read the
+        # sections of the below options before enabling them.
         #     Option "XvMCSurfaces" 7
         #     Option "XvMC" true
         
