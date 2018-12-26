@@ -592,7 +592,7 @@ xrandr --display ':0' --query
 xrandr --display ':8' --query
 ```
 
-The ':0' and ':8' in those commands are the display number of the X server - with Bumblebee we have two, 0 is the Intel, 8 is the Nvidia one.
+The `':0'` and `':8'` in those commands are the display number of the X server - with Bumblebee we have two, 0 is the Intel, 8 is the Nvidia one.
 
 Our desired target DisplayPort #2 will show as `DP-5` on the Nvidia GPU.
 
