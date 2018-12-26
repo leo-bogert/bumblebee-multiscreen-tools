@@ -636,7 +636,7 @@ Especially on modern screen resolutions such as 1920x1080 and higher you'll run 
 ```
 That command should be amended to the above syntax, and be run by `switch-screen` instead.
 
-FIXME: A benefit of ensuring it is always run is that we could use `nvidia-settings` to permanently downclock the GPU to reduce noise.  
+**FIXME**: A benefit of ensuring it is always run is that we could use `nvidia-settings` to permanently downclock the GPU to reduce noise.  
 Notice that I'm not sure whether `nvidia-settings` is the proper place to do so, it may also instead still require adding the PowerMizer stuff to the Xorg configuration file.
 
 ### Manual screen switching
