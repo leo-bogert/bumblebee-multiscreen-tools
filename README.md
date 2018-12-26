@@ -585,7 +585,7 @@ glxinfo | fgrep "OpenGL renderer"
 
 List screens:
 ```bash
-# On Intel GPU.
+# On Intel GPU
 xrandr --display ':0' --query
 # On Nvidia GPU
 # - Requires running 'switch-screen external|dual' before, possibly by dock-handler.
