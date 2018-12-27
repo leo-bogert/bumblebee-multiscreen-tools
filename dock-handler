@@ -27,11 +27,11 @@ LOCK='/tmp/bumblebee-multiscreen-tools.switch-screen.lock'
 # Open lock file and assign descriptor to LOCK_DESCRIPTOR
 exec {LOCK_DESCRIPTOR}> "$LOCK"
 # Since switch-screen spawns a daemon subprocess (intel-virtual-output)
-# the descriptor would be kept open even upon exit of this script
-# (bash child processes inherit its file descriptors) so we need to
-# close it manually then to prevent the lock from being held
-# permanently.
-trap 'exec {LOCK_DESCRIPTOR}>&-' EXIT
+# the file descriptor is inherited by it (can be be prevented, but bash
+# doesn't do that) and thus kept open even upon exit of this script.
+# This means the lock isn't released by descriptor closure so we need to
+# release it manually upon exit.
+trap 'flock --unlock "$LOCK_DESCRIPTOR"' EXIT
 # Try to acquire the lock
 if ! flock -w 60 "$LOCK_DESCRIPTOR" ; then
     echo "Another instance is running, waited 60 sec but it didn't quit!" >&2
