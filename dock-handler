@@ -17,9 +17,9 @@ LOCK='/tmp/bumblebee-multiscreen-tools.switch-screen.lock'
 # TODO: Add CPU governor and its parameters
 ################################################################################
 
-# Deal with concurrency since switch-screen can take a long time in
-# which the user may have docked/undocked again and triggered another
-# execution.
+# Ensure the script cannot run multiple times in parallel since
+# switch-screen can take a long time in which the user may have
+# docked/undocked again and triggered another execution.
 # This is also especially important as the connector of the
 # ThinkPad W530 dock is not debounced very well, it can reconnect even
 # if you only slightly touch the laptop.
@@ -29,7 +29,8 @@ exec {LOCK_DESCRIPTOR}> "$LOCK"
 # Since switch-screen spawns a daemon subprocess (intel-virtual-output)
 # the descriptor would be kept open even upon exit of this script
 # (bash child processes inherit its file descriptors) so we need to
-# close it manually then.
+# close it manually then to prevent the lock from being held
+# permanently.
 trap EXIT 'exec {LOCK_DESCRIPTOR}>&-'
 # Try to acquire the lock
 if ! flock -w 60 "$LOCK_DESCRIPTOR" ; then
