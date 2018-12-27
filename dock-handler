@@ -31,7 +31,7 @@ exec {LOCK_DESCRIPTOR}> "$LOCK"
 # (bash child processes inherit its file descriptors) so we need to
 # close it manually then to prevent the lock from being held
 # permanently.
-trap EXIT 'exec {LOCK_DESCRIPTOR}>&-'
+trap 'exec {LOCK_DESCRIPTOR}>&-' EXIT
 # Try to acquire the lock
 if ! flock -w 60 "$LOCK_DESCRIPTOR" ; then
     echo "Another instance is running, waited 60 sec but it didn't quit!" >&2
