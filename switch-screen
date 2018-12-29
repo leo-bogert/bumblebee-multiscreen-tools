@@ -14,6 +14,8 @@ shopt -s failglob
 # If you're not using LightDM set this to the location of your display manager's Xauthority file
 export XAUTHORITY='/var/run/lightdm/root/:0'
 export DISPLAY=':0'
+
+LOCK='/tmp/bumblebee-multiscreen-tools.switch-screen.lock'
 ################################################################################
 
 
@@ -26,7 +28,21 @@ if [ $# -ne 1 ]; then
 	exit 1
 fi
 
-# FIXME: Deal with concurrency
+# Ensure the script cannot run multiple times in parallel.
+
+# Open lock file and assign descriptor to LOCK_DESCRIPTOR
+exec {LOCK_DESCRIPTOR}> "$LOCK"
+# Since switch-screen spawns a daemon subprocess (intel-virtual-output)
+# the file descriptor is inherited by it (can be be prevented, but bash
+# doesn't do that) and thus kept open even upon exit of this script.
+# This means the lock isn't released by descriptor closure so we need to
+# release it manually upon exit.
+trap 'flock --unlock "$LOCK_DESCRIPTOR"' EXIT
+# Try to acquire the lock
+if ! flock -w 60 "$LOCK_DESCRIPTOR" ; then
+    echo "Another instance is running, waited 60 sec but it didn't quit!" >&2
+    exit 1
+fi
 
 # On certain systems switching the GPU sometimes (very rarely) causes the SATA hard disk to be disconnected.
 # To avoid data loss flush the file system buffers.
