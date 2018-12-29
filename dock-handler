@@ -12,7 +12,7 @@ shopt -s failglob
 SWITCH_SCREEN=/root/.bin/bumblebee-multiscreen-tools/switch-screen
 DEBUG=0
 LOG='/var/log/thinkpad-w530-dock.log'
-LOCK='/tmp/bumblebee-multiscreen-tools.switch-screen.lock'
+LOCK='/tmp/bumblebee-multiscreen-tools.dock-handler.lock'
 # TODO: Add USB name of dock
 # TODO: Add CPU governor and its parameters
 ################################################################################
