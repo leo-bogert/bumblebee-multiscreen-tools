@@ -103,7 +103,7 @@ case "$1" in
 				sleep 0.1s
 			done
 
-			# FIXME: Make it ignore "rmmod: ERROR: Module nvidia_drm is not currently loaded" and remove the "|| true" to avoid also ignoring the fact that it cannot be unloaded because something is using it.
+			# TODO: Make it ignore "rmmod: ERROR: Module nvidia_drm is not currently loaded" and remove the "|| true" to avoid also ignoring the fact that it cannot be unloaded because something is using it.
 			rmmod nvidia_drm || true
 			rmmod nvidia_modeset || true
 			rmmod nvidia_uvm || true
