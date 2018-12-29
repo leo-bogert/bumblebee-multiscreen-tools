@@ -9,7 +9,10 @@ shopt -s nullglob
 shopt -s failglob
 
 # CONFIGURATION ################################################################
-# FIXME: You currently have to manually set the screen resolution and number of external display (e.g. "VIRTUAL8") in the actual code below!
+# WARNING: You currently have to manually set the screen resolution and name
+# of the external display (e.g. "VIRTUAL8") in the actual code below!
+# See the code of the 'case "$1" in'.
+# TODO: Make it auto-detect reasonable settings.
 
 # If you're not using LightDM set this to the location of your display manager's Xauthority file
 export XAUTHORITY='/var/run/lightdm/root/:0'
