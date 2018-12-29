@@ -73,10 +73,10 @@ case "$DOCKED" in
 			echo "WARNING: Switching display failed!" >&2
 		fi
 
-		#  FIXME: Use same code as in /etc/pm/sleep.d/thinkpad-w530.sh
-		for cpu in /sys/devices/system/cpu/cpu* ; do
+		for cpu in /sys/devices/system/cpu/cpu[0-9]* ; do
 			gov="$cpu"/cpufreq/scaling_governor
-			if [ -e "$gov" ] ; then
+			# Only set governor if the file is regular: Symlink means another CPU handles the frequency.
+			if [ -f "$gov" ] && ! [ -h "$gov" ]; then
 				echo "Setting CPU frequency governor to powersave for $cpu..."
 				echo "powersave" > "$gov"
 			fi
@@ -98,10 +98,9 @@ case "$DOCKED" in
 			echo "WARNING: Switching display failed!" >&2
 		fi
 
-		#  FIXME: Use same code as in /etc/pm/sleep.d/thinkpad-w530.sh
-		for cpu in /sys/devices/system/cpu/cpu* ; do
+		for cpu in /sys/devices/system/cpu/cpu[0-9]* ; do
 			gov="$cpu"/cpufreq/scaling_governor
-			if [ -e "$gov" ] ; then
+			if [ -f "$gov" ] && ! [ -h "$gov" ]; then
 				echo "Setting CPU frequency governor to conservative for $cpu..."
 				echo "conservative" > "$gov"
 			fi
