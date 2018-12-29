@@ -84,7 +84,7 @@ case "$DOCKED" in
 		echo "Disabling Intel Turbo Boost..."
 		echo 0 > /sys/devices/system/cpu/cpufreq/boost
 
-		# FIXME: Add something like this to unmount your fileserver (in an unclean fashion as the network is already disconnected)
+		# TODO: Add something like this to unmount your fileserver (in an unclean fashion as the network is already disconnected)
 		# if ! /root/.bin/shell-tools-root/force-unmount-server.sh ; then
 		#	echo "WARNING: Unmounting server failed!" >&2
 		# fi
@@ -113,7 +113,7 @@ case "$DOCKED" in
 		echo "Enabling Intel Turbo Boost..."
 		echo 1 > /sys/devices/system/cpu/cpufreq/boost
 
-		# FIXME: Add something like this to mount your fileserver
+		# TODO: Add something like this to mount your fileserver
 		# if ! /root/.bin/shell-tools-root/mount-server.sh ; then
 		#	echo "WARNING: Mounting server failed!" >&2
 		# fi
