@@ -495,21 +495,26 @@ sudo -i
 nano /etc/pm/sleep.d/99_thinkpad-w530.sh
     #!/bin/bash
     
+    # pm-utils by default will save the CPU governor before suspend/hibernate and restore it afterwards which
+    # would override dock-handler's choice of governor based on whether we are connected to AC.
+    # To prevent that we hereby disable the script /usr/lib/pm-utils/sleep.d/94cpufreq which would do that.
+    source "${PM_FUNCTIONS}"
+    disablehook 94cpufreq
+    
     case "$1" in
         suspend|hibernate)
             echo "Suspend/hibernate -> Calling 'dock-handler undocked' to prepare for wakeup outside dock..."
             /root/.bin/bumblebee-multiscreen-tools/dock-handler undocked
             
-            # The pm-utils script /usr/lib/pm-utils/sleep.d/94cpufreq by default sets the governor to
-            # performance before hibernation to prevent kernel bugs.
-            # We will delete that script later on (explanation will follow) so we must do what it did here.
-            echo "Setting CPU frequency governor to performance for CPUs:"
+            # 94cpufreq by default sets the governor to $TEMPORARY_CPUFREQ_GOVERNOR before hibernation to
+            # prevent kernel bugs. We've disabled that so we must do what it did here.
+            echo "Setting CPU frequency governor to $TEMPORARY_CPUFREQ_GOVERNOR for CPUs:"
             for cpu in /sys/devices/system/cpu/cpu[0-9]* ; do
                 gov="$cpu"/cpufreq/scaling_governor
                 # Only set governor if the file is regular: Symlink means another CPU handles the frequency.
                 if [ -f "$gov" ] && ! [ -h "$gov" ]; then
                     echo "$cpu"
-                    echo "performance" > "$gov"
+                    echo "$TEMPORARY_CPUFREQ_GOVERNOR" > "$gov"
                 fi
             done
             ;;
@@ -523,17 +528,6 @@ nano /etc/pm/sleep.d/99_thinkpad-w530.sh
     esac
 chown root:root /etc/pm/sleep.d/99_thinkpad-w530.sh
 chmod 755 /etc/pm/sleep.d/99_thinkpad-w530.sh
-# pm-utils by default will save the CPU governor before suspend/hibernate and restore it afterwards which
-# would override dock-handler's choice of governor based on whether we are connected to AC. So we delete its
-# script which does that.
-# FIXME: This can probably be done without deleting the script using the "disablehook" command mentioned in
-#     /usr/share/doc/pm-utils/HOWTO.hooks.gz
-# That would be preferable because it prevents recreation of the script upon updating pm-utils.
-# Alternatively: Perhaps the fact that our script executes last due to the "99" is enough? Notice that the
-# script we deal with here is in a different directory, perhaps its order is not interleaved with our dir.
-mkdir ~/defaults
-cp -i --preserve=all --no-preserve=links --parents /usr/lib/pm-utils/sleep.d/94cpufreq ~/defaults
-rm /usr/lib/pm-utils/sleep.d/94cpufreq
 ```
 
 #### Detecting dock state at startup/logout and switching screen accordingly
