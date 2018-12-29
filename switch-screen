@@ -56,7 +56,7 @@ fi
 # TODO: Make README tell user to add it to /etc/modules?
 modprobe bbswitch
 
-# FIXME: Set niceness of Xorg
+# TODO: Set niceness of Xorg
 
 case "$1" in
 	'external')
