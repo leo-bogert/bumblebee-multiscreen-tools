@@ -624,7 +624,17 @@ Especially on modern screen resolutions such as 1920x1080 and higher you'll run 
 
     optirun -b none nvidia-settings -c :8
 
-The settings you configure there are loaded by `switch-screen`, and thus `dock-handler`, automatically.
+To ensure the settings persist at the next login:
+```bash
+sudo -i
+# Back up the file we modify in case you need to have a look at it again.
+cp -i --preserve=all --no-preserve=links --parents /etc/xdg/autostart/nvidia-settings-autostart.desktop ~/defaults
+nano /etc/xdg/autostart/nvidia-settings-autostart.desktop
+    # Replace Exec= with:
+    Exec=sh -c '/usr/bin/optirun -b none nvidia-settings -c :8 --load-config-only'
+```
+
+**TODO**: I have not tested this as I don't use any of the options of `nvidia-settings`.
 
 **FIXME**: Add instructions on how to use `nvidia-settings` to permanently downclock the GPU to reduce noise.  
 Notice that I'm not sure whether `nvidia-settings` is the proper place to do so, it may also instead still require adding the PowerMizer stuff to the Xorg configuration file.
