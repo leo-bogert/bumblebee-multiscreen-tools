@@ -624,13 +624,9 @@ Especially on modern screen resolutions such as 1920x1080 and higher you'll run 
 
     optirun -b none nvidia-settings -c :8
 
-**FIXME**: Anything you configure there likely won't persist as when enabling the Nvidia GPU we currently don't use `nvidia-settings` to load its saved settings. `fgrep -R nvidia /etc` says:
-```
-./xdg/autostart/nvidia-settings-autostart.desktop:Exec=sh -c '/usr/bin/nvidia-settings --load-config-only'
-```
-That command should be amended to the above syntax, and be run by `switch-screen` instead.
+The settings you configure there are loaded by `switch-screen`, and thus `dock-handler`, automatically.
 
-**FIXME**: A benefit of ensuring it is always run is that we could use `nvidia-settings` to permanently downclock the GPU to reduce noise.  
+**FIXME**: Add instructions on how to use `nvidia-settings` to permanently downclock the GPU to reduce noise.  
 Notice that I'm not sure whether `nvidia-settings` is the proper place to do so, it may also instead still require adding the PowerMizer stuff to the Xorg configuration file.
 
 ### Manual screen switching
