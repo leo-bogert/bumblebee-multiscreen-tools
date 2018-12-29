@@ -69,7 +69,6 @@ case "$DOCKED" in
 	'0') #undocked event
 		echo "$(date --rfc-3339=seconds): Undock handler..."
 
-		# FIXME: Enable NVidia card while AC is connected.
 		if ! "$SWITCH_SCREEN" internal ; then # prevent errexit
 			echo "WARNING: Switching display failed!" >&2
 		fi
