@@ -40,6 +40,8 @@
 
 - Renice Xorg, perhaps helps with vsync issues
 
+- Move inlined scripts of README.md to files. Notice that we add the repository root to $PATH so use long names.
+
 - Split this up into multiple repositories:
 	- thinkpad-dock-tools:
 		- dock-handler script. Will call all scripts in /etc/thinkpad-dock-tools/(un)dock.d
