@@ -628,7 +628,8 @@ To ensure the settings persist at the next login:
 ```bash
 sudo -i
 # Back up the file we modify in case you need to have a look at it again.
-cp -i --preserve=all --no-preserve=links --parents /etc/xdg/autostart/nvidia-settings-autostart.desktop ~/defaults
+cp -i --preserve=all --no-preserve=links --parents \
+	/etc/xdg/autostart/nvidia-settings-autostart.desktop ~/defaults
 nano /etc/xdg/autostart/nvidia-settings-autostart.desktop
     # Replace Exec= with:
     Exec=sh -c '/usr/bin/optirun -b none nvidia-settings -c :8 --load-config-only'
