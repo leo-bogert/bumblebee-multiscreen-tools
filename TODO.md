@@ -62,4 +62,4 @@
 ## Won't fix, for now at least
 
 - What do we do with the `nvidia-persistenced` daemon? Should switch-screen terminate it if the Nvidia card isn't enabled?  
-  **EDIT**: [This](https://github.com/Bumblebee-Project/Bumblebee/issues/207) Bumblebee bugtracker entry sounds like it disables it on its own, so we probably can ignore it.
+  **EDIT**: [This](https://github.com/Bumblebee-Project/Bumblebee/issues/207) Bumblebee bugtracker entry sounds like the Bumblebee developers are at least aware of its existence, so it may or may not be compatible with it. I don't care about it for now as Bumblebee appears to be working for me.
