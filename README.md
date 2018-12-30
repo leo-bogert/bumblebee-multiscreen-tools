@@ -423,6 +423,17 @@ update-grub
 
 Source: [Bumblebee wiki](https://github.com/Bumblebee-Project/Bumblebee/wiki/Troubleshooting#bbswitch-is-ineffective-due-to-nvidia-driver-loading-on-boot----bbswitch-device-xxx-is-in-use-by-driver-nvidia-refusing-off)
 
+### KDE configuration
+
+By default KDE is configured to at least switch off the screen when the laptop lid is closed, or it will even put the machine to sleep.  
+This will prevent us from using an external screen with the lid closed so we must disable it:
+```
+KDE menu / Computer / System Settings / Power Management /
+    Energy Saving / On AC Power / When laptop lid is closed: Do nothing
+```
+
+Notice: At least on the ThinkPad W530 the internal screen will still be turned off when the lid is closed so you don't need to worry about it constantly consuming power. It is probably disabled by a hardware switch.
+
 ### bumblebee-multiscreen-tools
 
 Now that the system drivers and Bumblebee are installed and configured you should reboot and then proceed to install `bumblebee-multiscreen-tools` as follows.
