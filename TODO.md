@@ -22,6 +22,8 @@
 ## Low priority
 - Anything marked with `TODO` in all the other files.
 
+- Ubuntu 18.04: Possibly required fixes: https://askubuntu.com/questions/1029169/bumblebee-doesnt-work-on-ubuntu-18-04
+
 - Permanently downclock the Nvidia GPU to reduce fan noise. Here's my previous ThinkPad T61p manual for this, it may be possible to recycle this for the W530 by using Bumblebee's Nvidia Xorg config file instead:
 	```bash
 	cp -i --preserve=all --no-preserve=links /etc/X11/xorg.conf /etc/X11/xorg.conf.default
