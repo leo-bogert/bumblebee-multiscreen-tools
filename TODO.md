@@ -10,8 +10,6 @@
 	- To make this work automatically switch the Nvidia GPU on when on AC power. Implement this by putting a script into `/etc/pm/power.d/` to enable/disable the Nvidia GPU if AC is plugged/unplugged without a docking station being involved (and also set the CPU governor there). See `/usr/share/doc/pm-utils/HOWTO.hooks.gz`.  
 	WARNING: This will be in a race condition with our scripts `/etc/acpi/events/thinkpad-series3dock-*`, `/etc/pm/sleep.d/99_thinkpad-w530.sh` and `/root/.bin/bumblebee-multiscreen-tools/display-setup-script`. It could be resolved by having the new script wait for something like 10 seconds, then check if a docking station is present, and if yes do nothing.
 
-- What do we do with the `nvidia-persistenced` daemon? Should switch-screen terminate it if the Nvidia card isn't enabled?
-
 - Test whether this still works on Ubuntu 16.04. If it doesn't here are some related links:
   - http://danielteichman.blogspot.de/2017/03/how-to-install-bumblebee-on-ubuntu-1604.html
   - https://github.com/Bumblebee-Project/Bumblebee/issues/759
@@ -58,3 +56,8 @@
 		See /usr/share/doc/pm-utils/HOWTO.hooks.gz for how to do the above using /etc/pm/
 
 - Add table of contents to README.md once GitHub markdown supports automatically generating it.
+
+## Won't fix, for now at least
+
+- What do we do with the `nvidia-persistenced` daemon? Should switch-screen terminate it if the Nvidia card isn't enabled?  
+  **EDIT**: [This](https://github.com/Bumblebee-Project/Bumblebee/issues/207) Bumblebee bugtracker entry sounds like it disables it on its own, so we probably can ignore it.
