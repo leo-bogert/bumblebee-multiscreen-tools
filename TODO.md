@@ -37,6 +37,8 @@
 	- TODO: Source: https://guilleml.wordpress.com/2011/04/27/nvidia-powermizer-on-linux/
 	- TODO: Doesn't work on later drivers according to https://devtalk.nvidia.com/default/topic/572053/linux/-solved-forcing-maximum-power-saving-on-the-desktop-quot-minimum-power-quot-mode-for-powermizer-/ -> validate this & find a new approach
 	- TODO: Perhaps the easiest approach would be to do this by shell, not by Xorg settings - then you can also switch it manually when you want to play a game: https://bbs.archlinux.org/viewtopic.php?id=162960   - found by google: "nvidia switch power level command line"
+	
+	**EDIT**: The [Nvidia documentation](https://download.nvidia.com/XFree86/Linux-x86_64/384.130/README/xconfigoptions.html) for the X server settings of the driver version shipped as of Kubuntu 14.04 does not mention the `RegistryDwords` setting so I won't mess with it for now before it breaks something. This is also especially considering that for `Coolbits` it talks about voiding the warranty and danger of damaging the hardware, and does not mention the value of `1` which the other websites say is needed. Notice: It's possible that `RegistryDwords` is just a frontend for what can be configured at `nvidia-settings`. However that doesn't change the argument of `Coolbits=1` not being documented.
 
 - Renice Xorg, perhaps helps with vsync issues
 
