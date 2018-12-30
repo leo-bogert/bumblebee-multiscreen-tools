@@ -637,9 +637,6 @@ nano /etc/xdg/autostart/nvidia-settings-autostart.desktop
 
 **TODO**: I have not tested this as I don't use any of the options of `nvidia-settings`.
 
-**FIXME**: Add instructions on how to use `nvidia-settings` to permanently downclock the GPU to reduce noise.  
-Notice that I'm not sure whether `nvidia-settings` is the proper place to do so, it may also instead still require adding the PowerMizer stuff to the Xorg configuration file.
-
 ### Manual screen switching
 ```bash
 # Switch to DisplayPort #2 on docking station, enable Nvidia GPU.
