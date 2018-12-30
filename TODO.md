@@ -10,9 +10,10 @@
 	- To make this work automatically switch the Nvidia GPU on when on AC power. Implement this by putting a script into `/etc/pm/power.d/` to enable/disable the Nvidia GPU if AC is plugged/unplugged without a docking station being involved (and also set the CPU governor there). See `/usr/share/doc/pm-utils/HOWTO.hooks.gz`.  
 	WARNING: This will be in a race condition with our scripts `/etc/acpi/events/thinkpad-series3dock-*`, `/etc/pm/sleep.d/99_thinkpad-w530.sh` and `/root/.bin/bumblebee-multiscreen-tools/display-setup-script`. It could be resolved by having the new script wait for something like 10 seconds, then check if a docking station is present, and if yes do nothing.
 
-- Test whether this still works on Ubuntu 16.04. If it doesn't here are some related links:
+- Test whether this still works on Ubuntu 16.04 and 18.04. If it doesn't here are some related links:
   - http://danielteichman.blogspot.de/2017/03/how-to-install-bumblebee-on-ubuntu-1604.html
   - https://github.com/Bumblebee-Project/Bumblebee/issues/759
+  - https://askubuntu.com/questions/1029169/bumblebee-doesnt-work-on-ubuntu-18-04
 
 - Update wikis to mention bumblebee-multiscreen-tools once development is sufficiently finished (which it is not yet!):
   - https://github.com/Bumblebee-Project/Bumblebee/wiki/Multi-monitor-setup
@@ -21,8 +22,6 @@
 
 ## Low priority
 - Anything marked with `TODO` in all the other files.
-
-- Ubuntu 18.04: Possibly required fixes: https://askubuntu.com/questions/1029169/bumblebee-doesnt-work-on-ubuntu-18-04
 
 - Permanently downclock the Nvidia GPU to reduce fan noise. Here's my previous ThinkPad T61p manual for this, it may be possible to recycle this for the W530 by using Bumblebee's Nvidia Xorg config file instead:
 	```bash
