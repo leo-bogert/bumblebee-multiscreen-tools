@@ -21,13 +21,15 @@ This is preferred over the official Nvidia package ```nvidia-prime``` because th
 
 ### WARNING
 
-This is work in progress! Not only read the [Installation and Configuration section](#installation-and-configuration) but in fact read the whole scripts first before running them!  
-**They contain quite a bit of harcoded configuration, you MUST really read the whole scripts!**
+While this README will provide full instructions on how to configure your system, the included scripts **ALSO** need to be configured which is **NOT** fully explained in this README. They need to be adapted to things such as especially your screen-resolution.
+**Thus please fully read and configure all of the included scripts before you run them!**
 
-This will be finished in 2018, check for new commits regularly.  
-This README is currently lacking instructions on how to configure Bumblebee, they will be provided as well.
+You will get to understand the context of what these scripts do by reading this README, so start with that and review and configure the scripts as they're mentioned.
 
-The Nouveau drivers provide [much more simple configuration of Optimus](https://nouveau.freedesktop.org/wiki/Optimus/) than Bumblebee and if they work for you you should prefer them.  
+With regards to the state of this repository as a whole:  
+It should work, but lacks polishing (see [the TODO list](TODO.md)). That will be finished in 2019, check for new commits regularly.  
+
+Most notably: The Nouveau drivers provide [much more simple configuration of Optimus](https://nouveau.freedesktop.org/wiki/Optimus/) than Bumblebee and if they work for you you should prefer them.
 Once I am done with this repository for Bumblebee I will investigate whether I can adapt it to use Nouveau and if yes, update this README to point to that.
 
 ### Features
