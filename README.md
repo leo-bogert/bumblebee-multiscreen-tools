@@ -21,7 +21,7 @@ This is preferred over the official Nvidia package ```nvidia-prime``` because th
 
 ### WARNING
 
-While this README will provide full instructions on how to configure your system, the included scripts **ALSO** need to be configured which is **NOT** fully explained in this README. They need to be adapted to things such as especially your screen-resolution.
+While this README will provide full instructions on how to configure your system, the included scripts **ALSO** need to be configured which is **NOT** fully explained in this README. They need to be adapted to things such as especially your screen-resolution.  
 **Thus please fully read and configure all of the included scripts before you run them!**
 
 You will get to understand the context of what these scripts do by reading this README, so start with that and review and configure the scripts as they're mentioned.
