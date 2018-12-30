@@ -82,6 +82,17 @@ The ```switch-screen``` script assumes the display manager is LightDM. If your d
 
 We will now first configure the standard system drivers and Bumblebee before actually installing `bumblebee-multiscreen-tools`.
 
+### BIOS settings
+
+For the ThinkPad W530 use the following:
+```
+Config / Display / OS Detection for NVIDIA Optimus: On
+```
+
+While this may not support Linux it is better to keep it `On` anyway: I once read that some (unrelated) hardware drivers of the Linux kernel are in fact able to fake being a Windows kernel to ensure the hardware fully enables all of its features. This may apply to Optimus as well.
+
+Also Optimus does work for me with this being `On`.
+
 ### Intel GPU drivers
 
 Ensure that ```intel-virtual-output``` is installed - on Ubuntu should be by default as part of the ```xserver-xorg-video-intel``` package:
