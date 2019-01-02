@@ -41,6 +41,9 @@
 
 - Move inlined scripts of README.md to files. Notice that we add the repository root to $PATH so use long names.
 
+- Mention tool for monitoring GPU utilization: [nvidia-smi](http://download.nvidia.com/XFree86/Linux-x86/384.90/README/nvidia-smi.html)
+	Notice: Has a detailed manpage!
+
 - Split this up into multiple repositories:
 	- thinkpad-dock-tools:
 		- dock-handler script. Will call all scripts in /etc/thinkpad-dock-tools/(un)dock.d
