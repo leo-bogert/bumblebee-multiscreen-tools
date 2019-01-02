@@ -44,6 +44,8 @@
 - Mention tool for monitoring GPU utilization: [nvidia-smi](http://download.nvidia.com/XFree86/Linux-x86/384.90/README/nvidia-smi.html)
 	Notice: Has a detailed manpage!
 
+- CPU frequency regulation: Read [the ubuntuusers.de wiki](https://wiki.ubuntuusers.de/Prozessortaktung/) about it and see if we mention/implement everything relevant.
+
 - Split this up into multiple repositories:
 	- thinkpad-dock-tools:
 		- dock-handler script. Will call all scripts in /etc/thinkpad-dock-tools/(un)dock.d
