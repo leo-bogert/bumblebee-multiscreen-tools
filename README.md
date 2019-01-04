@@ -260,7 +260,7 @@ nano 20-thinkpad-w530-intel-gpu.conf
 ```
 
 #### Nvidia Xorg configuration
-```
+```bash
 sudo -i
 # Back up the default config in case you need to have a look at it again.
 cp -i --preserve=all --no-preserve=links /etc/bumblebee/xorg.conf.nvidia \
