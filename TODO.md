@@ -37,6 +37,8 @@
 	
 	**EDIT**: The [Nvidia documentation](https://download.nvidia.com/XFree86/Linux-x86_64/384.130/README/xconfigoptions.html) for the X server settings of the driver version shipped as of Kubuntu 14.04 does not mention the `RegistryDwords` setting so I won't mess with it for now before it breaks something. This is also especially considering that for `Coolbits` it talks about voiding the warranty and danger of damaging the hardware, and does not mention the value of `1` which the other websites say is needed. Notice: It's possible that `RegistryDwords` is just a frontend for what can be configured at `nvidia-settings`. However that doesn't change the argument of `Coolbits=1` not being documented.
 
+- Elaborate the advantages of using Bumblebee over the other approaches of getting the external video output working, in the introduction and/or in the section `Similar tutorials / tools / sources`. List the other approaches, including those I moved to my private settings-archive.txt - perhaps just review the whole diff of branch `thinkpad-w530` (not public) for relevant stuff.
+
 - Renice Xorg, perhaps helps with vsync issues
 
 - Move inlined scripts of README.md to files. Notice that we add the repository root to $PATH so use long names.
