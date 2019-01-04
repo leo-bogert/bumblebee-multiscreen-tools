@@ -225,6 +225,7 @@ There will be two Xorg servers running with our configuration:
 ```bash
 sudo -i
 cd /usr/share/X11/xorg.conf.d/
+# Create the file, it shouldn't exist yet
 touch 20-thinkpad-w530-intel-gpu.conf
 chown root:root 20-thinkpad-w530-intel-gpu.conf
 chmod 644 20-thinkpad-w530-intel-gpu.conf
