@@ -341,7 +341,7 @@ something on the Nvidia GPU means it is rendered on the secondary Nvidia X-serve
 video memory of the primary X-server which runs on the Intel GPU.  
 So the config we hereby provide is for the said primary X-server.
 
-```
+```bash
 sudo -i
 cd /etc/X11/
 mv xorg.conf xorg.conf.default.bumblebee
