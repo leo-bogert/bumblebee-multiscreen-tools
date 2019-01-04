@@ -395,7 +395,7 @@ fail starting. Symptoms would be ```/var/log/Xorg.8.log``` saying:
 
 To prevent the modules from loading we do this:
 
-```
+```bash
 sudo -i
 # Preserve default configuration
 # - We must copy the backup into a different directory as in *.d directories usually all files are loaded.
