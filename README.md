@@ -515,6 +515,9 @@ They will cause:
 
 ```bash
 sudo -i
+touch /etc/pm/sleep.d/99_thinkpad-w530.sh
+chown root:root /etc/pm/sleep.d/99_thinkpad-w530.sh
+chmod 755 /etc/pm/sleep.d/99_thinkpad-w530.sh
 # For documentation on this .d directory see:
 #     /usr/share/doc/pm-utils/README
 #     /usr/share/doc/pm-utils/HOWTO.hooks.gz
@@ -554,8 +557,6 @@ nano /etc/pm/sleep.d/99_thinkpad-w530.sh
             echo "ERROR: Unknown parameter: $1" >&2
             ;;
     esac
-chown root:root /etc/pm/sleep.d/99_thinkpad-w530.sh
-chmod 755 /etc/pm/sleep.d/99_thinkpad-w530.sh
 ```
 
 #### Detecting dock state at startup/logout and switching screen accordingly
