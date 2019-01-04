@@ -29,7 +29,7 @@ You will get to understand the context of what these scripts do by reading this 
 With regards to the state of this repository as a whole:  
 It should work, but lacks polishing (see [the TODO list](TODO.md)). That will be finished in 2019, check for new commits regularly.  
 
-Most notably: The Nouveau drivers provide [much more simple configuration of Optimus](https://nouveau.freedesktop.org/wiki/Optimus/) than Bumblebee and if they work for you then you should prefer them.  
+Most notably: The Nouveau drivers provide [much more simple configuration of Optimus](https://nouveau.freedesktop.org/wiki/Optimus/) than Bumblebee - however there currently does not seem a toolchain available for them like this repository here. So ideally this repository would be converted to use them instead.  
 Once I am done with this repository for Bumblebee I will investigate whether I can create a fork which uses Nouveau instead and if yes, update this README to point to that.
 
 ### Features
