@@ -564,12 +564,16 @@ nano /etc/pm/sleep.d/99_thinkpad-w530.sh
 Use ```display-setup-script``` as follows on LightDM:
 ```shell
 # Source: https://wiki.ubuntu.com/LightDM#Adding_System_Hooks
-sudo nano /etc/lightdm/lightdm.conf.d/99-bumblebee.conf
+sudo -i
+touch /etc/lightdm/lightdm.conf.d/99-bumblebee.conf
+chown root:root /etc/lightdm/lightdm.conf.d/99-bumblebee.conf
+chmod 644 /etc/lightdm/lightdm.conf.d/99-bumblebee.conf
+nano /etc/lightdm/lightdm.conf.d/99-bumblebee.conf
     # ATTENTION: Later versions of lightdm (15.10 onwards) have replaced the obsolete [SeatDefaults]
     # with [Seat:*]
     [SeatDefaults]
     display-setup-script=/root/.bin/bumblebee-multiscreen-tools/display-setup-script
-chmod 644 /etc/lightdm/lightdm.conf.d/99-bumblebee.conf
+
 ```
 
 The script will be run be LightDM right at startup of the X server. It will wait for ```bumblebeed``` to start and then run the ```dock-handler``` script.  
