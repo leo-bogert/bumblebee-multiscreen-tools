@@ -719,7 +719,7 @@ We're going to install all libraries required for both APIs to work on both GPUs
 # Intel GPU - VA API
 sudo apt install libva-intel-vaapi-driver i965-va-driver
 # Intel GPU - VDPAU
-sudo apt install libvdpau-va-gl1 i965-va-driver
+sudo apt install libvdpau-va-gl1
 # Nvidia GPU - VDPAU
 sudo apt install libvdpau1
 # Nvidia GPU - VA API
