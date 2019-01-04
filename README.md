@@ -246,10 +246,12 @@ nano 20-thinkpad-w530-intel-gpu.conf
         # Notice if you plan to enable this:
         # The man page sounds like this will need additional config in an "XvMCConfig file", read the
         # sections of the below options before enabling them.
+        
         #     Option "XvMCSurfaces" 7
         #     Option "XvMC" true
         
         # TODO: The following may be needed on Debian 9 - validate whether it really is.
+        
         #     Option "VirtualHeads" "2"
         
         # Add your options here. See: man 4 intel
