@@ -929,11 +929,13 @@ They can be avoided by:
 
 You forgot to [add your user account to the video group](#video-acceleration).
 
-## Similar tutorials / sources
+## Similar tutorials / tools / sources
 
 - https://github.com/Bumblebee-Project/Bumblebee/wiki/Multi-monitor-setup
 - https://askubuntu.com/questions/103564/external-displays-with-bumblebee/525404#525404
 - https://www.unixreich.com/blog/2013/linux-nvidia-optimus-on-thinkpad-w520w530-with-external-monitor-finally-solved/
+- https://github.com/Witko/nvidia-xrun
+	Never tried it as it requires starting a separate X server from a tty (= terminal, i.e. by switching away from X to raw terminals using CTRL+ALT+F1) which is very inconvenient. Also it probably isn't developed with taking laptops into account, i.e. probably doesn't work with their external video ports.
 
 ## License
 
