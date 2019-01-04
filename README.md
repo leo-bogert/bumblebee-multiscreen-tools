@@ -37,8 +37,6 @@ Once I am done with this repository for Bumblebee I will investigate whether I c
 #### Manual screen switching
 
 ```shell
-# Read the script and adapt its hardcoded configuration to your environment first!
-nano switch-screen
 # Switch to DisplayPort #2 on docking station.
 # This enables the Nvidia GPU as the DisplayPort can only be accessed through it.
 # Software will keep using the Intel GPU unless you run it with "optirun COMMAND" or "primusrun COMMAND".
