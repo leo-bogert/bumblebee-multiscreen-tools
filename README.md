@@ -149,7 +149,7 @@ If that happens then try again with the other command.
 
 Notice: I haven't verified whether strictly ALL of the below config settings are necessary. I just set them all and then tried whether it works. It is possible that some can be ignored.
 
-```
+```bash
 sudo -i
 # Back up the default config in case you need to have a look at it again.
 cp -i --preserve=all --no-preserve=links /etc/bumblebee/bumblebee.conf \
