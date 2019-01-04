@@ -433,6 +433,9 @@ KDE menu / Computer / System Settings / Power Management /
     Energy Saving / On AC Power / When laptop lid is closed: Do nothing
 ```
 
+**WARNING**: As of Kubuntu 14.04 this only applies to the currently logged in user! This means that if no user is logged in then the system will always be put to sleep when the lid is closed. That's done by LightDM, and I have not found a way to disable it yet.  
+**TODO**: After dist-upgrade: If this still applies then find a way to fix it.
+
 Notice: At least on the ThinkPad W530 the internal screen will still be turned off when the lid is closed so you don't need to worry about it constantly consuming power. It is probably disabled by a hardware switch.
 
 ### bumblebee-multiscreen-tools
