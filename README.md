@@ -1,6 +1,8 @@
 ## bumblebee-multiscreen-tools
 ### Scripts and HOWTO for automatic screen and GPU switching on Nvidia Optimus laptops with [Bumblebee](https://github.com/Bumblebee-Project/Bumblebee)
 
+There are many laptops nowadays which have both an Intel and a Nvidia GPU, which is advertised as `Nvidia Optimus`. The Intel GPU is typically hardwired to the internal screen, while the Nvidia one connects to the external outputs.
+
 These scripts and configuration instructions allow you to easily switch your laptop's screen from internal to external or enable both screens at once.  
 Usage of a docking station is supported, the screen can be switched automatically to/from the one attached to the dock.  
 Power management is supported, suitable for both low battery usage in mobile mode and enhanced performance with AC power while still keeping fan noise minimal.
@@ -9,9 +11,7 @@ This software has been designed for a Lenovo ThinkPad W530 and the ```Lenovo Thi
 Other devices are not tested but may work, these scripts are not very hardware dependent.
 
 The key aspect of the hardware this targets is that those laptops, and many other Optimus laptops, do **only** provide access to the external video ports through the Nvidia GPU because they're not physically connected to the Intel GPU.  
-This means that in order to use an external screen the Nvidia GPU must be forced to stay enabled, and the Intel GPU's video output must be copied into the video memory of the Nvidia GPU.  
-We cannot just render everything with the Nvidia GPU because that would prevent disabling the Nvidia GPU when trying to switch to the internal screen:  
-Like the external screen depends on the Nvidia GPU, the internal screen is only accessible through the Intel GPU.
+This means that in order to use an external screen the Nvidia GPU must be forced to stay enabled, and the Intel GPU's video output must be copied into the video memory of the Nvidia GPU.
 
 We make this setup usable by:
 - using Bumblebee to be able to disable/enable the Nvidia GPU and run a secondary X-Server for it.
