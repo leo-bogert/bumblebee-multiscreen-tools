@@ -482,12 +482,12 @@ Further, `dock-handler` will also tweak power management upon dock/undock by swi
 
 Ensure the extra modules package for your kernel is installed, e.g. `linux-image-extra-3.13.0-133-generic`:
 ```bash
-dpkg --list | head -5 ; : Show table header ; dpkg --list | fgrep linux-image-extra
+dpkg --list | head -5 ; : Show table header ; dpkg --list | fgrep -i linux-image-extra
 ```
 
 This is needed so the ThinkPad ACPI module will be loaded (usually automatically), which you can check by:
 ```bash
-lsmod | fgrep thinkpad_acpi
+lsmod | fgrep -i thinkpad_acpi
 ```
 
 Configure `acpid` to run the `dock-handler` script upon dock/undock (sources: [1](https://phihag.de/2012/thinkpad-docking.html), [2](http://www.thinkwiki.org/wiki/Thinkpad-acpi), [3](https://www.kernel.org/doc/Documentation/laptops/thinkpad-acpi.txt)):
