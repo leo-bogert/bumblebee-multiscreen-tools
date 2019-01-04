@@ -7,7 +7,7 @@ These scripts and configuration instructions allow you to easily switch your lap
 Usage of a docking station is supported, the screen can be switched automatically to/from the one attached to the dock.  
 Power management is supported, suitable for both low battery usage in mobile mode and enhanced performance with AC power while still keeping fan noise minimal.
 
-This software has been designed for a Lenovo ThinkPad W530 and the ```Lenovo ThinkPad Mini Dock Plus Series 3``` docking station.  
+This software has been designed for `Lenovo ThinkPad W530` laptops using the ```Lenovo ThinkPad Mini Dock Plus Series 3``` docking station.  
 Other devices are not tested but may work, these scripts are not very hardware dependent.
 
 The key aspect of the hardware this targets is that those laptops, and many other Optimus laptops, do **only** provide access to the external video ports through the Nvidia GPU because they're not physically connected to the Intel GPU.  
