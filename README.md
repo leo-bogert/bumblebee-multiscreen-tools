@@ -39,7 +39,7 @@ Once I am done with this repository for Bumblebee I will investigate whether I c
 ```shell
 # Switch to DisplayPort #2 on docking station.
 # This enables the Nvidia GPU as the DisplayPort can only be accessed through it.
-# Software will keep using the Intel GPU unless you run it with "optirun COMMAND" or "primusrun COMMAND".
+# Software will keep using the Intel GPU unless you run it with "optirun -- COMMAND" or "primusrun -- COMMAND".
 sudo switch-screen external
 # Switch to internal screen.
 # This disables the Nvidia GPU for optimal power usage.
