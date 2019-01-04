@@ -743,7 +743,26 @@ This also shows that the ```video``` group may even be required for access to Op
 **TODO**: Also check for packages for the competing API "vdpau".
 
 Now that we've installed video acceleration libraries we will have to configure various software to actually use them.  
-Instructions for Firefox, Chromium, VLC and the Flash player follow.
+Instructions for VLC, Firefox, Chromium and the Flash player follow.
+
+#### VLC
+
+We'll use the Intel GPU as video decoding isn't a high performance task and using the Intel GPU is more easy as it is always enabled.  
+So make sure the user which runs VLC is in the ```video``` group as explained [above](#video-acceleration).
+
+In ```Tools / Preferences``` set:
+```
+Simple settings / "Input / codecs" /
+	Hardware-accelerated decoding: Video acceleration (VA) API
+```
+
+Close VLC. Start it from a terminal with a video file as parameter. The output should indicate hardware rendering by e.g.:
+```
+[...] avcodec decoder: Using VA API version 0.35 for hardware decoding. [...]
+```
+
+**TODO**: Newer versions of VLC may support VDPAU and thus could be used with the Nvidia GPU.  
+However as of 2018 the Intel GPU seems fast enough for very high resolution h264 videos.
 
 #### Firefox
 
@@ -797,25 +816,6 @@ To check whether it works, browse to ```chrome://gpu```.
 Check for example [this](https://www.pcsuggest.com/chromium-hardware-accelerated-video-decoding-linux/), [this](https://old.reddit.com/r/linux/comments/60o1l1/chrome_on_linux_needs_to_support_hw_video/) and [this](https://chromium-review.googlesource.com/c/chromium/src/+/532294):  
 At the former links people say that overriding the blacklist just means that it will try to use GPU acceleration, but it won't actually do so because it isn't compiled into it.  
 The later link shows that a pull request for VAAPI support wasn't merged yet (indicated by "Merge Conflict" which shows that it couldn't even be merged right now because of unresolved Git merge conflicts).
-
-#### VLC
-
-We'll use the Intel GPU as video decoding isn't a high performance task and using the Intel GPU is more easy as it is always enabled.  
-So make sure the user which runs VLC is in the ```video``` group as explained [above](#video-acceleration).
-
-In ```Tools / Preferences``` set:
-```
-Simple settings / "Input / codecs" /
-	Hardware-accelerated decoding: Video acceleration (VA) API
-```
-
-Close VLC. Start it from a terminal with a video file as parameter. The output should indicate hardware rendering by e.g.:
-```
-[...] avcodec decoder: Using VA API version 0.35 for hardware decoding. [...]
-```
-
-**TODO**: Newer versions of VLC may support VDPAU and thus could be used with the Nvidia GPU.  
-However as of 2018 the Intel GPU seems fast enough for very high resolution h264 videos.
 
 #### Flash player
 
