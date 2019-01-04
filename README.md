@@ -194,7 +194,7 @@ nano /etc/bumblebee/bumblebee.conf
     # modeset module as a dependency, and that loads the main module as a dependency, so all 3 are
     # loaded.
     # On Debian 9 this module might have a different name. To find out the name use
-    #   lsmod | fgrep nvidia
+    #   lsmod | fgrep --ignore-case nvidia
     KernelDriver=nvidia-384-drm
     
     # Keep Nvidia GPU enabled all the time to keep the external video ports available.
