@@ -222,7 +222,7 @@ There will be two Xorg servers running with our configuration:
 
 #### Intel Xorg configuration
 
-```
+```bash
 sudo -i
 cd /usr/share/X11/xorg.conf.d/
 touch 20-thinkpad-w530-intel-gpu.conf
