@@ -582,7 +582,7 @@ It will also be run by LightDM when you log out, which is important as it then r
 ##### Display managers other than LightDM
 
 Here's an unvalidated list of locations where the `display-setup-script` could be wired in:
-- `SSDM`: `/usr/share/sddm/scripts/Xsetup`, albeit this location is configurable, see `man sddm.conf`.
+- `SSDM`: `/usr/share/sddm/scripts/Xsetup`, albeit this location is configurable, see `man sddm.conf`, it's the variable `DisplayCommand=`.
 - `GDM`: `/usr/share/gdm/greeter/autostart/` and/or `/etc/xdg/autostart/`.
 
 #### Setting the CPU governor at startup
