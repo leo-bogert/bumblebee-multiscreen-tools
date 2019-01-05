@@ -579,6 +579,12 @@ nano /etc/lightdm/lightdm.conf.d/99-bumblebee.conf
 The script will be run by LightDM right at startup of the X server. It will wait for ```bumblebeed``` to start and then run the ```dock-handler``` script.  
 It will also be run by LightDM when you log out, which is important as it then restarts the X server which makes it necessary to re-choose the screen.
 
+##### Display managers other than LightDM
+
+Here's an unvalidated list of locations where the `display-setup-script` could be wired in:
+- `SSDM`: `/usr/share/sddm/scripts/Xsetup`, albeit this location is configurable, see `man sddm.conf`.
+- `GDM`: `/usr/share/gdm/greeter/autostart/` and/or `/etc/xdg/autostart/`.
+
 #### Setting the CPU governor at startup
 
 The above `display-setup-script` configuration will also set the CPU governor at startup, depending on the dock state (`conservative` when docked, `powersave` otherwise).  
