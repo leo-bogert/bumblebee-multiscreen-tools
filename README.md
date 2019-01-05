@@ -859,7 +859,8 @@ one of external/internal video not working) you have these options to recover it
   usually attached to F1 to F7, F8 switches back to Xorg. This may vary across distributions, try
   all the F-keys.
 - kill the X server with ```ALT+SysRq+K```. The SysRq key is also known as the PRINT key. Notice
-  that on some distributions this is disabled by default any might need to be enabled by e.g.:
+  that on some distributions this is disabled by default any might need to be enabled by e.g. the
+  following (which also enables the useful [REISUB sequence](https://en.wikipedia.org/wiki/Magic_SysRq_key#Uses)):
   ```
   nano /etc/sysctl.d/10-magic-sysrq.conf
       kernel.sysrq = 244
