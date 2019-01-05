@@ -869,7 +869,7 @@ one of external/internal video not working) you have these options to recover it
 
 Once you've recovered at least some video output you can follow this procedure to get full video output again:
 1. read the log files:
-  - ```/var/log/thinkpad-w530-dock.log``` - the ```dock-handler``` script's log which also contains
+  - ```/var/log/thinkpad-w530-dock.log``` - the ```dock-handler``` script's log, which also contains
     output of the attempts to switch the screen. Notice that this has to be enabled in the script first!
   - ```/var/log/Xorg.0.log``` - Intel X-server log
   - ```/var/log/Xorg.8.log``` - Bumblebee X-server log
