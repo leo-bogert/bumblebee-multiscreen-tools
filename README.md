@@ -925,13 +925,17 @@ and dock again), otherwise a reboot will fix the issue.
 
 ### Mouse cursor issues
 
-* When using the external screen the mouse cursor may sometimes not be visible.
-* After disconnecting an USB mouse and re-connecting it the cursor may jump around in a strange fashion when you move it.
+1. When using the external screen the mouse cursor may sometimes not be visible.
+2. After disconnecting an USB mouse and re-connecting it the cursor may jump around in a strange fashion when you move it.
 
 Any such issues can usually be fixed by switching to the internal screen and then back to the external one,
 e.g. by undocking and docking again.
 
-They can be avoided by:
+Issue 1 can often be fixed without screen switching:
+If you move the mouse cursor around for a bit you will notice from e.g. the highlighting of task bar icons upon hovering over them that the mouse cursor **does** exist, it's just not visible.  
+Once you click an icon and thus cause a program to start the cursor being switched to its `loading...` animation will repair it.
+
+Issue 2 can be avoided by:
 - ensuring the mouse is not ever reconnected implicitly when using the external screen: Reconnects can happen when you use the external screen as an USB hub and connect the mouse to it: Some screens will shut off the USB ports when you turn the screen off.
 - Also the `ThinkPad Mini Dock Plus Series 3` is a rather jittery construction, touching it only slightly will usually cause a short undock/dock cycle. Better not touch it while the system is running.
 
