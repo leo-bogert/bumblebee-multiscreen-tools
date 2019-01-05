@@ -940,6 +940,11 @@ They can be avoided by:
 
 You forgot to [add your user account to the video group](#video-acceleration).
 
+### OpenGL did work but doesn't anymore
+
+In my experience sometimes OpenGL just breaks after some time of being used, or especially after having switched users.  
+This is usually fixed by a reboot.
+
 ## Similar tutorials / tools / sources
 
 - https://github.com/Bumblebee-Project/Bumblebee/wiki/Multi-monitor-setup
