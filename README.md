@@ -909,7 +909,7 @@ Or just disable compositing on demand with the hotkey as mentioned by the system
 
 ### External screen not working
 
-switch-screen may fail to switch to the external screen due to Nvidia GPU initialization failing.  
+`dock-handler` / `switch-screen` may fail to switch to the external screen due to Nvidia GPU initialization failing.  
 The kernel log will contain something like:
 
 ```
