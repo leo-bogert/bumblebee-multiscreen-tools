@@ -933,7 +933,7 @@ e.g. by undocking and docking again.
 
 Issue 1 can often be fixed without screen switching:
 If you move the mouse cursor around for a bit you will notice from e.g. the highlighting of task bar icons upon hovering over them that the mouse cursor **does** exist, it's just not visible.  
-Once you click an icon and thus cause a program to start the cursor being switched to its `loading...` animation will repair it.
+Once you click an icon and thus cause a program to start the cursor being switched to its `Loading...` animation will repair it.
 
 Issue 2 can be avoided by:
 - ensuring the mouse is not ever reconnected implicitly when using the external screen: Reconnects can happen when you use the external screen as an USB hub and connect the mouse to it: Some screens will shut off the USB ports when you turn the screen off.
