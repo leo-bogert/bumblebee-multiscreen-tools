@@ -876,7 +876,7 @@ Once you've recovered at least some video output you can follow this procedure t
   - ```/var/log/lightdm/lightdm.log``` - LightDM display manager log
   - ```/var/log/syslog```
   - ```/var/log/kern.log```
-2. edit the configuration files, especially the `switch-screen` script if its parameters are wrong.
+2. edit the configuration files, especially the `switch-screen` script if its hardcoded screen settings are wrong.
 3. Retry by either:
   - killing the X-servers and IVO using ```killall Xorg ; killall intel-virtual-output```,
     restarting Bumblebee using ```service bumblebeed restart```, and rerunning the `dock-handler` or
