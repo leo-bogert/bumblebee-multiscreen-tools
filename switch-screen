@@ -76,6 +76,8 @@ case "$1" in
 			# TODO: "--primary" is an attempted workaround to improve vsync with videos in Chromium as of 2017-10-27 on Kubuntu 14.04. Remove if it doesn't help / vsync improves on a newer distribution.
 			xrandr --output LVDS1 --off
 			xrandr --output VIRTUAL8 --mode VIRTUAL8.742-1920x1200 --primary
+			# Workaround for task bar being stuck in mid-screen on Kubuntu 18.04. Don't ask my why this helps, did not discover this intentionally...
+			xrandr --query &> /dev/null
 		;;
 	'dual')
 		# Docked mode with dualscreen - laptop screen left to DisplayPort #2 screen.
