@@ -14,10 +14,12 @@ shopt -s failglob
 # See the code of the 'case "$1" in'.
 # TODO: Make it auto-detect reasonable settings.
 
-# If you're not using LightDM set this to the location of your display manager's Xauthority file
-export XAUTHORITY='/var/run/lightdm/root/:0'
+# Set this to the location of your display manager's Xauthority file
+# LightDM:
+#     export XAUTHORITY='/var/run/lightdm/root/:0'
+# sddm:
+export XAUTHORITY=$(readlink --canonicalize-existing /run/sddm/*)
 export DISPLAY=':0'
-
 LOCK='/tmp/bumblebee-multiscreen-tools.switch-screen.lock'
 ################################################################################
 
