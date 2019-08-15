@@ -113,9 +113,8 @@ dpkg --listfiles intel-gpu-tools
 # Install the Nvidia drivers. If you do not want the 32-bit versions installed additionally tell your
 # package manager to not install the recommended "i386" packages.
 sudo apt install nvidia-driver-390
-# Install Bumblebee **after** the Nvidia driver to ensure you don't
-# get the older version of the Nvidia driver which Bumblebee chooses
-# as dependency.
+# Install Bumblebee **after** the Nvidia driver to ensure you don't get the older version of the Nvidia
+# driver which Bumblebee chooses as dependency.
 # In aptitude you can do this in one step by marking nvidia-driver-390 for installation first.
 # To avoid installation of 32-bit components, tell your package manager to not install the
 # "primus-libs-ia32" package.
