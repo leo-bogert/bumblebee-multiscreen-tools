@@ -121,20 +121,30 @@ sudo apt install nvidia-driver-390
 sudo apt install bumblebee-nvidia
 ```
 
-On my system this resulted in the following packages being installed according to ```/var/log/apt/history.log``` (the order here is random due to using aptitude instead of apt):
-```
-primus-libs-ia32:i386 (0~20131127-2, automatic)
-primus-libs:amd64 (0~20131127-2, automatic)
-primus-libs:i386 (0~20131127-2, automatic)
-nvidia-settings:amd64 (331.20-0ubuntu8, automatic)
-libcuda1-384:amd64 (384.90-0ubuntu0.14.04.1, automatic)
-bumblebee:amd64 (3.2.1-5, automatic)
-bumblebee-nvidia:amd64 (3.2.1-5)
-nvidia-384:amd64 (384.90-0ubuntu0.14.04.1)
-bbswitch-dkms:amd64 (0.7-2ubuntu1, automatic)
-nvidia-prime:amd64 (0.6.2.1, automatic)
-nvidia-opencl-icd-384:amd64 (384.90-0ubuntu0.14.04.1, automatic)
-primus:amd64 (0~20131127-2, automatic)
+On my system this resulted in the following packages being installed according to `/var/log/apt/history.log`:
+```shell
+# Nvidia driver
+libnvidia-cfg1-390:amd64 (390.116-0ubuntu0.18.04.1, automatic)
+libnvidia-common-390:amd64 (390.116-0ubuntu0.18.04.1, automatic)
+libnvidia-compute-390:amd64 (390.116-0ubuntu0.18.04.1, automatic)
+libnvidia-decode-390:amd64 (390.116-0ubuntu0.18.04.1, automatic)
+libnvidia-encode-390:amd64 (390.116-0ubuntu0.18.04.1, automatic)
+libnvidia-fbc1-390:amd64 (390.116-0ubuntu0.18.04.1, automatic)
+libnvidia-gl-390:amd64 (390.116-0ubuntu0.18.04.1, automatic)
+libnvidia-ifr1-390:amd64 (390.116-0ubuntu0.18.04.1, automatic)
+libxnvctrl0:amd64 (390.77-0ubuntu0.18.04.1, automatic)
+nvidia-compute-utils-390:amd64 (390.116-0ubuntu0.18.04.1, automatic)
+nvidia-dkms-390:amd64 (390.116-0ubuntu0.18.04.1, automatic)
+nvidia-driver-390:amd64 (390.116-0ubuntu0.18.04.1)
+nvidia-kernel-common-390:amd64 (390.116-0ubuntu0.18.04.1, automatic)
+nvidia-kernel-source-390:amd64 (390.116-0ubuntu0.18.04.1, automatic)
+nvidia-prime:amd64 (0.8.8.2, automatic)
+nvidia-settings:amd64 (390.77-0ubuntu0.18.04.1, automatic)
+nvidia-utils-390:amd64 (390.116-0ubuntu0.18.04.1, automatic)
+screen-resolution-extra:amd64 (0.17.3, automatic)
+xserver-xorg-video-nvidia-390:amd64 (390.116-0ubuntu0.18.04.1, automatic)
+# Bumblebee
+# FIXME
 ```
 
 ### Bumblebee configuration
