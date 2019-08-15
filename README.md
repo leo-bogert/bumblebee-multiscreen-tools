@@ -117,7 +117,8 @@ sudo apt install nvidia-driver-390
 # get the older version of the Nvidia driver which Bumblebee chooses
 # as dependency.
 # In aptitude you can do this in one step by marking nvidia-driver-390 for installation first.
-# To avoid installation of 32-bit components, deselect the "primus-libs-ia32" package in aptitude.
+# To avoid installation of 32-bit components, tell your package manager to not install the
+# "primus-libs-ia32" package.
 sudo apt install bumblebee-nvidia
 ```
 
